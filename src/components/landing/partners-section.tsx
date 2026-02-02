@@ -40,10 +40,15 @@ export function PartnersSection() {
     if (currentIndex >= partners.length * 2) {
       timeoutId = setTimeout(() => {
         setIsTransitioning(false); 
-        setCurrentIndex(partners.length); 
+        setCurrentIndex(partners.length);
+        
+        // Force a re-render and then re-enable transitions
+        setTimeout(() => {
+          setIsTransitioning(true);
+        }, 50);
       }, 500);
     } else {
-      timeoutId = setTimeout(moveNext, 1000);
+      timeoutId = setTimeout(moveNext, 1500);
     }
 
     return () => clearTimeout(timeoutId);
