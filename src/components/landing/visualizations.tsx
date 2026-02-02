@@ -56,7 +56,7 @@ export const UtilityViz = () => {
 };
 
 export const LiquidityTunnelViz = () => {
-  const logoIds = ['partner-aave', 'partner-eigenlayer', 'partner-pendle', 'partner-uniswap', 'partner-arbitrum', 'partner-coinbase', 'partner-balancer'];
+  const logoIds = ['liquidity-aave', 'liquidity-eigenlayer', 'liquidity-pendle', 'partner-uniswap', 'partner-arbitrum', 'partner-coinbase', 'partner-balancer'];
   const logos = logoIds.map(id => PlaceHolderImages.find(p => p.id === id)).filter(Boolean);
 
   const directions = [
