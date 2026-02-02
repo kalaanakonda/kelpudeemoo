@@ -85,7 +85,7 @@ export function PartnersSection() {
                           ref={el => itemsRef.current[index] = el}
                           className="flex-shrink-0 w-48 h-20 flex items-center justify-center origin-center"
                           style={{
-                            transition: 'all 0.5s cubic-bezier(0.2, 0, 0.2, 1)',
+                            transition: isTransitioning ? 'all 0.5s cubic-bezier(0.2, 0, 0.2, 1)' : 'none',
                             transform: isActive ? 'scale(1.5)' : 'scale(0.6)',
                             opacity: isActive ? 1 : 0.4,
                             filter: isActive ? 'none' : 'grayscale(100%)'
