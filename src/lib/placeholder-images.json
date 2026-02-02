@@ -1,3 +1,70 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "Abstract background image for the hero section.",
+      "imageUrl": "https://images.unsplash.com/photo-1567095751004-aa51a2690368?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRhcmt8ZW58MHx8fHwxNzY5OTU1MDg0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract dark"
+    },
+    {
+      "id": "rseth-logo",
+      "description": "The logo for rsETH.",
+      "imageUrl": "https://images.unsplash.com/photo-1760037028553-3c5c801f18c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsb2dvJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzY5OTUxNjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo abstract"
+    },
+    {
+      "id": "partner-aave",
+      "description": "The logo for Aave.",
+      "imageUrl": "https://images.unsplash.com/photo-1691737830898-448660652fe8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsb2dvJTIwZ2VvbWV0cmljfGVufDB8fHx8MTc3MDA0MDEwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo geometric"
+    },
+    {
+      "id": "partner-eigenlayer",
+      "description": "The logo for EigenLayer.",
+      "imageUrl": "https://images.unsplash.com/photo-1744390166658-afd6391e914c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsb2dvJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzY5OTUxNjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo abstract"
+    },
+    {
+      "id": "partner-pendle",
+      "description": "The logo for Pendle.",
+      "imageUrl": "https://images.unsplash.com/photo-1506079782370-e0a067a44a1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsb2dvJTIwdHlwb2dyYXBoeXxlbnwwfHx8fDE3NzAwMzIzMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo typography"
+    },
+    {
+      "id": "partner-uniswap",
+      "description": "The logo for Uniswap.",
+      "imageUrl": "https://images.unsplash.com/photo-1687523327554-fa9f50423489?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsb2dvJTIwYW5pbWFsfGVufDB8fHx8MTc3MDA0MDA5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo animal"
+    },
+    {
+      "id": "partner-arbitrum",
+      "description": "The logo for Arbitrum.",
+      "imageUrl": "https://images.unsplash.com/photo-1691737830898-448660652fe8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsb2dvJTIwZ2VvbWV0cmljfGVufDB8fHx8MTc3MDA0MDEwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo geometric"
+    },
+    {
+      "id": "partner-coinbase",
+      "description": "The logo for Coinbase.",
+      "imageUrl": "https://images.unsplash.com/photo-1755397198828-bf81a4cc95ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsb2dvJTIwbGV0dGVyfGVufDB8fHx8MTc3MDA0MDA5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo letter"
+    },
+    {
+      "id": "partner-balancer",
+      "description": "The logo for Balancer.",
+      "imageUrl": "https://images.unsplash.com/photo-1691737831143-d092198a4354?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsb2dvJTIwZ2VvbWV0cmljfGVufDB8fHx8MTc3MDA0MDEwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo geometric"
+    },
+    {
+      "id": "partner-symbiotic",
+      "description": "The logo for Symbiotic.",
+      "imageUrl": "https://images.unsplash.com/photo-1744390166658-afd6391e914c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsb2dvJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzY5OTUxNjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo abstract"
+    },
+    {
+      "id": "partner-etherfi",
+      "description": "The logo for ether.fi.",
+      "imageUrl": "https://images.unsplash.com/photo-1744390166658-afd6391e914c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsb2dvJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzY5OTUxNjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo abstract"
+    }
+  ]
 }

@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        headline: ['Clash Display', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -88,10 +88,53 @@ export default {
             height: '0',
           },
         },
+        'scan-vertical': {
+          '0%': { top: '0%', opacity: '0' },
+          '10%': { opacity: '1' },
+          '90%': { opacity: '1' },
+          '100%': { top: '100%', opacity: '0' },
+        },
+        'spin-slow': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+        'spin-reverse-slow': {
+          from: { transform: 'rotate(360deg)' },
+          to: { transform: 'rotate(0deg)' },
+        },
+        'tunnel-flow': {
+          '0%': { transform: 'translate(0, 0) scale(0.1)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '90%': { opacity: '1' },
+          '100%': { transform: 'translate(var(--tx), var(--ty)) scale(2.5)', opacity: '0' },
+        },
+        'cursor-click-btn': {
+          '0%': { transform: 'translate(40px, 40px)' },
+          '35%': { transform: 'translate(0px, 0px)' },
+          '45%': { transform: 'translate(0px, 0px) scale(0.9)' },
+          '55%': { transform: 'translate(0px, 0px) scale(1)' },
+          '100%': { transform: 'translate(40px, 40px)' },
+        },
+        'btn-press-effect': {
+          '0%, 40%, 60%, 100%': { transform: 'scale(1)', backgroundColor: 'white' },
+          '50%': { transform: 'scale(0.95)', backgroundColor: '#f3f4f6', borderColor: '#2dd4bf' },
+        },
+        'burst-coin': {
+          '0%, 45%': { transform: 'translate(0, 0) scale(0)', opacity: '0' },
+          '50%': { opacity: '1', transform: 'translate(var(--bx), var(--by)) scale(1) rotate(var(--br))' },
+          '100%': { opacity: '0', transform: 'translate(var(--ex), var(--ey)) scale(0.8) rotate(var(--er))' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'scanner': 'scan-vertical 2.5s ease-in-out infinite',
+        'spin-slow': 'spin-slow 20s linear infinite',
+        'spin-reverse-slow': 'spin-reverse-slow 25s linear infinite',
+        'tunnel': 'tunnel-flow 4s linear infinite',
+        'cursor-btn': 'cursor-click-btn 3s ease-in-out infinite',
+        'btn-press-visual': 'btn-press-effect 3s ease-in-out infinite',
+        'coin-burst': 'burst-coin 3s ease-out infinite',
       },
     },
   },
