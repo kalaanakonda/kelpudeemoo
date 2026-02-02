@@ -65,8 +65,7 @@ export function PartnersSection() {
             </h2>
          </div>
          
-         <div className="lg:w-3/5 w-full flex flex-col gap-8 pt-4 items-center md:items-start">
-            <span className="text-slate-400 text-xs font-medium tracking-wide self-start">Partners</span>
+         <div className="lg:w-3/5 w-full flex flex-col pt-4 items-center md:items-start">
             
             <div ref={containerRef} className="w-full max-w-[800px] overflow-hidden ticker-mask relative py-8"> 
                 <div 
