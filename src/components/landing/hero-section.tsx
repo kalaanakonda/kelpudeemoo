@@ -1,24 +1,22 @@
 import { Globe } from 'lucide-react';
 import { Navbar } from './navbar';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Image from 'next/image';
 
 export function HeroSection() {
-  const heroBg = PlaceHolderImages.find(p => p.id === 'hero-background');
-
   return (
     <div className="p-2 md:p-3 pb-0 bg-black">
-      <div className="relative h-[600px] rounded-md overflow-hidden group">
-        {heroBg && (
-          <Image
-            src={heroBg.imageUrl}
-            alt={heroBg.description}
-            data-ai-hint={heroBg.imageHint}
-            fill
-            className="object-cover grayscale"
-            priority
+      <div className="relative h-screen rounded-md overflow-hidden group">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover grayscale"
+        >
+          <source 
+            src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kling_20260202_Image_to_Video_the_scene__5653_0.mp4" 
+            type="video/mp4" 
           />
-        )}
+        </video>
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
