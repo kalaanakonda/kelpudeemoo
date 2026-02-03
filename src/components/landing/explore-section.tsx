@@ -18,8 +18,8 @@ export function ExploreSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-1 space-y-4">
-            <Card className="bg-gray-50/50 hover:bg-gray-50 transition-colors border-gray-200">
+          <div className="lg:col-span-1 space-y-4 flex flex-col">
+            <Card className="bg-gray-100 border-gray-200 flex-1">
               <CardHeader className="flex-row items-start gap-3 p-4">
                 <div className="p-2 bg-primary/10 text-primary">
                   <ShieldCheck className="w-4 h-4" />
@@ -34,7 +34,7 @@ export function ExploreSection() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gray-50/50 hover:bg-gray-50 transition-colors border-gray-200">
+            <Card className="bg-gray-100 border-gray-200 flex-1">
               <CardHeader className="flex-row items-start gap-3 p-4">
                 <div className="p-2 bg-primary/10 text-primary">
                   <Bug className="w-4 h-4" />
@@ -66,7 +66,7 @@ export function ExploreSection() {
                     </div>
                     <div>
                         <Label htmlFor="apy" className="text-xs text-slate-500">Current APY</Label>
-                        <div id="apy" className="text-base h-10 p-3 font-normal font-heading border border-input flex items-center bg-gray-50/70">
+                        <div id="apy" className="text-base h-10 p-3 font-normal font-heading flex items-center">
                             2.6%
                         </div>
                     </div>
