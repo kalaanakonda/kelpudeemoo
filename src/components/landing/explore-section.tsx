@@ -48,7 +48,7 @@ export function ExploreSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className={cn("lg:col-span-1 space-y-4 flex flex-col opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.2s' }}>
+          <div className={cn("lg:col-span-1 space-y-4 flex flex-col opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.5s' }}>
             <Card className="bg-gray-100 border-gray-200 flex-1">
               <CardHeader className="flex-row items-start gap-3 p-4">
                 <div className="p-2 bg-primary/10 text-primary">
@@ -80,7 +80,7 @@ export function ExploreSection() {
             </Card>
           </div>
 
-          <div className={cn("lg:col-span-2 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.4s' }}>
+          <div className={cn("lg:col-span-2 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.7s' }}>
             <Card className="h-full border-gray-200 flex flex-col">
               <CardHeader className="p-4 pb-2">
                 <CardTitle className="text-base font-normal font-heading flex items-center gap-2">
@@ -95,7 +95,7 @@ export function ExploreSection() {
                           <Label htmlFor="eth-amount" className="text-xs text-slate-500">ETH Amount</Label>
                           <Input id="eth-amount" type="number" defaultValue={100} className="text-base h-10 p-3 font-normal font-heading"/>
                       </div>
-                      <div className="grid grid-cols-3 gap-3 border-t border-b border-gray-100 py-4">
+                      <div className="flex justify-between items-center border-t border-b border-gray-100 py-4 text-center">
                           <div>
                               <Label className="text-xs text-slate-500">Current APY</Label>
                               <div className="text-base font-normal font-heading mt-1">

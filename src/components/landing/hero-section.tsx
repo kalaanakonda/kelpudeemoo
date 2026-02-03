@@ -37,7 +37,7 @@ export function HeroSection() {
             className="flex items-center gap-4 animate-slide-in-up" 
             style={{ animationDelay: '0.6s' }}
           >
-            <a href="#simulator" className="bg-[#075A5A] hover:bg-[#075A5A]/90 text-white px-6 py-2.5 font-medium text-sm transition">
+            <a href="#simulator" className="bg-black/5 hover:bg-black/10 text-black border border-black/20 px-6 py-2.5 font-medium text-sm transition animate-glint">
               Learn more
             </a>
           </div>

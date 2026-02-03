@@ -107,9 +107,30 @@
   .animate-slide-in-up {
     animation: slide-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
+  .animate-glint {
+    @apply relative overflow-hidden;
+  }
+  .animate-glint::after {
+    content: '';
+    @apply absolute top-0 w-full h-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: glint 4s ease-in-out infinite;
+    animation-delay: 1s;
+  }
 }
 
 @layer keyframes {
+  @keyframes glint {
+    0% { transform: translateX(-150%); }
+    40% { transform: translateX(150%); }
+    100% { transform: translateX(150%); }
+  }
+  
   @keyframes scan-vertical {
     0% { top: 0%; opacity: 0; }
     10% { opacity: 1; }
@@ -163,7 +184,7 @@
   }
 
   @keyframes slide-up-letter {
-    from { transform: 'translateY(100%)'; }
-    to { transform: 'translateY(0%)'; }
+    from { transform: translateY(100%); }
+    to { transform: translateY(0%); }
   }
 }
