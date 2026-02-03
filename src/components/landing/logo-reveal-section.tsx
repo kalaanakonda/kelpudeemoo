@@ -74,14 +74,6 @@ export function LogoRevealSection() {
   return (
     <section className="py-24 bg-white border-b border-gray-100">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-normal text-black tracking-tight">
-                Trusted by Industry Leaders
-            </h2>
-            <p className="text-slate-500 mt-2 text-sm max-w-xl mx-auto leading-relaxed font-light">
-                Our ecosystem is supported by a growing network of the most reputable projects and partners in the DeFi space.
-            </p>
-        </div>
         <div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-12 items-center"
         >
