@@ -141,7 +141,7 @@ export function SimulationSection() {
                 {result && (
                   <div className="text-center animate-in fade-in duration-500">
                     <p className="text-sm text-slate-500 mb-2">Estimated Rewards</p>
-                    <p className="text-6xl font-bold font-heading text-primary tracking-tighter">{result.formattedRewards}</p>
+                    <p className="text-6xl font-heading text-primary tracking-tighter">{result.formattedRewards}</p>
                     <p className="text-sm text-slate-400 mt-4">Over {form.getValues("periodLengthDays")} days, you could earn an estimated <span className="font-semibold text-slate-500">{result.estimatedRewards.toFixed(4)} ETH</span>.</p>
                   </div>
                 )}
