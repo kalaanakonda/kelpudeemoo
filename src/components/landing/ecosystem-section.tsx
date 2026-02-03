@@ -21,9 +21,12 @@ const rsEthLogo = PlaceHolderImages.find(p => p.id === 'rseth-logo');
 export function EcosystemSection() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
+  const [hasMounted, setHasMounted] = useState(false);
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    setHasMounted(true);
+
     const handleScroll = () => {
       const currentRef = ref.current;
       if (currentRef) {
@@ -119,25 +122,27 @@ export function EcosystemSection() {
             </div>
       
             {/* Animated Logos */}
-            <div className="absolute inset-0 z-0 w-full h-full flex items-center justify-center">
-                {/* Central rsETH Logo */}
-                {rsEthLogo && (
-                    <div className="absolute" style={getCenterLogoStyle()}>
-                        <Image src={rsEthLogo.imageUrl} alt={rsEthLogo.description} width={128} height={128} className="object-contain" />
-                    </div>
-                )}
-                
-                {/* Partner Logos */}
-                {ecosystemPartners.map((partner, index) => partner && (
-                    <div
-                        key={partner.id}
-                        className="absolute w-24 h-24 bg-white/50 backdrop-blur-sm border border-gray-200/50 p-4 rounded-2xl shadow-lg flex items-center justify-center"
-                        style={getLogoStyle(index, ecosystemPartners.length)}
-                    >
-                        <Image src={partner.imageUrl} alt={partner.description} width={60} height={60} className="object-contain" />
-                    </div>
-                ))}
-            </div>
+            {hasMounted && (
+              <div className="absolute inset-0 z-0 w-full h-full flex items-center justify-center">
+                  {/* Central rsETH Logo */}
+                  {rsEthLogo && (
+                      <div className="absolute" style={getCenterLogoStyle()}>
+                          <Image src={rsEthLogo.imageUrl} alt={rsEthLogo.description} width={128} height={128} className="object-contain" />
+                      </div>
+                  )}
+                  
+                  {/* Partner Logos */}
+                  {ecosystemPartners.map((partner, index) => partner && (
+                      <div
+                          key={partner.id}
+                          className="absolute w-24 h-24 bg-white/50 backdrop-blur-sm border border-gray-200/50 p-4 rounded-2xl shadow-lg flex items-center justify-center"
+                          style={getLogoStyle(index, ecosystemPartners.length)}
+                      >
+                          <Image src={partner.imageUrl} alt={partner.description} width={60} height={60} className="object-contain" />
+                      </div>
+                  ))}
+              </div>
+            )}
       </div>
     </section>
   );
