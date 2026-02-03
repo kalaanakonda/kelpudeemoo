@@ -17,7 +17,7 @@ export function HeroSection() {
       <Navbar />
 
       <div className="absolute inset-0 p-6 flex justify-center text-center">
-        <div className="max-w-2xl relative z-10 flex flex-col items-center pt-32">
+        <div className="max-w-2xl relative z-10 flex flex-col items-center pt-24">
           <h1 
             className="text-4xl md:text-5xl font-normal text-[#075A5A] tracking-tight leading-tight mb-4 font-heading animate-slide-in-up" 
             style={{ animationDelay: '0.2s' }}
