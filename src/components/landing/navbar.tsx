@@ -10,7 +10,7 @@ export function Navbar() {
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-6xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-md px-4 py-2 flex justify-between items-center text-white">
-        <Link href="/" className="flex items-center gap-2 text-xl font-semibold tracking-tight">
+        <Link href="/" className="flex items-center gap-2 text-xl font-normal tracking-tight">
           <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center text-black">
             <Anchor className="w-4 h-4 fill-current" />
           </div>

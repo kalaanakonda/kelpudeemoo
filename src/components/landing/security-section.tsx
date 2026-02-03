@@ -4,7 +4,7 @@ export function SecuritySection() {
       <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <span className="text-slate-500 text-xs font-medium tracking-wider uppercase mb-3 block">Audits & Security</span>
-          <h2 className="text-3xl md:text-4xl font-semibold font-heading leading-tight mb-5">
+          <h2 className="text-3xl md:text-4xl font-normal font-heading leading-tight mb-5">
             Secured by trusted auditors.
           </h2>
           <div className="flex flex-wrap gap-3 mb-8">
@@ -20,11 +20,11 @@ export function SecuritySection() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white p-6 rounded-2xl border border-gray-200 text-center shadow-sm">
-            <p className="text-4xl font-semibold font-heading text-primary">3</p>
+            <p className="text-4xl font-normal font-heading text-primary">3</p>
             <p className="text-sm text-slate-500 mt-1">Major Audits</p>
           </div>
           <div className="bg-white p-6 rounded-2xl border border-gray-200 text-center shadow-sm">
-            <p className="text-4xl font-semibold font-heading text-primary">5+</p>
+            <p className="text-4xl font-normal font-heading text-primary">5+</p>
             <p className="text-sm text-slate-500 mt-1">Security Partners</p>
           </div>
         </div>

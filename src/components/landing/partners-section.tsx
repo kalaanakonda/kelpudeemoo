@@ -65,7 +65,7 @@ export function PartnersSection() {
     <section className="py-24 bg-white border-b border-gray-100 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-start justify-between gap-16">
          <div className="lg:w-2/5 flex-shrink-0 pt-2 relative z-10 bg-white">
-            <h2 className="text-4xl md:text-5xl font-semibold font-heading text-black leading-[1.1] tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-normal font-heading text-black leading-[1.1] tracking-tight">
               Powering the <br/> rsETH Ecosystem
             </h2>
          </div>

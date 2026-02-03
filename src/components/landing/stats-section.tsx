@@ -13,7 +13,7 @@ export function StatsSection() {
                 <p className="text-slate-400 text-[10px] font-medium uppercase tracking-wider">Total Value Locked</p>
                 <div className="h-[1px] bg-gray-100 flex-1"></div>
              </div>
-             <div className="text-5xl md:text-7xl font-semibold font-heading tracking-tighter text-black flex items-center gap-2">
+             <div className="text-5xl md:text-7xl font-normal font-heading tracking-tighter text-black flex items-center gap-2">
                <AnimatedCounter end={1.46} delay={300} prefix="$" suffix="B" decimals={2} />
                <BarChart3 className="w-6 h-6 text-gray-300 stroke-[1.5]" />
              </div>
@@ -26,7 +26,7 @@ export function StatsSection() {
                 <p className="text-slate-400 text-[10px] font-medium uppercase tracking-wider">Total Restakers</p>
                 <div className="h-[1px] bg-gray-100 flex-1"></div>
              </div>
-             <div className="text-5xl md:text-7xl font-semibold font-heading tracking-tighter text-black flex items-center gap-2">
+             <div className="text-5xl md:text-7xl font-normal font-heading tracking-tighter text-black flex items-center gap-2">
                <AnimatedCounter end={300} delay={400} suffix="K+" decimals={0} />
                <Users className="w-6 h-6 text-gray-300 stroke-[1.5]" />
              </div>
@@ -39,7 +39,7 @@ export function StatsSection() {
                 <div className="hidden md:block h-[1px] bg-gray-100 flex-1"></div>
                 <p className="text-slate-400 text-[10px] font-medium uppercase tracking-wider">Current APR</p>
              </div>
-             <div className="text-5xl md:text-7xl font-semibold font-heading tracking-tighter text-black flex items-center justify-start md:justify-end gap-2">
+             <div className="text-5xl md:text-7xl font-normal font-heading tracking-tighter text-black flex items-center justify-start md:justify-end gap-2">
                <Zap className="w-6 h-6 text-gray-300 stroke-[1.5]" />
                <AnimatedCounter end={2.5} delay={500} suffix="%" decimals={1} />
              </div>
