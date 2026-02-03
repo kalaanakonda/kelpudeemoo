@@ -23,7 +23,7 @@ export function PartnersSection() {
   const containerRef = useRef(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const ITEM_WIDTH = 192;
+  const ITEM_WIDTH = 144;
   const GAP = 120;
   const STEP = ITEM_WIDTH + GAP;
 
@@ -88,7 +88,7 @@ export function PartnersSection() {
                         <div 
                           key={`${partner.id}-${index}`}
                           ref={el => itemsRef.current[index] = el}
-                          className="flex-shrink-0 w-48 h-20 flex items-center justify-center origin-center"
+                          className="flex-shrink-0 w-36 h-16 flex items-center justify-center origin-center"
                           style={{
                             transition: isTransitioning ? 'all 0.5s cubic-bezier(0.2, 0, 0.2, 1)' : 'none',
                             transform: isActive ? 'scale(1.5)' : 'scale(0.6)',
@@ -100,8 +100,8 @@ export function PartnersSection() {
                               src={partner.imageUrl}
                               alt={partner.description}
                               data-ai-hint={partner.imageHint}
-                              width={192}
-                              height={80}
+                              width={144}
+                              height={64}
                               className="max-w-full max-h-full object-contain"
                             />
                         </div>
