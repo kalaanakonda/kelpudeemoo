@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Globe } from 'lucide-react';
 import { Navbar } from './navbar';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -45,21 +44,12 @@ export function HeroSection() {
 
       <Navbar />
 
-      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 flex flex-col md:flex-row items-end justify-between gap-8">
-        <div className="max-w-2xl relative z-10">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="bg-white/10 text-white border border-white/20 px-2 py-0.5 text-[10px] font-normal uppercase tracking-wider">
-              Liquid Restaking
-            </span>
-            <p className="text-slate-400 text-xs font-normal flex items-center gap-1.5">
-               <Globe className="w-3 h-3" /> Live on 10+ chains
-            </p>
-          </div>
-          
+      <div className="absolute inset-0 p-6 flex items-center justify-center text-center">
+        <div className="max-w-2xl relative z-10 flex flex-col items-center">
           <AnimatedTickerHeading 
             key={currentHeadingIndex}
             text={headings[currentHeadingIndex]}
-            className="text-4xl md:text-6xl font-normal text-white tracking-tight leading-tight mb-4 font-heading"
+            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4 font-heading"
           />
           
           <p className="text-slate-400 max-w-lg text-sm mb-6 leading-relaxed font-light">
