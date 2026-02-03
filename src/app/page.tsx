@@ -13,9 +13,9 @@ export default function LandingPage() {
       <main className="flex-1">
         <HeroSection />
         <StatsSection />
-        <PartnersSection />
         <ExploreSection />
         <OutworksSection />
+        <PartnersSection />
         <SimulationSection />
         <SecuritySection />
       </main>
