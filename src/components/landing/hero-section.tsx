@@ -4,6 +4,7 @@ import { Globe } from 'lucide-react';
 import { Navbar } from './navbar';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { AnimatedTickerHeading } from './animated-ticker-heading';
 
 export function HeroSection() {
   const heroBg = PlaceHolderImages.find(p => p.id === 'hero-background');
@@ -37,9 +38,10 @@ export function HeroSection() {
             </p>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-normal text-white tracking-tight leading-[0.95] mb-4 font-heading">
-            Finance for the Instant Economy
-          </h1>
+          <AnimatedTickerHeading 
+            text="Finance for the Instant Economy"
+            className="text-4xl md:text-6xl font-normal text-white tracking-tight leading-tight mb-4 font-heading"
+          />
           
           <p className="text-slate-400 max-w-lg text-sm mb-6 leading-relaxed font-light">
             At Kelp, we’re the gateway to on-demand earning mechanisms across crypto and
