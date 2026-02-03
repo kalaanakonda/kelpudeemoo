@@ -19,11 +19,11 @@ export function SecuritySection() {
           </a>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white p-6 border border-gray-200 text-center shadow-sm">
+          <div className="bg-white p-6 border border-gray-200 text-center">
             <p className="text-4xl font-normal font-heading text-primary">3</p>
             <p className="text-sm text-slate-500 mt-1">Major Audits</p>
           </div>
-          <div className="bg-white p-6 border border-gray-200 text-center shadow-sm">
+          <div className="bg-white p-6 border border-gray-200 text-center">
             <p className="text-4xl font-normal font-heading text-primary">5+</p>
             <p className="text-sm text-slate-500 mt-1">Security Partners</p>
           </div>

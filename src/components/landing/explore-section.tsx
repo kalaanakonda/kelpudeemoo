@@ -19,9 +19,9 @@ export function ExploreSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-1 space-y-4">
-            <Card className="bg-gray-50/50 hover:bg-gray-50 transition-colors border-gray-200 shadow-sm">
+            <Card className="bg-gray-50/50 hover:bg-gray-50 transition-colors border-gray-200">
               <CardHeader className="flex-row items-start gap-3 p-4">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                <div className="p-2 bg-primary/10 text-primary">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
@@ -34,9 +34,9 @@ export function ExploreSection() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gray-50/50 hover:bg-gray-50 transition-colors border-gray-200 shadow-sm">
+            <Card className="bg-gray-50/50 hover:bg-gray-50 transition-colors border-gray-200">
               <CardHeader className="flex-row items-start gap-3 p-4">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                <div className="p-2 bg-primary/10 text-primary">
                   <Bug className="w-4 h-4" />
                 </div>
                 <div>
@@ -51,7 +51,7 @@ export function ExploreSection() {
           </div>
 
           <div className="lg:col-span-2">
-            <Card className="h-full shadow-lg border-gray-200">
+            <Card className="h-full border-gray-200">
               <CardHeader className="p-4 pb-2">
                 <CardTitle className="text-base font-normal font-heading flex items-center gap-2">
                     <Coins className="w-4 h-4 text-primary" />
@@ -66,7 +66,7 @@ export function ExploreSection() {
                     </div>
                     <div>
                         <Label htmlFor="apy" className="text-xs text-slate-500">Current APY</Label>
-                        <div id="apy" className="text-base h-10 p-3 font-normal font-heading border border-input rounded-md flex items-center bg-gray-50/70">
+                        <div id="apy" className="text-base h-10 p-3 font-normal font-heading border border-input flex items-center bg-gray-50/70">
                             2.6%
                         </div>
                     </div>
@@ -85,7 +85,7 @@ export function ExploreSection() {
                         </CardHeader>
                     </Card>
                 </div>
-                <Button className="w-full h-10 text-sm rounded-lg">
+                <Button className="w-full h-10 text-sm">
                   Restake now
                 </Button>
               </CardContent>

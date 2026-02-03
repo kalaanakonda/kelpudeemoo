@@ -65,7 +65,7 @@ export function SimulationSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
-          <Card className="w-full shadow-lg border-gray-200">
+          <Card className="w-full border-gray-200">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <CardHeader>
