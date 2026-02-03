@@ -10,7 +10,7 @@ export function StatsSection() {
         <div className="flex flex-col md:flex-row justify-around items-center gap-12 text-center md:text-left">
           
           <div className="flex items-center gap-4">
-            <BarChart3 className="w-10 h-10 text-primary/80 stroke-[1.5]" />
+            <BarChart3 className="w-8 h-8 text-primary/80 stroke-[1.5]" />
             <div>
               <div className="text-5xl font-normal font-heading tracking-tighter text-black">
                 <AnimatedCounter end={1.46} delay={300} prefix="$" suffix="B" decimals={2} />
@@ -20,7 +20,7 @@ export function StatsSection() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Users className="w-10 h-10 text-primary/80 stroke-[1.5]" />
+            <Users className="w-8 h-8 text-primary/80 stroke-[1.5]" />
             <div>
               <div className="text-5xl font-normal font-heading tracking-tighter text-black">
                 <AnimatedCounter end={300} delay={400} suffix="K+" decimals={0} />
@@ -30,7 +30,7 @@ export function StatsSection() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Zap className="w-10 h-10 text-primary/80 stroke-[1.5]" />
+            <Zap className="w-8 h-8 text-primary/80 stroke-[1.5]" />
             <div>
               <div className="text-5xl font-normal font-heading tracking-tighter text-black">
                 <AnimatedCounter end={2.5} delay={500} suffix="%" decimals={1} />
