@@ -20,6 +20,7 @@ const rsEthLogo = PlaceHolderImages.find(p => p.id === 'rseth-logo');
 
 export function EcosystemSection() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -29,51 +30,75 @@ export function EcosystemSection() {
         const { top, height } = currentRef.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        // Calculate progress from when the top of the section hits the middle of the screen
-        // until the section is 1/3 scrolled past
-        const startOffset = windowHeight / 2;
-        const endOffset = height / 3;
-        const progress = 1 - (top + startOffset) / (windowHeight - endOffset);
+        // Animation starts when the top of the section enters the viewport
+        // and completes when the section is about halfway scrolled.
+        const startPoint = windowHeight;
+        const endPoint = windowHeight / 2;
+        const scrollDistance = startPoint - endPoint;
+        const progress = (startPoint - top) / scrollDistance;
 
         setScrollProgress(Math.max(0, Math.min(1, progress)));
       }
     };
 
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    window.addEventListener('resize', handleResize);
+    
+    // Initial calls
+    handleScroll();
+    handleResize();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   const getLogoStyle = (index: number, total: number) => {
-    const angle = (index / total) * 2 * Math.PI + Math.PI / 4;
-    const startScale = 3;
-    const endScale = 0;
-    const startRadius = 0;
-    const endRadius = 400;
+    if (windowWidth === 0) {
+      return { opacity: 0, transform: 'scale(0)' };
+    }
 
-    // Animate based on scroll progress
-    const easedProgress = Math.sin((scrollProgress * Math.PI) / 2); // Ease-out curve
+    const isLeft = index % 2 === 0;
+    const startX = isLeft ? -windowWidth / 2 - 100 : windowWidth / 2 + 100;
+    
+    // Stagger the animation start
+    const delayFactor = index * 0.05;
+    const easedProgress = Math.max(0, Math.min(1, (scrollProgress - delayFactor) / (1 - delayFactor)));
+    const smoothProgress = Math.sin((easedProgress * Math.PI) / 2); // easeOutSine
 
-    const scale = startScale - easedProgress * (startScale - endScale);
-    const radius = startRadius + easedProgress * (endRadius - startRadius);
-    const opacity = Math.sin(scrollProgress * Math.PI); // Fade in and out
+    const currentX = startX * (1 - smoothProgress);
 
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
+    // Fade out as they reach the center
+    const fadeOutThreshold = 0.85;
+    const opacity = easedProgress < fadeOutThreshold 
+      ? easedProgress * 2 // Fade in
+      : 1 - ((easedProgress - fadeOutThreshold) / (1 - fadeOutThreshold)); // Fade out
+
+    const verticalPosition = (index - total / 2) * 40;
 
     return {
-      transform: `translate(${x}px, ${y}px) scale(${scale})`,
-      opacity: opacity,
-      zIndex: 10 - index,
+      transform: `translateX(${currentX}px) translateY(${verticalPosition}px) scale(${smoothProgress})`,
+      opacity: Math.max(0, opacity),
+      zIndex: 10,
     };
   };
 
   const getCenterLogoStyle = () => {
-    const scale = scrollProgress > 0.5 ? (scrollProgress - 0.5) * 2 : 0;
-    const opacity = scale;
+    const startThreshold = 0.8;
+    
+    if (scrollProgress < startThreshold) {
+      return { transform: 'scale(0)', opacity: 0, zIndex: 20 };
+    }
+    
+    const progress = (scrollProgress - startThreshold) / (1 - startThreshold);
+    const scale = Math.sin((progress * Math.PI) / 2); // easeOutSine
+    const opacity = progress;
+
     return {
       transform: `scale(${scale})`,
       opacity: opacity,
@@ -82,7 +107,7 @@ export function EcosystemSection() {
   };
 
   return (
-    <section ref={ref} className="bg-white py-32 relative h-[250vh] overflow-hidden">
+    <section ref={ref} className="bg-white py-32 relative h-[200vh] overflow-hidden">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center text-center">
             <div className={cn("transition-opacity duration-500", scrollProgress > 0.8 ? 'opacity-0' : 'opacity-100')}>
                 <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase mb-4">
@@ -106,7 +131,7 @@ export function EcosystemSection() {
                 {ecosystemPartners.map((partner, index) => partner && (
                     <div
                         key={partner.id}
-                        className="absolute w-24 h-24 bg-white/50 backdrop-blur-sm border border-gray-200/50 p-4 rounded-2xl shadow-lg flex items-center justify-center transition-opacity duration-300"
+                        className="absolute w-24 h-24 bg-white/50 backdrop-blur-sm border border-gray-200/50 p-4 rounded-2xl shadow-lg flex items-center justify-center"
                         style={getLogoStyle(index, ecosystemPartners.length)}
                     >
                         <Image src={partner.imageUrl} alt={partner.description} width={60} height={60} className="object-contain" />
