@@ -1,12 +1,12 @@
 import { HeroSection } from "@/components/landing/hero-section";
 import { StatsSection } from "@/components/landing/stats-section";
-import { PartnersSection } from "@/components/landing/partners-section";
 import { OutworksSection } from "@/components/landing/outworks-section";
 import { SecuritySection } from "@/components/landing/security-section";
 import { Footer } from "@/components/landing/footer";
 import { SimulationSection } from "@/components/landing/simulation-section";
 import { ExploreSection } from "@/components/landing/explore-section";
 import { NewsletterSection } from "@/components/landing/newsletter-section";
+import { EcosystemSection } from "@/components/landing/ecosystem-section";
 
 export default function LandingPage() {
   return (
@@ -16,7 +16,7 @@ export default function LandingPage() {
         <StatsSection />
         <ExploreSection />
         <OutworksSection />
-        <PartnersSection />
+        <EcosystemSection />
         <NewsletterSection />
         <SimulationSection />
         <SecuritySection />
