@@ -1,31 +1,16 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Anchor, ChevronRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <nav className={cn(
-      "top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300",
-      scrolled ? "fixed" : "absolute"
-    )}>
-      <div className={cn(
-        "max-w-6xl mx-auto bg-white/5 backdrop-blur-md border rounded-lg px-4 py-2 flex justify-between items-center text-white transition-colors duration-300",
-        scrolled ? "border-white" : "border-white/10"
-      )}>
+    <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
+      <div className="max-w-6xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-2 flex justify-between items-center text-white">
         <Link href="/" className="flex items-center gap-2 text-xl font-normal tracking-tight">
           <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center text-black">
             <Anchor className="w-4 h-4 fill-current" />
