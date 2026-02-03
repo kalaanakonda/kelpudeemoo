@@ -1,13 +1,31 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { Globe } from 'lucide-react';
 import { Navbar } from './navbar';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { AnimatedTickerHeading } from './animated-ticker-heading';
 
+const headings = [
+  "Finance for the Instant Economy",
+  "The Future of Liquid Restaking",
+  "Unlocking On-Demand Earnings",
+];
+
 export function HeroSection() {
+  const [currentHeadingIndex, setCurrentHeadingIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentHeadingIndex(prevIndex => (prevIndex + 1) % headings.length);
+    }, 5000); // Change heading every 5 seconds
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   const heroBg = PlaceHolderImages.find(p => p.id === 'hero-background');
+  
   return (
     <div className="relative h-screen bg-black">
       {heroBg ? (
@@ -39,7 +57,8 @@ export function HeroSection() {
           </div>
           
           <AnimatedTickerHeading 
-            text="Finance for the Instant Economy"
+            key={currentHeadingIndex}
+            text={headings[currentHeadingIndex]}
             className="text-4xl md:text-6xl font-normal text-white tracking-tight leading-tight mb-4 font-heading"
           />
           
