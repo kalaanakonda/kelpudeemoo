@@ -80,7 +80,7 @@ export function LogoRevealSection() {
                   data-ai-hint={partner.imageHint}
                   width={120}
                   height={40}
-                  className="mx-auto h-8 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
+                  className="mx-auto h-8 w-auto object-contain transition-all"
                 />
               </div>
             );
