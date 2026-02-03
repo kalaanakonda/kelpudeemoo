@@ -48,8 +48,8 @@ export function ExploreSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className={cn("lg:col-span-1 space-y-4 flex flex-col opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
-            <Card className="bg-gray-100 border-gray-200 flex-1">
+          <div className="lg:col-span-1 space-y-4 flex flex-col">
+            <Card className={cn("bg-gray-100 border-gray-200 flex-1 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
               <CardHeader className="flex-row items-start gap-3 p-4">
                 <div className="p-2 bg-primary/10 text-primary">
                   <ShieldCheck className="w-4 h-4" />
@@ -64,7 +64,7 @@ export function ExploreSection() {
               </CardHeader>
             </Card>
 
-            <Card className="bg-gray-100 border-gray-200 flex-1">
+            <Card className={cn("bg-gray-100 border-gray-200 flex-1 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.2s' }}>
               <CardHeader className="flex-row items-start gap-3 p-4">
                 <div className="p-2 bg-primary/10 text-primary">
                   <Bug className="w-4 h-4" />
@@ -80,8 +80,8 @@ export function ExploreSection() {
             </Card>
           </div>
 
-          <div className={cn("lg:col-span-2 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
-            <Card className="h-full border-gray-200 flex flex-col">
+          <div className="lg:col-span-2">
+            <Card className={cn("h-full border-gray-200 flex flex-col opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
               <CardHeader className="p-4 pb-2">
                 <CardTitle className="text-base font-normal font-heading flex items-center gap-2">
                     <Coins className="w-4 h-4 text-primary" />
