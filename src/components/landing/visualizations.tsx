@@ -27,9 +27,9 @@ export const UtilityViz = () => {
       <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
 
       <div className="absolute -bottom-[20%] -right-16 w-80 h-80 translate-y-12">
-        <div className="absolute inset-0 animate-spin-slow origin-center border border-gray-200">
+        <div className="absolute inset-0 animate-spin-slow origin-center border border-gray-200 rounded-full">
            {[...Array(8)].map((_, i) => (
-             <div key={i} className="absolute w-10 h-10 bg-white border border-gray-100 flex items-center justify-center" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
+             <div key={i} className="absolute w-10 h-10 bg-white border border-gray-100 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
                 {i % 4 === 0 ? <ArrowLeftRight className="w-4 h-4 text-slate-400" /> : 
                  i % 4 === 1 ? <Wallet className="w-4 h-4 text-slate-400" /> :
                  i % 4 === 2 ? <TrendingUp className="w-4 h-4 text-slate-400" /> :
@@ -39,15 +39,15 @@ export const UtilityViz = () => {
            ))}
         </div>
 
-        <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center border border-gray-200">
+        <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center border border-gray-200 rounded-full">
            {[...Array(6)].map((_, i) => (
-             <div key={i} className="absolute w-8 h-8 bg-gray-50 border border-gray-200 flex items-center justify-center" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
+             <div key={i} className="absolute w-8 h-8 bg-gray-50 border border-gray-200 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
                 <CircleDollarSign className="w-4 h-4 text-slate-400" />
              </div>
            ))}
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white border border-gray-200 flex items-center justify-center z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white border border-gray-200 flex items-center justify-center z-10 rounded-full">
            {rsEthLogo && <Image src={rsEthLogo.imageUrl} alt="rsETH" data-ai-hint={rsEthLogo.imageHint} width={48} height={48} className="object-contain" />}
         </div>
     </div>
@@ -71,7 +71,7 @@ export const LiquidityTunnelViz = () => {
             const logo = logos[i % logos.length];
             if (!logo) return null;
             return(
-            <div key={`w1-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '0s' }}>
+            <div key={`w1-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10 rounded-full" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '0s' }}>
                <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain" />
             </div>
          )})}
@@ -80,7 +80,7 @@ export const LiquidityTunnelViz = () => {
             const logo = logos[(i + 1) % logos.length];
             if (!logo) return null;
             return(
-            <div key={`w2-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '-2s' }}>
+            <div key={`w2-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10 rounded-full" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '-2s' }}>
                <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain" />
             </div>
          )})}
