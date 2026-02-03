@@ -20,12 +20,23 @@ const rsEthLogo = PlaceHolderImages.find(p => p.id === 'rseth-logo');
 
 export function EcosystemSection() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
   const [hasMounted, setHasMounted] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  
+  // Store random starting positions for each logo so they are consistent across re-renders
+  const startPositions = useRef<{x: number, y: number}[]>([]);
 
   useEffect(() => {
     setHasMounted(true);
+    
+    // Only generate random positions on the client, once.
+    startPositions.current = ecosystemPartners.map((_, index) => {
+        const isLeft = index % 2 === 0;
+        return {
+          x: (isLeft ? -0.6 : 0.6) * window.innerWidth,
+          y: (Math.random() - 0.5) * window.innerHeight * 0.8
+        };
+    });
 
     const handleScroll = () => {
       const currentRef = ref.current;
@@ -33,8 +44,7 @@ export function EcosystemSection() {
         const { top, height } = currentRef.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        // Animation starts when the top of the section enters the viewport
-        // and completes when the section is about halfway scrolled.
+        // Start animation when the top of the section is visible, end when it's halfway up the screen.
         const startPoint = windowHeight;
         const endPoint = windowHeight / 2;
         const scrollDistance = startPoint - endPoint;
@@ -44,62 +54,54 @@ export function EcosystemSection() {
       }
     };
 
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleResize);
-    
-    // Initial calls
-    handleScroll();
-    handleResize();
+    handleScroll(); // Initial call
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  const getLogoStyle = (index: number, total: number) => {
-    if (windowWidth === 0) {
-      return { opacity: 0, transform: 'scale(0)' };
+  const getLogoStyle = (index: number) => {
+    if (!hasMounted || !startPositions.current[index]) {
+      return { opacity: 0 };
     }
 
-    const isLeft = index % 2 === 0;
-    const startX = isLeft ? -windowWidth / 2 - 100 : windowWidth / 2 + 100;
+    const { x: startX, y: startY } = startPositions.current[index];
     
-    // Stagger the animation start
-    const delayFactor = index * 0.05;
-    const easedProgress = Math.max(0, Math.min(1, (scrollProgress - delayFactor) / (1 - delayFactor)));
-    const smoothProgress = Math.sin((easedProgress * Math.PI) / 2); // easeOutSine
+    const easedProgress = Math.sin((scrollProgress * Math.PI) / 2); // easeOutSine
 
-    const currentX = startX * (1 - smoothProgress);
+    const currentX = startX * (1 - easedProgress);
+    const currentY = startY * (1 - easedProgress);
+    
+    const scale = 1 - (easedProgress * 0.5);
 
-    // Fade out as they reach the center
-    const fadeOutThreshold = 0.85;
-    const opacity = easedProgress < fadeOutThreshold 
-      ? easedProgress * 2 // Fade in
-      : 1 - ((easedProgress - fadeOutThreshold) / (1 - fadeOutThreshold)); // Fade out
-
-    const verticalPosition = (index - total / 2) * 40;
-
+    // Fade out logos as they approach the center
+    const fadeOutThreshold = 0.8;
+    let opacity = 0;
+    if (easedProgress > 0) {
+        opacity = easedProgress < fadeOutThreshold 
+        ? easedProgress / fadeOutThreshold // Fade in
+        : 1 - ((easedProgress - fadeOutThreshold) / (1 - fadeOutThreshold)); // Fade out
+    }
+    
     return {
-      transform: `translateX(${currentX}px) translateY(${verticalPosition}px) scale(${smoothProgress})`,
+      transform: `translate(${currentX}px, ${currentY}px) scale(${scale})`,
       opacity: Math.max(0, opacity),
       zIndex: 10,
     };
   };
 
   const getCenterLogoStyle = () => {
-    const startThreshold = 0.8;
-    
+    if (!hasMounted) return { opacity: 0 };
+
+    const startThreshold = 0.85;
     if (scrollProgress < startThreshold) {
-      return { transform: 'scale(0)', opacity: 0, zIndex: 20 };
+      return { transform: 'scale(0.5)', opacity: 0, zIndex: 20 };
     }
     
     const progress = (scrollProgress - startThreshold) / (1 - startThreshold);
-    const scale = Math.sin((progress * Math.PI) / 2); // easeOutSine
+    const scale = 0.5 + (progress * 0.5); // Scale from 0.5 to 1
     const opacity = progress;
 
     return {
@@ -108,11 +110,20 @@ export function EcosystemSection() {
       zIndex: 20,
     };
   };
+  
+  const getTitleStyle = () => {
+    if (!hasMounted) return { opacity: 1 };
+    const fadeOutProgress = Math.min(scrollProgress / 0.2, 1);
+    return {
+        opacity: 1 - fadeOutProgress,
+        transform: `translateY(${fadeOutProgress * -20}px)`,
+    }
+  }
 
   return (
-    <section ref={ref} className="bg-white py-32 relative h-[200vh] overflow-hidden">
+    <section ref={ref} className="bg-white py-32 relative min-h-[200vh] overflow-x-hidden">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center text-center">
-            <div className={cn("transition-opacity duration-500", scrollProgress > 0.8 ? 'opacity-0' : 'opacity-100')}>
+            <div style={getTitleStyle()} className="transition-opacity duration-300">
                 <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase mb-4">
                     Powering the rsETH Ecosystem
                 </h2>
@@ -136,7 +147,7 @@ export function EcosystemSection() {
                       <div
                           key={partner.id}
                           className="absolute w-24 h-24 bg-white/50 backdrop-blur-sm border border-gray-200/50 p-4 rounded-2xl shadow-lg flex items-center justify-center"
-                          style={getLogoStyle(index, ecosystemPartners.length)}
+                          style={getLogoStyle(index)}
                       >
                           <Image src={partner.imageUrl} alt={partner.description} width={60} height={60} className="object-contain" />
                       </div>
