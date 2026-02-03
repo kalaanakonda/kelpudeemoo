@@ -85,7 +85,7 @@ export function ExploreSection() {
                         </CardHeader>
                     </Card>
                 </div>
-                <Button className="w-full h-10 text-sm">
+                <Button className="w-full h-10 text-sm rounded-lg">
                   Restake now
                 </Button>
               </CardContent>

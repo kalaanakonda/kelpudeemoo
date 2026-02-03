@@ -114,7 +114,7 @@ export function SimulationSection() {
                   />
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit" disabled={isLoading} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Button type="submit" disabled={isLoading} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg">
                     {isLoading ? <Loader2 className="animate-spin" /> : "Run Simulation"}
                   </Button>
                 </CardFooter>
