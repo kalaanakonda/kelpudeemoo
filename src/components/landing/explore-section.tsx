@@ -1,4 +1,4 @@
-import { ShieldCheck, Bug, Globe, Coins, Calendar, TrendingUp } from 'lucide-react';
+import { ShieldCheck, Bug, Globe, Coins } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -51,39 +51,37 @@ export function ExploreSection() {
           </div>
 
           <div className="lg:col-span-2">
-            <Card className="h-full border-gray-200">
+            <Card className="h-full border-gray-200 flex flex-col">
               <CardHeader className="p-4 pb-2">
                 <CardTitle className="text-base font-normal font-heading flex items-center gap-2">
                     <Coins className="w-4 h-4 text-primary" />
                     Restaking Calculator
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3 p-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-end">
-                    <div>
-                        <Label htmlFor="eth-amount" className="text-xs text-slate-500">ETH Amount</Label>
-                        <Input id="eth-amount" type="number" defaultValue={100} className="text-base h-10 p-3 font-normal font-heading"/>
-                    </div>
-                    <div>
-                        <Label htmlFor="apy" className="text-xs text-slate-500">Current APY</Label>
-                        <div id="apy" className="text-base h-10 p-3 font-normal font-heading flex items-center">
-                            2.6%
-                        </div>
-                    </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <Card className="bg-gray-50/70 border-dashed">
-                        <CardHeader className="p-3">
-                           <CardDescription className="flex items-center gap-1.5 text-xs"><Calendar className="w-3.5 h-3.5" /> Monthly earnings</CardDescription>
-                           <CardTitle className="text-base font-normal font-heading mt-1">0.22 rsETH</CardTitle>
-                        </CardHeader>
-                    </Card>
-                     <Card className="bg-gray-50/70 border-dashed">
-                        <CardHeader className="p-3">
-                           <CardDescription className="flex items-center gap-1.5 text-xs"><TrendingUp className="w-3.5 h-3.5" /> Yearly earnings</CardDescription>
-                           <CardTitle className="text-base font-normal font-heading mt-1">2.60 rsETH</CardTitle>
-                        </CardHeader>
-                    </Card>
+              <CardContent className="space-y-4 p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="space-y-4">
+                      <div>
+                          <Label htmlFor="eth-amount" className="text-xs text-slate-500">ETH Amount</Label>
+                          <Input id="eth-amount" type="number" defaultValue={100} className="text-base h-10 p-3 font-normal font-heading"/>
+                      </div>
+                      <div className="grid grid-cols-3 gap-3 border-t border-b border-gray-100 py-4">
+                          <div>
+                              <Label className="text-xs text-slate-500">Current APY</Label>
+                              <div className="text-base font-normal font-heading mt-1">
+                                  2.6%
+                              </div>
+                          </div>
+                          <div>
+                              <Label className="text-xs text-slate-500">Monthly earnings</Label>
+                              <div className="text-base font-normal font-heading mt-1">0.22 rsETH</div>
+                          </div>
+                          <div>
+                              <Label className="text-xs text-slate-500">Yearly earnings</Label>
+                              <div className="text-base font-normal font-heading mt-1">2.60 rsETH</div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
                 <Button className="w-full h-10 text-sm">
                   Restake now
