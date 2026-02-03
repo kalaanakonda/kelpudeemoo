@@ -46,7 +46,7 @@ export function PartnersSection() {
         setTimeout(() => {
           setIsTransitioning(true);
         }, 50);
-      }, 500);
+      }, 1500);
     } else {
       timeoutId = setTimeout(moveNext, 1500);
     }
@@ -62,17 +62,17 @@ export function PartnersSection() {
   }, [partners.length]);
 
   return (
-    <section className="py-24 bg-white border-b border-gray-100 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-16">
+    <section className="py-16 bg-white border-b border-gray-100 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12">
          <div className="lg:w-2/5 flex-shrink-0 relative z-10 bg-white">
             <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase">
               Powering the rsETH Ecosystem
             </h2>
          </div>
          
-         <div className="lg:w-3/5 w-full flex flex-col pt-4 items-center md:items-start">
+         <div className="lg:w-3/5 w-full flex flex-col items-center md:items-start">
             
-            <div ref={containerRef} className="w-full max-w-[800px] overflow-hidden ticker-mask relative py-8"> 
+            <div ref={containerRef} className="w-full max-w-[800px] overflow-hidden ticker-mask relative py-4"> 
                 <div 
                   className="flex gap-[80px] w-max items-center pl-[176px] will-change-transform" 
                   style={{ 
