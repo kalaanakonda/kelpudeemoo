@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,6 +14,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   ethAmount: z.coerce.number().min(0.01, "Amount must be at least 0.01 ETH."),
@@ -27,6 +28,32 @@ export function SimulationSection() {
   const [result, setResult] = useState<RestakingSimulationOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -53,9 +80,9 @@ export function SimulationSection() {
   }
 
   return (
-    <section id="simulator" className="py-24 bg-white border-b border-gray-100">
+    <section id="simulator" ref={ref} className="py-24 bg-white border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-16 text-center">
+        <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
             Simulate Your Rewards
           </h2>
@@ -65,7 +92,7 @@ export function SimulationSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
-          <Card className="w-full border-gray-200">
+          <Card className={cn("w-full border-gray-200 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <CardHeader>
@@ -122,7 +149,7 @@ export function SimulationSection() {
             </Form>
           </Card>
 
-          <div className="mt-0 md:mt-2 space-y-4">
+          <div className={cn("mt-0 md:mt-2 space-y-4 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
             <Card className="w-full min-h-[290px] flex flex-col items-center justify-center bg-gray-50 border-dashed border-gray-300">
               <CardContent className="p-6 text-center">
                 {isLoading && (

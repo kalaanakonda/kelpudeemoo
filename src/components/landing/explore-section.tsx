@@ -48,7 +48,7 @@ export function ExploreSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className={cn("lg:col-span-1 space-y-4 flex flex-col opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.5s' }}>
+          <div className={cn("lg:col-span-1 space-y-4 flex flex-col opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
             <Card className="bg-gray-100 border-gray-200 flex-1">
               <CardHeader className="flex-row items-start gap-3 p-4">
                 <div className="p-2 bg-primary/10 text-primary">
@@ -80,7 +80,7 @@ export function ExploreSection() {
             </Card>
           </div>
 
-          <div className={cn("lg:col-span-2 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.7s' }}>
+          <div className={cn("lg:col-span-2 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
             <Card className="h-full border-gray-200 flex flex-col">
               <CardHeader className="p-4 pb-2">
                 <CardTitle className="text-base font-normal font-heading flex items-center gap-2">
