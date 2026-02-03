@@ -23,8 +23,8 @@ export function PartnersSection() {
   const containerRef = useRef(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const ITEM_WIDTH = 144;
-  const GAP = 120;
+  const ITEM_WIDTH = 96;
+  const GAP = 80;
   const STEP = ITEM_WIDTH + GAP;
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export function PartnersSection() {
             
             <div ref={containerRef} className="w-full max-w-[800px] overflow-hidden ticker-mask relative py-8"> 
                 <div 
-                  className="flex gap-[120px] w-max items-center pl-[264px] will-change-transform" 
+                  className="flex gap-[80px] w-max items-center pl-[176px] will-change-transform" 
                   style={{ 
                     transform: `translateX(-${currentIndex * STEP}px)`,
                     transition: isTransitioning ? 'transform 0.5s cubic-bezier(0.2, 0, 0.2, 1)' : 'none'
@@ -88,7 +88,7 @@ export function PartnersSection() {
                         <div 
                           key={`${partner.id}-${index}`}
                           ref={el => itemsRef.current[index] = el}
-                          className="flex-shrink-0 w-36 h-16 flex items-center justify-center origin-center"
+                          className="flex-shrink-0 w-24 h-12 flex items-center justify-center origin-center"
                           style={{
                             transition: isTransitioning ? 'all 0.5s cubic-bezier(0.2, 0, 0.2, 1)' : 'none',
                             transform: isActive ? 'scale(1.5)' : 'scale(0.6)',
@@ -100,8 +100,8 @@ export function PartnersSection() {
                               src={partner.imageUrl}
                               alt={partner.description}
                               data-ai-hint={partner.imageHint}
-                              width={144}
-                              height={64}
+                              width={96}
+                              height={48}
                               className="max-w-full max-h-full object-contain"
                             />
                         </div>
