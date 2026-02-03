@@ -56,7 +56,7 @@ export function SimulationSection() {
     <section id="simulator" className="py-24 bg-white border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-semibold font-heading text-black leading-none tracking-tight mb-4">
             Simulate Your Rewards
           </h2>
           <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
@@ -141,7 +141,7 @@ export function SimulationSection() {
                 {result && (
                   <div className="text-center animate-in fade-in duration-500">
                     <p className="text-sm text-slate-500 mb-2">Estimated Rewards</p>
-                    <p className="text-6xl font-heading text-primary tracking-tighter">{result.formattedRewards}</p>
+                    <p className="text-6xl font-semibold font-heading text-primary tracking-tighter">{result.formattedRewards}</p>
                     <p className="text-sm text-slate-400 mt-4">Over {form.getValues("periodLengthDays")} days, you could earn an estimated <span className="font-semibold text-slate-500">{result.estimatedRewards.toFixed(4)} ETH</span>.</p>
                   </div>
                 )}

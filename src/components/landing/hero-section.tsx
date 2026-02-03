@@ -33,7 +33,7 @@ export function HeroSection() {
               </p>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-normal text-white tracking-tight leading-[0.95] mb-4">
+            <h1 className="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-[0.95] mb-4">
               Boost your <br/>
               <span className="text-slate-400">rewards on ETH</span>
             </h1>

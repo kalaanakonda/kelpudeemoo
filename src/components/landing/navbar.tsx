@@ -10,7 +10,7 @@ export function Navbar() {
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-6xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-md px-4 py-2 flex justify-between items-center text-white">
-        <Link href="/" className="flex items-center gap-2 text-xl font-medium tracking-tight">
+        <Link href="/" className="flex items-center gap-2 text-xl font-semibold tracking-tight">
           <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center text-black">
             <Anchor className="w-4 h-4 fill-current" />
           </div>
@@ -40,7 +40,7 @@ export function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-4 right-4 bg-black text-white border border-white/10 rounded-md p-4 shadow-xl flex flex-col gap-3 z-50 text-sm">
+        <div className="md:hidden absolute top-16 left-4 right-4 bg-black text-white border border-white/10 rounded-md p-4 shadow-xl flex flex-col gap-3 text-sm">
           <a href="#" className="font-medium hover:text-gray-300">Governance</a>
           <a href="#" className="font-medium hover:text-gray-300">Blogs</a>
           <a href="#" className="font-medium hover:text-gray-300">Ecosystem</a>
