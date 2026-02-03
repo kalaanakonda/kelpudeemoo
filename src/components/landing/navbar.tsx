@@ -10,9 +10,9 @@ export function Navbar() {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
-      <div className="max-w-6xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-2 flex justify-between items-center text-white">
+      <div className="max-w-6xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 px-4 py-2 flex justify-between items-center text-white">
         <Link href="/" className="flex items-center gap-2 text-xl font-normal tracking-tight">
-          <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center text-black">
+          <div className="w-6 h-6 bg-white flex items-center justify-center text-black">
             <Anchor className="w-4 h-4 fill-current" />
           </div>
           <span className="font-heading">Kelp</span>
@@ -28,7 +28,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <a href="#simulator" className="bg-white hover:bg-gray-200 text-black px-4 py-1.5 rounded-lg text-xs font-medium transition flex items-center gap-2">
+          <a href="#simulator" className="bg-white hover:bg-gray-200 text-black px-4 py-1.5 text-xs font-medium transition flex items-center gap-2">
             Learn more
           </a>
         </div>
@@ -41,12 +41,12 @@ export function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-4 right-4 bg-black text-white border border-white/10 rounded-lg p-4 shadow-xl flex flex-col gap-3 text-sm">
+        <div className="md:hidden absolute top-20 left-4 right-4 bg-black text-white border border-white/10 p-4 shadow-xl flex flex-col gap-3 text-sm">
           <a href="#" className="font-medium hover:text-gray-300">Governance</a>
           <a href="#" className="font-medium hover:text-gray-300">Blogs</a>
           <a href="#" className="font-medium hover:text-gray-300">Ecosystem</a>
           <a href="#" className="font-medium hover:text-gray-300">More</a>
-          <a href="#simulator" onClick={() => setIsOpen(false)} className="bg-white text-black text-center w-full py-2 rounded-lg mt-2 font-medium">Learn more</a>
+          <a href="#simulator" onClick={() => setIsOpen(false)} className="bg-white text-black text-center w-full py-2 mt-2 font-medium">Learn more</a>
         </div>
       )}
     </nav>

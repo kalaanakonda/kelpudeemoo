@@ -9,7 +9,7 @@ export function SecuritySection() {
           </h2>
           <div className="flex flex-wrap gap-3 mb-8">
              {['Sigma Prime', 'Code4rena', 'MixBytes'].map((auditor) => (
-               <div key={auditor} className="bg-white border border-gray-200 px-4 py-2 rounded-md text-sm text-slate-700 font-medium">
+               <div key={auditor} className="bg-white border border-gray-200 px-4 py-2 text-sm text-slate-700 font-medium">
                   {auditor}
                </div>
              ))}
@@ -19,11 +19,11 @@ export function SecuritySection() {
           </a>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 text-center shadow-sm">
+          <div className="bg-white p-6 border border-gray-200 text-center shadow-sm">
             <p className="text-4xl font-normal font-heading text-primary">3</p>
             <p className="text-sm text-slate-500 mt-1">Major Audits</p>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 text-center shadow-sm">
+          <div className="bg-white p-6 border border-gray-200 text-center shadow-sm">
             <p className="text-4xl font-normal font-heading text-primary">5+</p>
             <p className="text-sm text-slate-500 mt-1">Security Partners</p>
           </div>

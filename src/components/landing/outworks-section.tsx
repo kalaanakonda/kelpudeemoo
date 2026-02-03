@@ -14,7 +14,7 @@ export function OutworksSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white border border-gray-200 rounded-[32px] p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
+          <div className="bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Audited & Secure</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
@@ -26,7 +26,7 @@ export function OutworksSection() {
              </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-[32px] p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
+          <div className="bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Maximum Utility</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
@@ -38,7 +38,7 @@ export function OutworksSection() {
              </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-[32px] p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
+          <div className="bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Deep Liquidity</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
@@ -50,7 +50,7 @@ export function OutworksSection() {
              </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-[32px] p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
+          <div className="bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group shadow-sm">
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">One-click Restaking</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">

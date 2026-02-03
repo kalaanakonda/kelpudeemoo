@@ -29,7 +29,7 @@ export function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 flex flex-col md:flex-row items-end justify-between gap-8">
         <div className="max-w-2xl relative z-10">
           <div className="flex items-center gap-3 mb-4">
-            <span className="bg-white/10 text-white border border-white/20 px-2 py-0.5 rounded-full text-[10px] font-normal uppercase tracking-wider">
+            <span className="bg-white/10 text-white border border-white/20 px-2 py-0.5 text-[10px] font-normal uppercase tracking-wider">
               Liquid Restaking
             </span>
             <p className="text-slate-400 text-xs font-normal flex items-center gap-1.5">
@@ -47,7 +47,7 @@ export function HeroSection() {
           </p>
 
           <div className="flex items-center gap-4">
-            <a href="#simulator" className="bg-white hover:bg-gray-200 text-black px-6 py-2.5 rounded-lg font-medium text-sm transition">
+            <a href="#simulator" className="bg-white hover:bg-gray-200 text-black px-6 py-2.5 font-medium text-sm transition">
               Learn more
             </a>
           </div>
