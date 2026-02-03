@@ -5,6 +5,7 @@ import { OutworksSection } from "@/components/landing/outworks-section";
 import { SecuritySection } from "@/components/landing/security-section";
 import { Footer } from "@/components/landing/footer";
 import { SimulationSection } from "@/components/landing/simulation-section";
+import { ExploreSection } from "@/components/landing/explore-section";
 
 export default function LandingPage() {
   return (
@@ -13,6 +14,7 @@ export default function LandingPage() {
         <HeroSection />
         <StatsSection />
         <PartnersSection />
+        <ExploreSection />
         <OutworksSection />
         <SimulationSection />
         <SecuritySection />
