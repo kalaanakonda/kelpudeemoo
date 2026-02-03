@@ -20,14 +20,14 @@ export function HeroSection() {
         <div className="max-w-2xl relative z-10 flex flex-col items-center pt-24">
           <h1 
             className="text-4xl md:text-5xl font-normal text-black tracking-tight leading-tight mb-4 font-heading animate-slide-in-up" 
-            style={{ animationDelay: '0.2s' }}
+            style={{ animationDelay: '0.4s' }}
           >
             Finance for the Instant Economy
           </h1>
           
           <p 
             className="text-slate-600 max-w-lg text-sm mb-6 leading-relaxed font-light animate-slide-in-up" 
-            style={{ animationDelay: '0.4s' }}
+            style={{ animationDelay: '0.8s' }}
           >
             At Kelp, we’re the gateway to on-demand earning mechanisms across crypto and
             real-world markets for a $250T+ economy.
@@ -35,9 +35,9 @@ export function HeroSection() {
 
           <div 
             className="flex items-center gap-4 animate-slide-in-up" 
-            style={{ animationDelay: '0.6s' }}
+            style={{ animationDelay: '1.2s' }}
           >
-            <a href="#simulator" className="bg-black/5 hover:bg-black/10 text-black border border-black/20 px-6 py-2.5 font-medium text-sm transition animate-glint">
+            <a href="#simulator" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 font-medium text-sm transition animate-glint">
               Learn more
             </a>
           </div>
