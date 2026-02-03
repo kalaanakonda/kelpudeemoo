@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -99,6 +100,13 @@
   .animate-cursor-btn { animation: cursor-click-btn 3s ease-in-out infinite; }
   .animate-btn-press-visual { animation: btn-press-effect 3s ease-in-out infinite; }
   .animate-coin-burst { animation: burst-coin 3s ease-out infinite; }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+  .animate-slide-in-up {
+    animation: slide-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
 }
 
 @layer keyframes {
@@ -142,5 +150,20 @@
     0%, 45% { transform: translate(0, 0) scale(0); opacity: 0; }
     50% { opacity: 1; transform: translate(var(--bx), var(--by)) scale(1) rotate(var(--br)); }
     100% { opacity: 0; transform: translate(var(--ex), var(--ey)) scale(0.8) rotate(var(--er)); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-in-up {
+    from { opacity: 0; transform: translateY(1.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-up-letter {
+    from { transform: 'translateY(100%)'; }
+    to { transform: 'translateY(0%)'; }
   }
 }

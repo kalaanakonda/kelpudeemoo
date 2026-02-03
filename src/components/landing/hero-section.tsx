@@ -13,23 +13,31 @@ export function HeroSection() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-white/70"></div>
       
       <Navbar />
 
       <div className="absolute inset-0 p-6 flex justify-center text-center">
-        <div className="max-w-2xl relative z-10 flex flex-col items-center pt-40">
-          <h1 className="text-4xl md:text-5xl font-normal text-black tracking-tight leading-tight mb-4 font-heading">
+        <div className="max-w-2xl relative z-10 flex flex-col items-center pt-32">
+          <h1 
+            className="text-4xl md:text-5xl font-normal text-[#075A5A] tracking-tight leading-tight mb-4 font-heading animate-slide-in-up" 
+            style={{ animationDelay: '0.2s' }}
+          >
             Finance for the Instant Economy
           </h1>
           
-          <p className="text-slate-500 max-w-lg text-sm mb-6 leading-relaxed font-light">
+          <p 
+            className="text-slate-600 max-w-lg text-sm mb-6 leading-relaxed font-light animate-slide-in-up" 
+            style={{ animationDelay: '0.4s' }}
+          >
             At Kelp, we’re the gateway to on-demand earning mechanisms across crypto and
             real-world markets for a $250T+ economy.
           </p>
 
-          <div className="flex items-center gap-4">
-            <a href="#simulator" className="bg-black hover:bg-gray-800 text-white px-6 py-2.5 font-medium text-sm transition">
+          <div 
+            className="flex items-center gap-4 animate-slide-in-up" 
+            style={{ animationDelay: '0.6s' }}
+          >
+            <a href="#simulator" className="bg-[#075A5A] hover:bg-[#075A5A]/90 text-white px-6 py-2.5 font-medium text-sm transition">
               Learn more
             </a>
           </div>
