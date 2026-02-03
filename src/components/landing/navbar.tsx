@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import { Anchor, ChevronRight, Menu, X } from 'lucide-react';
+import { ChevronRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +13,7 @@ export function Navbar() {
     <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
       <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center text-[#075A5A]">
         <Link href="/" className="flex items-center gap-2 text-xl font-normal tracking-tight">
-          <div className="w-6 h-6 bg-[#075A5A] flex items-center justify-center text-white">
-            <Anchor className="w-4 h-4 fill-current" />
-          </div>
-          <span className="font-heading">Kelp</span>
+          <Image src="https://cryptoast.fr/wp-content/uploads/2024/02/kelp-logo.png" alt="Kelp logo" width={121} height={28} />
         </Link>
 
         <div className="hidden md:flex space-x-6 text-xs font-normal items-center text-gray-700">
