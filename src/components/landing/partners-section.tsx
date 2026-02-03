@@ -10,106 +10,93 @@ const partnerIds = [
   'partner-aave',
   'partner-etherfi',
   'partner-eigenlayer',
+  'partner-uniswap',
+  'partner-arbitrum',
+  'partner-coinbase',
+  'partner-balancer',
 ];
 
 const partners = partnerIds.map(id => PlaceHolderImages.find(p => p.id === id)).filter(Boolean);
 
 export function PartnersSection() {
-  const displayPartners = [...partners, ...partners, ...partners];
-  
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true);
-  
-  const containerRef = useRef(null);
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  const ITEM_WIDTH = 96;
-  const GAP = 80;
-  const STEP = ITEM_WIDTH + GAP;
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    if (partners.length === 0) return;
-    
-    let timeoutId: NodeJS.Timeout;
+    const handleScroll = () => {
+      const el = sectionRef.current;
+      if (!el) return;
 
-    const moveNext = () => {
-      setIsTransitioning(true);
-      setCurrentIndex(prev => prev + 1);
+      const scrollableHeight = el.offsetHeight - window.innerHeight;
+      const amountScrolled = window.scrollY - el.offsetTop;
+      
+      let progress = amountScrolled / scrollableHeight;
+      progress = Math.max(0, Math.min(1, progress));
+
+      setScrollProgress(progress);
     };
 
-    if (currentIndex >= partners.length * 2) {
-      timeoutId = setTimeout(() => {
-        setIsTransitioning(false); 
-        setCurrentIndex(partners.length);
-        
-        // Force a re-render and then re-enable transitions
-        setTimeout(() => {
-          setIsTransitioning(true);
-        }, 50);
-      }, 1500);
-    } else {
-      timeoutId = setTimeout(moveNext, 1500);
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 
-    return () => clearTimeout(timeoutId);
-  }, [currentIndex, partners.length]);
-  
-  // Set initial index to start the loop
-  useEffect(() => {
-    if (partners.length > 0) {
-      setCurrentIndex(partners.length);
-    }
-  }, [partners.length]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const numLogos = partners.length;
+  const radius = 350;
+  const angleStep = (2 * Math.PI) / numLogos;
 
   return (
-    <section className="py-16 bg-white border-b border-gray-100 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12">
-         <div className="lg:w-2/5 flex-shrink-0 relative z-10 bg-white">
-            <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase">
+    <section ref={sectionRef} className="relative bg-white border-b border-gray-100" style={{ height: '200vh' }}>
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+        <div 
+          className="text-center mb-16 px-6 transition-opacity duration-300"
+          style={{ opacity: Math.max(0, 1 - scrollProgress * 3) }}
+        >
+           <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase">
               Powering the rsETH Ecosystem
             </h2>
-         </div>
-         
-         <div className="lg:w-3/5 w-full flex flex-col items-center md:items-start">
-            
-            <div ref={containerRef} className="w-full max-w-[800px] overflow-hidden ticker-mask relative py-4"> 
+        </div>
+        
+        <div 
+          className="relative w-full flex-1"
+          style={{ perspective: '1000px' }}
+        >
+          <div 
+            className="absolute w-full h-full top-0 left-0"
+            style={{ 
+              transformStyle: 'preserve-3d',
+              transform: `translateY(15vh) rotateX(${scrollProgress * 90}deg) translateZ(${scrollProgress * -800}px)`,
+              opacity: Math.max(0, 1 - scrollProgress * 1.5),
+            }}
+          >
+            {partners.map((partner, index) => {
+              if (!partner) return null;
+              const angle = index * angleStep;
+              
+              return (
                 <div 
-                  className="flex gap-[80px] w-max items-center pl-[176px] will-change-transform" 
-                  style={{ 
-                    transform: `translateX(-${currentIndex * STEP}px)`,
-                    transition: isTransitioning ? 'transform 0.5s cubic-bezier(0.2, 0, 0.2, 1)' : 'none'
+                  key={`${partner.id}-${index}`}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-20 flex items-center justify-center origin-center p-4 bg-white/80 backdrop-blur-sm border border-gray-100 shadow-lg"
+                  style={{
+                    transform: `rotateY(${angle}rad) translateZ(${radius}px)`,
                   }}
                 >
-                    {displayPartners.map((partner, index) => {
-                      if (!partner) return null;
-                      const isActive = index === currentIndex;
-                      
-                      return (
-                        <div 
-                          key={`${partner.id}-${index}`}
-                          ref={el => itemsRef.current[index] = el}
-                          className="flex-shrink-0 w-24 h-12 flex items-center justify-center origin-center"
-                          style={{
-                            transition: isTransitioning ? 'all 0.5s cubic-bezier(0.2, 0, 0.2, 1)' : 'none',
-                            transform: isActive ? 'scale(1.5)' : 'scale(0.6)',
-                            opacity: isActive ? 1 : 0.4,
-                            filter: isActive ? 'none' : 'grayscale(100%)'
-                          }}
-                        >
-                            <Image
-                              src={partner.imageUrl}
-                              alt={partner.description}
-                              data-ai-hint={partner.imageHint}
-                              width={96}
-                              height={48}
-                              className="max-w-full max-h-full object-contain"
-                            />
-                        </div>
-                      );
-                    })}
+                    <Image
+                      src={partner.imageUrl}
+                      alt={partner.description}
+                      data-ai-hint={partner.imageHint}
+                      width={96}
+                      height={48}
+                      className="max-w-full max-h-full object-contain"
+                    />
                 </div>
-            </div>
-         </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
