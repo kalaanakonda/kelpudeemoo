@@ -10,7 +10,7 @@ export function ExploreSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-8">
           <h2 className="text-2xl font-normal font-heading text-black leading-tight tracking-tight mb-2">
-            Explore Kelp
+            Explore
           </h2>
           <p className="text-sm text-slate-500 flex items-center gap-2">
             <Globe className="w-4 h-4" /> Live on 10+ chains

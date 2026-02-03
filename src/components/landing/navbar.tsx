@@ -15,7 +15,7 @@ export function Navbar() {
           <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center text-black">
             <Anchor className="w-4 h-4 fill-current" />
           </div>
-          <span className="font-heading">Restake Oasis</span>
+          <span className="font-heading">Kelp</span>
         </Link>
 
         <div className="hidden md:flex space-x-6 text-xs font-normal items-center text-gray-300">
@@ -29,7 +29,7 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center gap-4">
           <a href="#simulator" className="bg-white hover:bg-gray-200 text-black px-4 py-1.5 rounded-lg text-xs font-medium transition flex items-center gap-2">
-            Restake now
+            Learn more
           </a>
         </div>
 
@@ -46,7 +46,7 @@ export function Navbar() {
           <a href="#" className="font-medium hover:text-gray-300">Blogs</a>
           <a href="#" className="font-medium hover:text-gray-300">Ecosystem</a>
           <a href="#" className="font-medium hover:text-gray-300">More</a>
-          <a href="#simulator" onClick={() => setIsOpen(false)} className="bg-white text-black text-center w-full py-2 rounded-lg mt-2 font-medium">Restake now</a>
+          <a href="#simulator" onClick={() => setIsOpen(false)} className="bg-white text-black text-center w-full py-2 rounded-lg mt-2 font-medium">Learn more</a>
         </div>
       )}
     </nav>

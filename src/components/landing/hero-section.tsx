@@ -38,17 +38,17 @@ export function HeroSection() {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-normal text-white tracking-tight leading-[0.95] mb-4 font-heading">
-            Boost your <br/>
-            <span className="text-slate-400">rewards on ETH</span>
+            Finance for the Instant Economy
           </h1>
           
-          <p className="text-slate-400 max-w-sm text-sm mb-6 leading-relaxed font-light">
-            Battle-tested, institutional grade liquid restaking offering high rewards.
+          <p className="text-slate-400 max-w-lg text-sm mb-6 leading-relaxed font-light">
+            At Kelp, we’re the gateway to on-demand earning mechanisms across crypto and
+            real-world markets for a $250T+ economy.
           </p>
 
           <div className="flex items-center gap-4">
             <a href="#simulator" className="bg-white hover:bg-gray-200 text-black px-6 py-2.5 rounded-lg font-medium text-sm transition">
-              Restake now
+              Learn more
             </a>
           </div>
         </div>

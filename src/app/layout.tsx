@@ -3,8 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Restake Oasis',
-  description: 'Boost your rewards on ETH with battle-tested, institutional grade liquid restaking.',
+  title: 'Kelp',
+  description: 'The gateway to on-demand earning mechanisms across crypto and real-world markets.',
 };
 
 export default function RootLayout({
