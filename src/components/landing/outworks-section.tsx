@@ -34,7 +34,7 @@ export function OutworksSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
-            ETH works, <span className="text-slate-400">rsETH outworks.</span>
+            ETH works, rsETH outworks.
           </h2>
           <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
             Unlock the full potential of your Ethereum. By restaking with Kelp, you maintain liquidity while earning rewards.
