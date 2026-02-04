@@ -67,7 +67,7 @@ export function EcosystemSection() {
             <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase mb-4">
                 POWERING THE rsETH ECOSYSTEM
             </h2>
-            <p className="text-3xl md:text-5xl font-light font-heading text-black leading-none tracking-tight max-w-2xl mx-auto">
+            <p className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight max-w-2xl mx-auto">
                 A borderless financial network for on-demand earning.
             </p>
         </div>
@@ -84,8 +84,8 @@ export function EcosystemSection() {
                             src={partner.imageUrl}
                             alt={partner.description}
                             data-ai-hint={partner.imageHint}
-                            width={50}
-                            height={25}
+                            width={25}
+                            height={12.5}
                             className="object-contain h-4 w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                         />
                     </div>
