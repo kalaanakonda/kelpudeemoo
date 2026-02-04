@@ -50,7 +50,7 @@ export function EcosystemSection() {
       <div className="max-w-6xl mx-auto px-6 text-center">
         <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
             <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase mb-4">
-                Powering the rsETH Ecosystem
+                POWERING THE rsETH ECOSYSTEM
             </h2>
             <p className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight max-w-2xl mx-auto">
                 A borderless financial network for on-demand earning.
@@ -69,9 +69,9 @@ export function EcosystemSection() {
                             src={partner.imageUrl}
                             alt={partner.description}
                             data-ai-hint={partner.imageHint}
-                            width={120}
-                            height={60}
-                            className="object-contain h-12 w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                            width={100}
+                            height={50}
+                            className="object-contain h-10 w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                         />
                     </div>
                 ))}
