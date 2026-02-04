@@ -3,7 +3,6 @@ import { StatsSection } from "@/components/landing/stats-section";
 import { OutworksSection } from "@/components/landing/outworks-section";
 import { SecuritySection } from "@/components/landing/security-section";
 import { Footer } from "@/components/landing/footer";
-import { SimulationSection } from "@/components/landing/simulation-section";
 import { ExploreSection } from "@/components/landing/explore-section";
 import { NewsletterSection } from "@/components/landing/newsletter-section";
 import { EcosystemSection } from "@/components/landing/ecosystem-section";
@@ -18,7 +17,6 @@ export default function LandingPage() {
         <OutworksSection />
         <EcosystemSection />
         <NewsletterSection />
-        <SimulationSection />
         <SecuritySection />
       </main>
       <Footer />
