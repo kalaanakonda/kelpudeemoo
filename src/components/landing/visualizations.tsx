@@ -29,11 +29,11 @@ export const UtilityViz = () => {
       <div className="absolute -bottom-[20%] -right-16 w-80 h-80 translate-y-12">
         <div className="absolute inset-0 animate-spin-slow origin-center border border-gray-200 rounded-full">
            {[...Array(8)].map((_, i) => (
-             <div key={i} className="absolute w-10 h-10 bg-white border border-gray-100 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
-                {i % 4 === 0 ? <ArrowLeftRight className="w-4 h-4 text-slate-400" /> : 
-                 i % 4 === 1 ? <Wallet className="w-4 h-4 text-slate-400" /> :
-                 i % 4 === 2 ? <TrendingUp className="w-4 h-4 text-slate-400" /> :
-                 <Landmark className="w-4 h-4 text-slate-400" />
+             <div key={i} className="absolute w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
+                {i % 4 === 0 ? <ArrowLeftRight className="w-4 h-4 text-primary" /> : 
+                 i % 4 === 1 ? <Wallet className="w-4 h-4 text-primary" /> :
+                 i % 4 === 2 ? <TrendingUp className="w-4 h-4 text-primary" /> :
+                 <Landmark className="w-4 h-4 text-primary" />
                 }
              </div>
            ))}
@@ -41,8 +41,8 @@ export const UtilityViz = () => {
 
         <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center border border-gray-200 rounded-full">
            {[...Array(6)].map((_, i) => (
-             <div key={i} className="absolute w-8 h-8 bg-gray-50 border border-gray-200 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
-                <CircleDollarSign className="w-4 h-4 text-slate-400" />
+             <div key={i} className="absolute w-8 h-8 bg-primary/10 border border-primary/20 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
+                <CircleDollarSign className="w-4 h-4 text-primary" />
              </div>
            ))}
         </div>

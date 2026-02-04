@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 
-const ecosystemPartners = [
+const partnerIds = [
   'partner-pendle',
   'partner-symbiotic',
   'partner-aave',
@@ -14,7 +14,11 @@ const ecosystemPartners = [
   'partner-uniswap',
   'partner-arbitrum',
   'partner-coinbase',
-].map(id => PlaceHolderImages.find(p => p.id === id)).filter(Boolean);
+];
+
+const ecosystemPartners = [...partnerIds, ...partnerIds, ...partnerIds, ...partnerIds]
+  .map(id => PlaceHolderImages.find(p => p.id === id))
+  .filter(Boolean);
 
 export function EcosystemSection() {
   const [inView, setInView] = useState(false);
@@ -61,9 +65,9 @@ export function EcosystemSection() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
                 {ecosystemPartners.map((partner, index) => partner && (
                     <div
-                        key={partner.id}
+                        key={`${partner.id}-${index}`}
                         className={cn("opacity-0", inView && "animate-slide-in-up")}
-                        style={{ animationDelay: `${0.2 + index * 0.1}s` }}
+                        style={{ animationDelay: `${0.2 + index * 0.05}s` }}
                     >
                         <Image
                             src={partner.imageUrl}
@@ -71,7 +75,7 @@ export function EcosystemSection() {
                             data-ai-hint={partner.imageHint}
                             width={100}
                             height={50}
-                            className="object-contain h-10 w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                            className="object-contain h-8 w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                         />
                     </div>
                 ))}
