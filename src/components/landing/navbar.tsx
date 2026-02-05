@@ -39,7 +39,7 @@ export function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-4 right-4 bg-white text-black p-4 shadow-xl flex flex-col gap-3 text-sm rounded-md">
+        <div className="md:hidden absolute top-20 left-4 right-4 bg-white text-black p-4 flex flex-col gap-3 text-sm rounded-md">
           <a href="#" className="font-medium hover:text-gray-700">Governance</a>
           <a href="#" className="font-medium hover:text-gray-700">Blogs</a>
           <a href="#" className="font-medium hover:text-gray-700">Ecosystem</a>

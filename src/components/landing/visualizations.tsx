@@ -10,7 +10,7 @@ export const AuditViz = () => (
        
        <div className="bg-white border border-gray-100 p-4 relative overflow-hidden">
           <Lock className="w-10 h-10 text-slate-900" strokeWidth={1.5} />
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary shadow-[0_0_10px_rgba(45,212,191,0.8)] animate-scanner"></div>
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary animate-scanner"></div>
        </div>
        
        <div className="absolute -bottom-2 -right-2 bg-primary text-white p-1 border-2 border-white">
@@ -106,7 +106,7 @@ export const RestakingViz = () => {
               { bx: '0px', by: '-50px', br: '0deg', ex: '0px', ey: '-80px', er: '0deg', delay: '0.2s' },
             ].map((cfg, i) => (
                <div key={i} className="absolute w-8 h-8 animate-coin-burst" style={{ '--bx': cfg.bx, '--by': cfg.by, '--br': cfg.br, '--ex': cfg.ex, '--ey': cfg.ey, '--er': cfg.er, animationDelay: cfg.delay }}>
-                  {rsEthLogo && <Image src={rsEthLogo.imageUrl} className="w-full h-full object-contain drop-shadow-md" alt="rsETH coin" data-ai-hint={rsEthLogo.imageHint} width={32} height={32} />}
+                  {rsEthLogo && <Image src={rsEthLogo.imageUrl} className="w-full h-full object-contain" alt="rsETH coin" data-ai-hint={rsEthLogo.imageHint} width={32} height={32} />}
                </div>
             ))}
          </div>
@@ -115,7 +115,7 @@ export const RestakingViz = () => {
             <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Restake</span>
          </div>
 
-         <div className="absolute top-1/2 left-1/2 animate-cursor-btn z-20 drop-shadow-xl pointer-events-none">
+         <div className="absolute top-1/2 left-1/2 animate-cursor-btn z-20 pointer-events-none">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="black" stroke="white" strokeWidth="1">
                <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
             </svg>

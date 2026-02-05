@@ -13,32 +13,32 @@ export default function LandingPage() {
     <div className="flex min-h-screen flex-col">
       <div className="p-2 md:p-3 space-y-1.5">
         <main className="flex-1 space-y-1.5">
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <HeroSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <StatsSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <KusdSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <VaultsSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <OutworksSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <EcosystemSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <NewsletterSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <SecuritySection />
           </div>
         </main>
-        <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
+        <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
           <Footer />
         </div>
       </div>
