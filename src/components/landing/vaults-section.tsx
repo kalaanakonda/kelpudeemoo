@@ -36,6 +36,7 @@ const vaults = [
 
 export function VaultsSection() {
   const [inView, setInView] = useState(false);
+  const [animateLogos, setAnimateLogos] = useState(false);
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -43,6 +44,9 @@ export function VaultsSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
+          setTimeout(() => {
+            setAnimateLogos(true);
+          }, 2600);
           observer.unobserve(entry.target);
         }
       },
@@ -83,7 +87,17 @@ export function VaultsSection() {
                 <div>
                   <div className="flex items-start justify-between mb-4">
                     <h3 className="font-heading text-2xl font-normal">{vault.name}</h3>
-                    <Image src={vault.iconUrl} alt={vault.name} width={40} height={40} />
+                    <Image 
+                      src={vault.iconUrl} 
+                      alt={vault.name} 
+                      width={40} 
+                      height={40}
+                      className={cn({
+                        'animate-vault-logo-spin-1': animateLogos && index === 0,
+                        'animate-vault-logo-spin-2': animateLogos && index === 1,
+                        'animate-vault-logo-spin-3': animateLogos && index === 2,
+                      })}
+                    />
                   </div>
                   <p className="text-sm text-slate-500 mb-6">
                     {vault.description}
@@ -103,7 +117,7 @@ export function VaultsSection() {
                       </div>
                   </div>
                 </div>
-                <Button variant="default" className="w-full rounded-md mt-6">
+                <Button variant="default" className="w-full rounded-md mt-6 bg-green-600 hover:bg-green-700">
                   Deposit now <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>

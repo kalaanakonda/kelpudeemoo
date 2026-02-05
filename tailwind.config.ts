@@ -132,6 +132,21 @@ export default {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-50%)' },
         },
+        'vault-logo-1': {
+          '0%': { transform: 'rotate(0deg)' },
+          '12.5%': { transform: 'rotate(360deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'vault-logo-2': {
+          '0%, 12.5%': { transform: 'rotate(0deg)' },
+          '25%': { transform: 'rotate(360deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'vault-logo-3': {
+          '0%, 25%': { transform: 'rotate(0deg)' },
+          '37.5%': { transform: 'rotate(360deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -145,6 +160,9 @@ export default {
         'coin-burst': 'burst-coin 3s ease-out infinite',
         'slide-up-letter': 'slide-up-letter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both',
         'marquee-slow': 'marquee-slow 15s linear infinite',
+        'vault-logo-spin-1': 'vault-logo-1 8s ease-in-out infinite',
+        'vault-logo-spin-2': 'vault-logo-2 8s ease-in-out infinite',
+        'vault-logo-spin-3': 'vault-logo-3 8s ease-in-out infinite',
       },
     },
   },

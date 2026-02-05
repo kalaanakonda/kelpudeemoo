@@ -23,43 +23,52 @@ const features = [
 ];
 
 export function KusdSection() {
-    const ref = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const cardsRef = useRef<HTMLDivElement>(null);
     const [inView, setInView] = useState(false);
+    const [videoPlayed, setVideoPlayed] = useState(false);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
+        const sectionObserver = new IntersectionObserver(
           ([entry]) => {
             if (entry.isIntersecting) {
               setInView(true);
-              observer.unobserve(entry.target);
+              sectionObserver.unobserve(entry.target);
             }
           },
-          {
-            threshold: 0.3,
-          }
+          { threshold: 0.3 }
         );
     
-        const currentRef = ref.current;
-        if (currentRef) {
-          observer.observe(currentRef);
+        const cardsObserver = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting && !videoPlayed) {
+              videoRef.current?.play();
+              setVideoPlayed(true);
+              cardsObserver.unobserve(entry.target);
+            }
+          },
+          { threshold: 1.0 } // When cards are fully in view
+        );
+
+        const currentSectionRef = sectionRef.current;
+        if (currentSectionRef) {
+          sectionObserver.observe(currentSectionRef);
+        }
+
+        const currentCardsRef = cardsRef.current;
+        if (currentCardsRef) {
+          cardsObserver.observe(currentCardsRef);
         }
     
         return () => {
-          if (currentRef) {
-            observer.unobserve(currentRef);
-          }
+          if (currentSectionRef) sectionObserver.unobserve(currentSectionRef);
+          if (currentCardsRef) cardsObserver.unobserve(currentCardsRef);
         };
-      }, []);
-
-      useEffect(() => {
-        if (inView && videoRef.current) {
-            videoRef.current.play();
-        }
-    }, [inView]);
+      }, [videoPlayed]);
 
   return (
-    <div ref={ref} className="h-screen relative rounded-lg bg-card text-card-foreground overflow-hidden">
+    <div ref={sectionRef} className="h-screen relative rounded-lg bg-card text-card-foreground overflow-hidden">
         <div className={cn(
           "absolute top-24 inset-x-0 z-30 text-center px-6 transition-opacity duration-1000",
           inView ? "opacity-100" : "opacity-0"
@@ -80,7 +89,7 @@ export function KusdSection() {
             className="absolute top-0 left-0 w-full h-full object-cover z-10"
         />
 
-        <div className="absolute inset-x-0 bottom-6 z-20 flex justify-center">
+        <div ref={cardsRef} className="absolute inset-x-0 bottom-6 z-20 flex justify-center">
             <div className="flex gap-4 p-6">
                 {features.map((feature, index) => {
                     return (
