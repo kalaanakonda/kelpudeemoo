@@ -1,6 +1,38 @@
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowLeftRight, CircleDollarSign, Landmark, Lock, ShieldCheck, TrendingUp, Wallet } from 'lucide-react';
+import { Lock, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
+
+const ArrowLeftRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M14 17.5V20l6-4-6-4v2.5H4v3h10zm-4-10.5V5L4 9l6 4v-2.5h10v-3H10z" />
+    </svg>
+);
+
+const WalletIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M22 7.24a1 1 0 0 0-1-1.24H4.25a1 1 0 0 0-1 1.24l-1.5 8.25A1 1 0 0 0 2.75 18H21.25a1 1 0 0 0 .99-1.51l-1.5-8.25zM12 14.75a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+        <path d="M4 6h16v-1a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v1z" />
+    </svg>
+);
+
+const TrendingUpIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M2.5 17.5 9 11l4 4 8.5-8.5v4h2v-8h-8v2h4.5L13 13l-4-4-8 8L2.5 17.5z" />
+    </svg>
+);
+
+const LandmarkIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M2 22h20v-2H2v2zM12 2l-9 4.5V10h18V6.5L12 2zM5 12v6h3v-6H5zm5 0v6h4v-6h-4zm7 0v6h3v-6h-3z" />
+    </svg>
+);
+
+const CircleDollarSignIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 15a1 1 0 0 1-1-1v-1.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 1 0-1h1.5a1.5 1.5 0 0 0 0-3H10a.5.5 0 0 1 0-1h1a.5.5 0 0 0 .5-.5V8a1 1 0 0 1 2 0v1.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 1 0 1h-1.5a1.5 1.5 0 0 0 0 3H14a.5.5 0 0 1 0 1h-1a.5.5 0 0 0-.5.5V16a1 1 0 0 1-1 1z" />
+    </svg>
+);
+
 
 export const AuditViz = () => (
   <div className="w-full h-full relative flex items-center justify-center overflow-hidden bg-gray-50">
@@ -8,7 +40,7 @@ export const AuditViz = () => (
        <div className="absolute w-24 h-24 bg-primary/10 animate-ping opacity-20"></div>
        <div className="absolute w-20 h-20 bg-primary/10 animate-pulse"></div>
        
-       <div className="bg-white border border-gray-100 p-4 relative overflow-hidden">
+       <div className="bg-white border border-gray-200 p-4 relative overflow-hidden">
           <Lock className="w-10 h-10 text-slate-900" strokeWidth={1.5} />
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary animate-scanner"></div>
        </div>
@@ -29,11 +61,11 @@ export const UtilityViz = () => {
       <div className="absolute -bottom-[20%] -right-16 w-80 h-80 translate-y-12">
         <div className="absolute inset-0 animate-spin-slow origin-center border border-gray-200 rounded-full">
            {[...Array(8)].map((_, i) => (
-             <div key={i} className="absolute w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
-                {i % 4 === 0 ? <ArrowLeftRight className="w-4 h-4 text-primary" /> : 
-                 i % 4 === 1 ? <Wallet className="w-4 h-4 text-primary" /> :
-                 i % 4 === 2 ? <TrendingUp className="w-4 h-4 text-primary" /> :
-                 <Landmark className="w-4 h-4 text-primary" />
+             <div key={i} className="absolute w-10 h-10 bg-primary border border-primary flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
+                {i % 4 === 0 ? <ArrowLeftRightIcon className="w-4 h-4 text-primary-foreground" /> : 
+                 i % 4 === 1 ? <WalletIcon className="w-4 h-4 text-primary-foreground" /> :
+                 i % 4 === 2 ? <TrendingUpIcon className="w-4 h-4 text-primary-foreground" /> :
+                 <LandmarkIcon className="w-4 h-4 text-primary-foreground" />
                 }
              </div>
            ))}
@@ -41,8 +73,8 @@ export const UtilityViz = () => {
 
         <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center border border-gray-200 rounded-full">
            {[...Array(6)].map((_, i) => (
-             <div key={i} className="absolute w-8 h-8 bg-primary/10 border border-primary/20 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
-                <CircleDollarSign className="w-4 h-4 text-primary" />
+             <div key={i} className="absolute w-8 h-8 bg-primary border border-primary flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
+                <CircleDollarSignIcon className="w-4 h-4 text-primary-foreground" />
              </div>
            ))}
         </div>
@@ -72,7 +104,7 @@ export const LiquidityTunnelViz = () => {
             if (!logo) return null;
             return(
             <div key={`w1-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10 rounded-full" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '0s' }}>
-               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain" />
+               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain rounded-full" />
             </div>
          )})}
 
@@ -81,7 +113,7 @@ export const LiquidityTunnelViz = () => {
             if (!logo) return null;
             return(
             <div key={`w2-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10 rounded-full" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '-2s' }}>
-               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain" />
+               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain rounded-full" />
             </div>
          )})}
          
