@@ -32,14 +32,14 @@ export function PartnersSection() {
         <div className="relative overflow-hidden ticker-mask">
             <div className="flex animate-marquee-slow">
                 {scrollingPartners.map((partner, index) => partner && (
-                    <div key={`${partner.id}-${index}`} className="flex-shrink-0 w-48 mx-6 flex items-center justify-center">
+                    <div key={`${partner.id}-${index}`} className="flex-shrink-0 w-36 mx-6 flex items-center justify-center">
                         <Image
                             src={partner.imageUrl}
                             alt={partner.description}
                             data-ai-hint={partner.imageHint}
-                            width={140}
-                            height={40}
-                            className="object-contain h-10 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                            width={100}
+                            height={30}
+                            className="object-contain h-8 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                         />
                     </div>
                 ))}

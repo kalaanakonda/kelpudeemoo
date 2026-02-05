@@ -144,7 +144,7 @@ export default {
         'btn-press-visual': 'btn-press-effect 3s ease-in-out infinite',
         'coin-burst': 'burst-coin 3s ease-out infinite',
         'slide-up-letter': 'slide-up-letter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both',
-        'marquee-slow': 'marquee-slow 40s linear infinite',
+        'marquee-slow': 'marquee-slow 20s linear infinite',
       },
     },
   },
