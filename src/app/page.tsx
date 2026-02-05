@@ -10,31 +10,31 @@ import { VaultsSection } from "@/components/landing/vaults-section";
 
 export default function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-col">
       <HeroSection />
       <div className="p-2 md:p-3 space-y-1.5">
         <main className="flex-1 space-y-1.5">
-          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
+          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <StatsSection />
           </div>
           <KusdSection />
-          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
+          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <VaultsSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
+          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <OutworksSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
+          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <EcosystemSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
+          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <NewsletterSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
+          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <SecuritySection />
           </div>
         </main>
-        <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
+        <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
           <Footer />
         </div>
       </div>

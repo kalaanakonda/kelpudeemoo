@@ -52,7 +52,7 @@ export function KusdSection() {
       }, []);
 
   return (
-    <div ref={ref} className="h-screen relative rounded-xl bg-card text-card-foreground overflow-hidden">
+    <div ref={ref} className="h-screen relative rounded-lg bg-card text-card-foreground overflow-hidden">
         <div className={cn(
           "absolute top-24 inset-x-0 z-30 text-center px-6 transition-opacity duration-1000",
           inView ? "opacity-100" : "opacity-0"
