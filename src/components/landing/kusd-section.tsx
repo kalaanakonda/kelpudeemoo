@@ -91,30 +91,23 @@ export function KusdSection() {
                 playsInline
                 muted
                 preload="auto"
-                className={cn(
-                    "absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 z-10",
-                    progress > 0.05 ? "opacity-100" : "opacity-0"
-                )}
+                className="absolute top-0 left-0 w-full h-full object-cover z-10"
             />
 
-            <div className="absolute inset-0 z-20 flex items-end justify-center p-6 pointer-events-none">
-                <div className="w-full max-w-md relative h-48">
-                    {[...features].reverse().map((feature, index) => {
-                        const show = progress > 0.8 + index * 0.05;
-
+            <div className="absolute inset-x-0 bottom-6 z-20 flex justify-center pointer-events-none">
+                <div className="flex gap-4 p-6">
+                    {features.map((feature, index) => {
+                        const show = progress > 0.8;
                         return (
                             <div
                                 key={index}
                                 className={cn(
-                                    "w-full absolute transition-all duration-300 ease-out pointer-events-auto",
-                                    show ? 'opacity-100' : 'opacity-0 -bottom-4'
+                                    "w-56 pointer-events-auto transition-all duration-500 ease-out",
+                                    show ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
                                 )}
-                                style={{
-                                    bottom: `${index * 24}px`,
-                                    zIndex: features.length - index,
-                                }}
+                                style={{ transitionDelay: `${index * 150}ms` }}
                             >
-                                <div className="bg-gray-50/80 backdrop-blur-sm p-4 text-center flex flex-col justify-center items-center rounded-md border border-white/20">
+                                <div className="bg-gray-50/80 backdrop-blur-sm p-4 text-center flex flex-col justify-center items-center rounded-md border border-white/20 h-full">
                                     <div className="p-2 bg-primary/10 mb-2 rounded-md">
                                         {feature.icon}
                                     </div>
