@@ -17,9 +17,7 @@ export default function LandingPage() {
           <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <StatsSection />
           </div>
-          <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
-            <KusdSection />
-          </div>
+          <KusdSection />
           <div className="rounded-xl bg-card text-card-foreground overflow-hidden">
             <VaultsSection />
           </div>
