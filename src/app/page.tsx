@@ -6,7 +6,6 @@ import { Footer } from "@/components/landing/footer";
 import { ExploreSection } from "@/components/landing/explore-section";
 import { NewsletterSection } from "@/components/landing/newsletter-section";
 import { EcosystemSection } from "@/components/landing/ecosystem-section";
-import { PartnersSection } from "@/components/landing/partners-section";
 
 export default function LandingPage() {
   return (
@@ -14,7 +13,6 @@ export default function LandingPage() {
       <main className="flex-1">
         <HeroSection />
         <StatsSection />
-        <PartnersSection />
         <ExploreSection />
         <OutworksSection />
         <EcosystemSection />

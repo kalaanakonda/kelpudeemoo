@@ -1,6 +1,27 @@
 "use client";
 
 import { Navbar } from './navbar';
+import Image from 'next/image';
+import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
+
+const partnerIds = [
+  'partner-pendle',
+  'partner-symbiotic',
+  'partner-aave',
+  'partner-etherfi',
+  'partner-eigenlayer',
+  'partner-uniswap',
+  'partner-arbitrum',
+  'partner-coinbase',
+];
+
+const partners = partnerIds
+  .map(id => PlaceHolderImages.find(p => p.id === id))
+  .filter((p): p is ImagePlaceholder => Boolean(p));
+
+// Duplicate partners for a seamless scroll
+const scrollingPartners = [...partners, ...partners];
+
 
 export function HeroSection() {
   return (
@@ -41,6 +62,25 @@ export function HeroSection() {
               Learn more
             </a>
           </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 py-6 bg-black/10 backdrop-blur-md z-20">
+        <div className="relative overflow-hidden ticker-mask">
+            <div className="flex animate-marquee-slow">
+                {scrollingPartners.map((partner, index) => partner && (
+                    <div key={`${partner.id}-${index}`} className="flex-shrink-0 w-28 mx-4 flex items-center justify-center">
+                        <Image
+                            src={partner.imageUrl}
+                            alt={partner.description}
+                            data-ai-hint={partner.imageHint}
+                            width={80}
+                            height={24}
+                            className="object-contain h-6 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
       </div>
     </div>
