@@ -40,13 +40,13 @@ export const AuditViz = () => (
        <div className="absolute w-24 h-24 bg-primary/10 animate-ping opacity-20"></div>
        <div className="absolute w-20 h-20 bg-primary/10 animate-pulse"></div>
        
-       <div className="bg-white border-2 border-slate-900 p-4 relative overflow-hidden">
-          <Lock className="w-10 h-10 text-slate-900" strokeWidth={1.5} />
+       <div className="bg-white border border-gray-200 p-4 relative overflow-hidden">
+          <Lock className="w-10 h-10 text-primary" strokeWidth={1.5} />
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary animate-scanner"></div>
        </div>
        
        <div className="absolute -bottom-2 -right-2 bg-primary text-white p-1 border-2 border-white">
-          <ShieldCheck className="w-4 h-4" strokeWidth={3} />
+          <ShieldCheck className="w-4 h-4" strokeWidth={2} />
        </div>
     </div>
   </div>
@@ -60,10 +60,10 @@ export const UtilityViz = () => {
 
       <div className="absolute -bottom-[20%] -right-16 w-80 h-80 translate-y-12">
         {/* Outer Orbit Line */}
-        <div className="absolute inset-0 animate-spin-slow origin-center border border-gray-200 rounded-full" />
+        <div className="absolute inset-0 animate-spin-slow origin-center border border-gray-200 rounded-full z-0" />
         
         {/* Outer Orbit Icons */}
-        <div className="absolute inset-0 animate-spin-slow origin-center">
+        <div className="absolute inset-0 animate-spin-slow origin-center z-10">
            {[...Array(8)].map((_, i) => (
              <div key={i} className="absolute w-10 h-10 bg-white border border-gray-200 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
                 {i % 4 === 0 ? <ArrowLeftRightIcon className="w-4 h-4 text-primary" /> : 
@@ -76,10 +76,10 @@ export const UtilityViz = () => {
         </div>
 
         {/* Inner Orbit Line */}
-        <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center border border-gray-200 rounded-full" />
+        <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center border border-gray-200 rounded-full z-0" />
         
         {/* Inner Orbit Icons */}
-        <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center">
+        <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center z-10">
            {[...Array(6)].map((_, i) => (
              <div key={i} className="absolute w-8 h-8 bg-white border border-gray-200 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
                 <CircleDollarSignIcon className="w-4 h-4 text-primary" />
@@ -87,7 +87,7 @@ export const UtilityViz = () => {
            ))}
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white border border-gray-200 flex items-center justify-center z-10 rounded-full">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white border border-gray-200 flex items-center justify-center z-20 rounded-full">
            {rsEthLogo && <Image src={rsEthLogo.imageUrl} alt="rsETH" data-ai-hint={rsEthLogo.imageHint} width={48} height={48} className="object-contain" />}
         </div>
       </div>
