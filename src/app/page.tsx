@@ -6,6 +6,8 @@ import { Footer } from "@/components/landing/footer";
 import { ExploreSection } from "@/components/landing/explore-section";
 import { NewsletterSection } from "@/components/landing/newsletter-section";
 import { EcosystemSection } from "@/components/landing/ecosystem-section";
+import { KusdSection } from "@/components/landing/kusd-section";
+import { VaultsSection } from "@/components/landing/vaults-section";
 
 export default function LandingPage() {
   return (
@@ -14,6 +16,8 @@ export default function LandingPage() {
         <HeroSection />
         <StatsSection />
         <ExploreSection />
+        <KusdSection />
+        <VaultsSection />
         <OutworksSection />
         <EcosystemSection />
         <NewsletterSection />
