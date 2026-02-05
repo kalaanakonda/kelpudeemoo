@@ -76,7 +76,10 @@ export function KusdSection() {
     <div ref={containerRef} className="h-[300vh] relative">
         <div className="sticky top-0 h-screen w-full rounded-xl bg-card text-card-foreground overflow-hidden">
             
-            <div className="absolute top-24 inset-x-0 z-30 text-center px-6 pointer-events-none">
+            <div className={cn(
+              "absolute top-24 inset-x-0 z-30 text-center px-6 pointer-events-none transition-opacity duration-500",
+              progress > 0.65 ? "opacity-0" : "opacity-100"
+            )}>
                 <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
                     KUSD: The Yield-Bearing Stablecoin
                 </h2>
