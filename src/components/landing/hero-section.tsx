@@ -66,7 +66,7 @@ export function HeroSection() {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 py-6 z-20">
-        <div className="relative overflow-hidden ticker-mask">
+        <div className="relative overflow-hidden">
             <div className="flex animate-marquee-slow">
                 {scrollingPartners.map((partner, index) => partner && (
                     <div key={`${partner.id}-${index}`} className="flex-shrink-0 mx-2">
