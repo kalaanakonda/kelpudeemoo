@@ -58,26 +58,28 @@ export function HeroSection() {
             className="flex items-center gap-4 animate-slide-in-up" 
             style={{ animationDelay: '1.2s' }}
           >
-            <a href="#simulator" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 font-medium text-sm transition animate-glint">
+            <a href="#simulator" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 font-medium text-sm transition animate-glint rounded-md">
               Learn more
             </a>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 py-6 bg-black/10 backdrop-blur-md z-20">
+      <div className="absolute bottom-0 left-0 right-0 py-6 z-20">
         <div className="relative overflow-hidden ticker-mask">
             <div className="flex animate-marquee-slow">
                 {scrollingPartners.map((partner, index) => partner && (
-                    <div key={`${partner.id}-${index}`} className="flex-shrink-0 w-28 mx-4 flex items-center justify-center">
-                        <Image
-                            src={partner.imageUrl}
-                            alt={partner.description}
-                            data-ai-hint={partner.imageHint}
-                            width={80}
-                            height={24}
-                            className="object-contain h-6 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                        />
+                    <div key={`${partner.id}-${index}`} className="flex-shrink-0 mx-2">
+                        <div className="bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5 border border-white/10">
+                            <Image
+                                src={partner.imageUrl}
+                                alt={partner.description}
+                                data-ai-hint={partner.imageHint}
+                                width={80}
+                                height={20}
+                                className="object-contain h-5 w-auto grayscale brightness-0 invert opacity-70 transition-all duration-300"
+                            />
+                        </div>
                     </div>
                 ))}
             </div>
