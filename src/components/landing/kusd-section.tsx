@@ -87,7 +87,7 @@ export function KusdSection() {
 
             <video
                 ref={videoRef}
-                src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kling_20260205_Image_to_Video_The_scene__5207_0.webm"
+                src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kling_20260205_%E4%BD%9C%E5%93%81_the_coin_m_5785_0.webm"
                 playsInline
                 muted
                 preload="auto"
@@ -97,7 +97,7 @@ export function KusdSection() {
             <div className="absolute inset-x-0 bottom-6 z-20 flex justify-center pointer-events-none">
                 <div className="flex gap-4 p-6">
                     {features.map((feature, index) => {
-                        const show = progress > 0.8;
+                        const show = progress > 0.7;
                         return (
                             <div
                                 key={index}
