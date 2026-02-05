@@ -12,7 +12,7 @@ export function StatsSection() {
           <div className="flex items-center gap-4">
             <BarChart3 className="w-8 h-8 text-primary/80 stroke-[1.5]" />
             <div>
-              <div className="text-5xl font-normal font-heading tracking-tighter text-black">
+              <div className="text-5xl font-normal font-heading tracking-tighter text-primary">
                 <AnimatedCounter end={1.46} delay={600} prefix="$" suffix="B" decimals={2} />
               </div>
               <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Total Value Locked</p>
@@ -22,7 +22,7 @@ export function StatsSection() {
           <div className="flex items-center gap-4">
             <Users className="w-8 h-8 text-primary/80 stroke-[1.5]" />
             <div>
-              <div className="text-5xl font-normal font-heading tracking-tighter text-black">
+              <div className="text-5xl font-normal font-heading tracking-tighter text-primary">
                 <AnimatedCounter end={300} delay={800} suffix="K+" decimals={0} />
               </div>
               <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Total Restakers</p>
@@ -32,7 +32,7 @@ export function StatsSection() {
           <div className="flex items-center gap-4">
             <Zap className="w-8 h-8 text-primary/80 stroke-[1.5]" />
             <div>
-              <div className="text-5xl font-normal font-heading tracking-tighter text-black">
+              <div className="text-5xl font-normal font-heading tracking-tighter text-primary">
                 <AnimatedCounter end={2.5} delay={1000} suffix="%" decimals={1} />
               </div>
               <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Current APR</p>
