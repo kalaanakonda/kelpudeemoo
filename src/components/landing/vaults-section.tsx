@@ -1,31 +1,37 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import { Label } from '@/components/ui/label';
 
 const vaults = [
   {
-    id: 'vault-eth',
-    name: 'ETH Vault',
-    apy: '3-5%',
-    iconId: 'partner-arbitrum',
+    id: 'stable-gain',
+    name: 'Stable Gain Vault',
+    description: 'Put idle stables to work - deposit USDT / USDC, mint sbUSD, earn up to ~20% rewards',
+    tvl: '$7.7M',
+    apr: '11.30%',
+    iconUrl: 'https://kerneldao.com/_next/static/media/sbUsd.3fc46369.svg',
   },
   {
-    id: 'vault-usdc',
-    name: 'USDC Vault',
-    apy: '8-12%',
-    iconId: 'partner-coinbase',
+    id: 'high-gain',
+    name: 'High Gain Vault',
+    description: 'Highest rewards on ETH - deposit rsETH / ETH / LSTs, mint hgETH, earn rewards via blue-chip strategies',
+    tvl: '$38.3M',
+    apr: '8.51%',
+    iconUrl: 'https://kerneldao.com/_next/static/media/hgEthImg.9d0d033c.png',
   },
   {
-    id: 'vault-btc',
-    name: 'BTC Vault',
-    apy: '2-4%',
-    iconId: 'rseth-logo',
-  },
+    id: 'airdrop-gain',
+    name: 'Airdrop Gain Vault',
+    description: 'Institutional strategies - deposit rsETH / ETH / LSTs, mint agETH, access exclusive rewards',
+    tvl: '$28.7M',
+    apr: '8.33%',
+    iconUrl: 'https://kerneldao.com/_next/static/media/agEthImg.97c66245.png',
+  }
 ];
 
 export function VaultsSection() {
@@ -68,32 +74,41 @@ export function VaultsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {vaults.map((vault, index) => {
-            const icon = PlaceHolderImages.find(p => p.id === vault.iconId);
-            return (
+          {vaults.map((vault, index) => (
               <div
                 key={vault.id}
-                className={cn("bg-gray-50 p-10 h-[420px] flex flex-col justify-between opacity-0 rounded-md", inView && "animate-slide-in-up")}
+                className={cn("bg-gray-50 p-10 flex flex-col justify-between opacity-0 rounded-md", inView && "animate-slide-in-up")}
                 style={{ animationDelay: `${1.0 + index * 0.4}s` }}
               >
                 <div>
                   <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="font-heading text-2xl font-normal">{vault.name}</h3>
-                      <p className="text-sm text-muted-foreground">Estimated APY: {vault.apy}</p>
-                    </div>
-                    {icon && <Image src={icon.imageUrl} alt={icon.description} data-ai-hint={icon.imageHint} width={32} height={32} />}
+                    <h3 className="font-heading text-2xl font-normal">{vault.name}</h3>
+                    <Image src={vault.iconUrl} alt={vault.name} width={40} height={40} />
                   </div>
-                  <p className="text-sm text-slate-500">
-                      A simple and secure way to earn yield on your {vault.name.split(' ')[0]}.
+                  <p className="text-sm text-slate-500 mb-6">
+                    {vault.description}
                   </p>
+                  <div className="flex justify-between items-center border-t border-b border-gray-100 py-4 text-center">
+                      <div>
+                          <Label className="text-xs text-slate-500">TVL</Label>
+                          <div className="text-base font-normal font-heading mt-1 text-black">
+                              {vault.tvl}
+                          </div>
+                      </div>
+                      <div>
+                          <Label className="text-xs text-slate-500">APR</Label>
+                          <div className="text-base font-normal font-heading mt-1 text-black">
+                              {vault.apr}
+                          </div>
+                      </div>
+                  </div>
                 </div>
-                <Button variant="outline" className="w-full rounded-md">
+                <Button variant="outline" className="w-full rounded-md mt-6">
                   Deposit now <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
             )
-          })}
+          )}
         </div>
       </div>
     </section>
