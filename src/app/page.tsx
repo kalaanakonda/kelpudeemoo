@@ -11,8 +11,8 @@ import { VaultsSection } from "@/components/landing/vaults-section";
 export default function LandingPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      <div className="p-2 md:p-3 space-y-3">
-        <main className="flex-1 space-y-3">
+      <div className="p-2 md:p-3 space-y-1.5">
+        <main className="flex-1 space-y-1.5">
           <div className="rounded-xl bg-card text-card-foreground shadow overflow-hidden">
             <HeroSection />
           </div>
