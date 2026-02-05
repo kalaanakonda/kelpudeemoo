@@ -1,7 +1,6 @@
 "use client";
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -64,21 +63,17 @@ export function KusdSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <Card
+            <div
               key={index}
-              className={cn("bg-gray-50 text-center opacity-0 rounded-md", inView && "animate-slide-in-up")}
+              className={cn("bg-gray-50 p-10 h-[420px] text-center flex flex-col justify-center items-center opacity-0 rounded-md", inView && "animate-slide-in-up")}
               style={{ animationDelay: `${1.0 + index * 0.4}s` }}
             >
-              <CardHeader className="items-center">
-                <div className="p-3 bg-primary/10 mb-2 rounded-md">
-                    {feature.icon}
-                </div>
-                <CardTitle className="font-heading text-xl font-normal">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-slate-500">{feature.description}</p>
-              </CardContent>
-            </Card>
+              <div className="p-3 bg-primary/10 mb-4 rounded-md">
+                  {feature.icon}
+              </div>
+              <h3 className="font-heading text-2xl font-normal mb-2">{feature.title}</h3>
+              <p className="text-sm text-slate-500">{feature.description}</p>
+            </div>
           ))}
         </div>
       </div>

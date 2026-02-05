@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
@@ -72,31 +71,27 @@ export function VaultsSection() {
           {vaults.map((vault, index) => {
             const icon = PlaceHolderImages.find(p => p.id === vault.iconId);
             return (
-              <Card
+              <div
                 key={vault.id}
-                className={cn("bg-gray-50 flex flex-col opacity-0 rounded-md", inView && "animate-slide-in-up")}
+                className={cn("bg-gray-50 p-10 h-[420px] flex flex-col justify-between opacity-0 rounded-md", inView && "animate-slide-in-up")}
                 style={{ animationDelay: `${1.0 + index * 0.4}s` }}
               >
-                <CardHeader>
-                  <div className="flex items-start justify-between">
+                <div>
+                  <div className="flex items-start justify-between mb-4">
                     <div>
-                      <CardTitle className="font-heading text-xl font-normal">{vault.name}</CardTitle>
-                      <CardDescription>Estimated APY: {vault.apy}</CardDescription>
+                      <h3 className="font-heading text-2xl font-normal">{vault.name}</h3>
+                      <p className="text-sm text-muted-foreground">Estimated APY: {vault.apy}</p>
                     </div>
                     {icon && <Image src={icon.imageUrl} alt={icon.description} data-ai-hint={icon.imageHint} width={32} height={32} />}
                   </div>
-                </CardHeader>
-                <CardContent className="flex-1">
-                    <p className="text-sm text-slate-500">
-                        A simple and secure way to earn yield on your {vault.name.split(' ')[0]}.
-                    </p>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" className="w-full rounded-md">
-                    Deposit now <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </CardFooter>
-              </Card>
+                  <p className="text-sm text-slate-500">
+                      A simple and secure way to earn yield on your {vault.name.split(' ')[0]}.
+                  </p>
+                </div>
+                <Button variant="outline" className="w-full rounded-md">
+                  Deposit now <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </div>
             )
           })}
         </div>
