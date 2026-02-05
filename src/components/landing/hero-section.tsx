@@ -25,7 +25,7 @@ const scrollingPartners = [...partners, ...partners];
 
 export function HeroSection() {
   return (
-    <div className="relative h-screen bg-white overflow-hidden">
+    <div className="relative min-h-[90vh] overflow-hidden">
       <video
         src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kelp_Precise_Proteus.webm"
         autoPlay

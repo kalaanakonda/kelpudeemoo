@@ -33,7 +33,7 @@ export function NewsletterSection() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-gray-50 py-24">
+    <section ref={ref} className="py-24">
       <div className="max-w-2xl mx-auto px-6 text-center">
         <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl font-normal font-heading text-black leading-tight tracking-tight mb-2">

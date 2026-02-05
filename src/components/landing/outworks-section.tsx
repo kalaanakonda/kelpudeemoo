@@ -30,7 +30,7 @@ export function OutworksSection() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-gray-50 py-24">
+    <section ref={ref} className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
@@ -42,7 +42,7 @@ export function OutworksSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className={cn("bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
+          <div className={cn("bg-gray-50 border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Audited & Secure</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
@@ -54,7 +54,7 @@ export function OutworksSection() {
              </div>
           </div>
 
-          <div className={cn("bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
+          <div className={cn("bg-gray-50 border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Maximum Utility</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
@@ -66,7 +66,7 @@ export function OutworksSection() {
              </div>
           </div>
 
-          <div className={cn("bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.8s' }}>
+          <div className={cn("bg-gray-50 border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.8s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Deep Liquidity</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
@@ -78,7 +78,7 @@ export function OutworksSection() {
              </div>
           </div>
 
-          <div className={cn("bg-white border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '2.2s' }}>
+          <div className={cn("bg-gray-50 border border-gray-200 p-10 h-[420px] flex flex-col justify-between hover:border-gray-300 transition-colors duration-300 relative overflow-hidden group opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '2.2s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">One-click Restaking</h3>
                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">

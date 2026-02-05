@@ -51,7 +51,7 @@ export function KusdSection() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-gray-50 py-24">
+    <section ref={ref} className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
@@ -66,7 +66,7 @@ export function KusdSection() {
           {features.map((feature, index) => (
             <Card
               key={index}
-              className={cn("bg-white border-gray-200 text-center opacity-0", inView && "animate-slide-in-up")}
+              className={cn("bg-gray-50 border-gray-200 text-center opacity-0", inView && "animate-slide-in-up")}
               style={{ animationDelay: `${1.0 + index * 0.4}s` }}
             >
               <CardHeader className="items-center">

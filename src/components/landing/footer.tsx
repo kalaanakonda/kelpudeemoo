@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100">
+    <footer className="border-t border-gray-100">
       <div className="max-w-6xl mx-auto py-12 px-6 text-center text-slate-500">
         <div className="flex items-center justify-center gap-2 text-lg font-normal tracking-tight mb-4 text-slate-700">
           <Image src="https://cryptoast.fr/wp-content/uploads/2024/02/kelp-logo.png" alt="Kelp logo" width={81} height={19} />

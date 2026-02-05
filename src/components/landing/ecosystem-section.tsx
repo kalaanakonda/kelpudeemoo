@@ -61,7 +61,7 @@ export function EcosystemSection() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-white py-32">
+    <section ref={ref} className="py-32">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
             <h2 className="text-base font-normal font-body text-slate-500 tracking-wider uppercase mb-4">

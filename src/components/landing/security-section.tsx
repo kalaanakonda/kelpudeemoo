@@ -29,7 +29,7 @@ export function SecuritySection() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-gray-100 text-black py-16 px-6 relative overflow-hidden">
+    <section ref={ref} className="text-black py-16 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className={cn("opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
           <span className="text-slate-500 text-xs font-medium tracking-wider uppercase mb-3 block">Audits & Security</span>
