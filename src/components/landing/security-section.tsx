@@ -49,11 +49,11 @@ export function SecuritySection() {
         </div>
         <div className={cn("grid grid-cols-2 gap-4 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
           <div className="bg-white p-6 text-center rounded-md">
-            <p className="text-4xl font-normal font-heading text-primary">3</p>
+            <p className="text-4xl font-normal font-heading text-black">3</p>
             <p className="text-sm text-slate-500 mt-1">Major Audits</p>
           </div>
           <div className="bg-white p-6 text-center rounded-md">
-            <p className="text-4xl font-normal font-heading text-primary">5+</p>
+            <p className="text-4xl font-normal font-heading text-black">5+</p>
             <p className="text-sm text-slate-500 mt-1">Security Partners</p>
           </div>
         </div>
