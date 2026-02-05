@@ -57,7 +57,7 @@ export function VaultsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-24">
+    <section ref={ref} className="py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
@@ -74,7 +74,7 @@ export function VaultsSection() {
             return (
               <Card
                 key={vault.id}
-                className={cn("bg-gray-50 border-gray-200 flex flex-col opacity-0", inView && "animate-slide-in-up")}
+                className={cn("bg-gray-50 flex flex-col opacity-0 rounded-md", inView && "animate-slide-in-up")}
                 style={{ animationDelay: `${1.0 + index * 0.4}s` }}
               >
                 <CardHeader>
@@ -92,7 +92,7 @@ export function VaultsSection() {
                     </p>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full rounded-md">
                     Deposit now <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </CardFooter>

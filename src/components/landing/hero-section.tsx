@@ -25,7 +25,7 @@ const scrollingPartners = [...partners, ...partners];
 
 export function HeroSection() {
   return (
-    <div className="relative min-h-[90vh] overflow-hidden">
+    <div className="relative min-h-[90vh] overflow-hidden rounded-xl">
       <video
         src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kelp_Precise_Proteus.webm"
         autoPlay
@@ -70,7 +70,7 @@ export function HeroSection() {
             <div className="flex animate-marquee-slow">
                 {scrollingPartners.map((partner, index) => partner && (
                     <div key={`${partner.id}-${index}`} className="flex-shrink-0 mx-2">
-                        <div className="bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5 border border-white/10">
+                        <div className="bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5">
                             <Image
                                 src={partner.imageUrl}
                                 alt={partner.description}

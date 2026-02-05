@@ -26,7 +26,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <a href="#simulator" className="bg-black/5 hover:bg-black/10 text-black border border-black/20 px-4 py-1.5 text-xs font-medium transition flex items-center gap-2 animate-glint">
+          <a href="#simulator" className="bg-black/5 hover:bg-black/10 text-black px-4 py-1.5 text-xs font-medium transition flex items-center gap-2 animate-glint rounded-md">
             Learn more
           </a>
         </div>
@@ -39,12 +39,12 @@ export function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-4 right-4 bg-white text-black border border-black/10 p-4 shadow-xl flex flex-col gap-3 text-sm">
+        <div className="md:hidden absolute top-20 left-4 right-4 bg-white text-black p-4 shadow-xl flex flex-col gap-3 text-sm rounded-md">
           <a href="#" className="font-medium hover:text-gray-700">Governance</a>
           <a href="#" className="font-medium hover:text-gray-700">Blogs</a>
           <a href="#" className="font-medium hover:text-gray-700">Ecosystem</a>
           <a href="#" className="font-medium hover:text-gray-700">More</a>
-          <a href="#simulator" onClick={() => setIsOpen(false)} className="bg-black text-white text-center w-full py-2 mt-2 font-medium animate-glint">Learn more</a>
+          <a href="#simulator" onClick={() => setIsOpen(false)} className="bg-black text-white text-center w-full py-2 mt-2 font-medium animate-glint rounded-md">Learn more</a>
         </div>
       )}
     </nav>

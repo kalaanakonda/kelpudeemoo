@@ -33,7 +33,7 @@ export function NewsletterSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-24">
+    <section ref={ref} className="py-16">
       <div className="max-w-2xl mx-auto px-6 text-center">
         <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl font-normal font-heading text-black leading-tight tracking-tight mb-2">
@@ -46,10 +46,10 @@ export function NewsletterSection() {
             <Input 
               type="email" 
               placeholder="Email address" 
-              className="h-11 text-base flex-1 border-gray-200 bg-white focus:border-primary focus:ring-primary"
+              className="h-11 text-base flex-1 bg-white focus:border-primary focus:ring-primary rounded-md"
               aria-label="Email address"
             />
-            <Button type="submit" className="h-11 px-6 ml-[-2px] text-sm">
+            <Button type="submit" className="h-11 px-6 ml-[-2px] text-sm rounded-md">
               Sign up
             </Button>
           </form>

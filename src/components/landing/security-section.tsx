@@ -29,7 +29,7 @@ export function SecuritySection() {
   }, []);
 
   return (
-    <section ref={ref} className="text-black py-16 px-6 relative overflow-hidden">
+    <section ref={ref} className="text-black py-12 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className={cn("opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
           <span className="text-slate-500 text-xs font-medium tracking-wider uppercase mb-3 block">Audits & Security</span>
@@ -38,7 +38,7 @@ export function SecuritySection() {
           </h2>
           <div className="flex flex-wrap gap-3 mb-8">
              {['Sigma Prime', 'Code4rena', 'MixBytes'].map((auditor) => (
-               <div key={auditor} className="bg-white border border-gray-200 px-4 py-2 text-sm text-slate-700 font-medium">
+               <div key={auditor} className="bg-white px-4 py-2 text-sm text-slate-700 font-medium rounded-md">
                   {auditor}
                </div>
              ))}
@@ -48,11 +48,11 @@ export function SecuritySection() {
           </a>
         </div>
         <div className={cn("grid grid-cols-2 gap-4 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
-          <div className="bg-white p-6 border border-gray-200 text-center">
+          <div className="bg-white p-6 text-center rounded-md">
             <p className="text-4xl font-normal font-heading text-primary">3</p>
             <p className="text-sm text-slate-500 mt-1">Major Audits</p>
           </div>
-          <div className="bg-white p-6 border border-gray-200 text-center">
+          <div className="bg-white p-6 text-center rounded-md">
             <p className="text-4xl font-normal font-heading text-primary">5+</p>
             <p className="text-sm text-slate-500 mt-1">Security Partners</p>
           </div>
