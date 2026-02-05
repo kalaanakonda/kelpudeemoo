@@ -103,7 +103,7 @@ export function VaultsSection() {
                       </div>
                   </div>
                 </div>
-                <Button variant="outline" className="w-full rounded-md mt-6">
+                <Button variant="default" className="w-full rounded-md mt-6">
                   Deposit now <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>

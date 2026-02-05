@@ -24,6 +24,7 @@ const features = [
 
 export function KusdSection() {
     const ref = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const [inView, setInView] = useState(false);
 
     useEffect(() => {
@@ -35,7 +36,7 @@ export function KusdSection() {
             }
           },
           {
-            threshold: 0.2,
+            threshold: 0.3,
           }
         );
     
@@ -50,6 +51,12 @@ export function KusdSection() {
           }
         };
       }, []);
+
+      useEffect(() => {
+        if (inView && videoRef.current) {
+            videoRef.current.play();
+        }
+    }, [inView]);
 
   return (
     <div ref={ref} className="h-screen relative rounded-lg bg-card text-card-foreground overflow-hidden">
@@ -66,9 +73,8 @@ export function KusdSection() {
         </div>
 
         <video
-            src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kling_20260205_%E4%BD%9C%E5%93%81_the_coin_m_5785_0.webm"
-            autoPlay
-            loop
+            ref={videoRef}
+            src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
             muted
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover z-10"
@@ -81,13 +87,17 @@ export function KusdSection() {
                         <div
                             key={index}
                             className={cn(
-                                "w-56 pointer-events-auto transition-all duration-700 ease-out",
-                                inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                                "w-56 pointer-events-auto opacity-0 translate-y-12 transition-all duration-700 ease-out",
+                                inView && 'opacity-100 translate-y-0'
                             )}
-                            style={{ transitionDelay: `${200 + index * 150}ms` }}
+                            style={{ transitionDelay: `${500 + index * 200}ms` }}
                         >
-                            <div className="bg-gray-50/80 backdrop-blur-sm p-4 text-center flex flex-col justify-center items-center rounded-md border border-white/20 h-full">
-                                <div className="p-2 bg-primary/10 mb-2 rounded-md">
+                            <div className="bg-white p-4 text-center flex flex-col justify-center items-center rounded-md border border-gray-100 shadow-lg h-full">
+                                <div className={cn(
+                                    "p-2 bg-primary/10 mb-2 rounded-md opacity-0",
+                                    inView && "animate-scale-in"
+                                )}
+                                style={{ animationDelay: `${700 + index * 200}ms` }}>
                                     {feature.icon}
                                 </div>
                                 <h3 className="font-heading text-base font-normal mb-1">{feature.title}</h3>
