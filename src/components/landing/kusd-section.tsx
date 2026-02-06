@@ -54,7 +54,7 @@ export function KusdSection() {
       }, []);
 
   return (
-    <div ref={sectionRef} className="relative rounded-lg bg-card text-card-foreground overflow-hidden py-24">
+    <div ref={sectionRef} className="relative rounded-lg bg-card text-card-foreground overflow-hidden py-36">
         <video
             ref={videoRef}
             src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"

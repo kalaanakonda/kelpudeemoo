@@ -21,7 +21,7 @@ export function HeroSection() {
         autoPlay
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover object-bottom"
+        className="absolute top-0 left-0 w-full h-full object-cover object-[50%_150%]"
       />
       
       <Navbar />
