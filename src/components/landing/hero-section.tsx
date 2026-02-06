@@ -30,14 +30,14 @@ export function HeroSection() {
       <div className="absolute inset-0 p-6 flex justify-center text-center">
         <div className="max-w-2xl relative z-10 flex flex-col items-center pt-24">
           <h1 
-            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4 font-heading animate-slide-in-up" 
+            className="text-4xl md:text-5xl font-normal text-black tracking-tight leading-tight mb-4 font-heading animate-slide-in-up" 
             style={{ animationDelay: '0.4s' }}
           >
             Finance for the Instant Economy
           </h1>
           
           <p 
-            className="text-slate-300 max-w-lg text-sm mb-6 leading-relaxed font-light animate-slide-in-up" 
+            className="text-slate-600 max-w-lg text-sm mb-6 leading-relaxed font-light animate-slide-in-up" 
             style={{ animationDelay: '0.8s' }}
           >
             At Kelp, we’re the gateway to on-demand earning mechanisms across crypto and
@@ -61,7 +61,7 @@ export function HeroSection() {
                 {scrollingPartners.map((name, index) => (
                     <div key={`${name}-${index}`} className="flex-shrink-0 mx-4">
                         <div className="bg-black/5 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5">
-                            <span className="text-white font-medium text-sm opacity-80 tracking-wide">{name}</span>
+                            <span className="text-black font-medium text-sm opacity-80 tracking-wide">{name}</span>
                         </div>
                     </div>
                 ))}
