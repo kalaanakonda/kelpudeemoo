@@ -4,16 +4,7 @@ import { Navbar } from './navbar';
 import Image from 'next/image';
 import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 
-const partnerIds = [
-  'partner-pendle',
-  'partner-symbiotic',
-  'partner-aave',
-  'partner-etherfi',
-  'partner-eigenlayer',
-  'partner-uniswap',
-  'partner-arbitrum',
-  'partner-coinbase',
-];
+const partnerIds = Array(8).fill('partner-aave');
 
 const partners = partnerIds
   .map(id => PlaceHolderImages.find(p => p.id === id))

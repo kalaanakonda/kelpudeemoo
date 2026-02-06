@@ -5,16 +5,7 @@ import Image from 'next/image';
 import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 
-const partnerIds = [
-  'partner-pendle',
-  'partner-symbiotic',
-  'partner-aave',
-  'partner-etherfi',
-  'partner-eigenlayer',
-  'partner-uniswap',
-  'partner-arbitrum',
-  'partner-coinbase',
-];
+const partnerIds = Array(8).fill('partner-pendle');
 
 const initialPartners = [...partnerIds, ...partnerIds, ...partnerIds, ...partnerIds]
   .map(id => PlaceHolderImages.find(p => p.id === id))

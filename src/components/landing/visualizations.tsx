@@ -41,7 +41,7 @@ export const AuditViz = () => (
        <div className="absolute w-20 h-20 bg-primary/10 animate-pulse"></div>
        
        <div className="bg-white border border-gray-200 p-4 relative overflow-hidden">
-          <Lock className="w-10 h-10 text-primary" strokeWidth={1.5} />
+          <Lock className="w-10 h-10 text-primary" strokeWidth={1} />
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary animate-scanner"></div>
        </div>
        
@@ -65,12 +65,8 @@ export const UtilityViz = () => {
         {/* Outer Orbit Icons */}
         <div className="absolute inset-0 animate-spin-slow origin-center z-10">
            {[...Array(8)].map((_, i) => (
-             <div key={i} className="absolute w-10 h-10 bg-white border border-gray-200 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
-                {i % 4 === 0 ? <ArrowLeftRightIcon className="w-4 h-4 text-primary" /> : 
-                 i % 4 === 1 ? <WalletIcon className="w-4 h-4 text-primary" /> :
-                 i % 4 === 2 ? <TrendingUpIcon className="w-4 h-4 text-primary" /> :
-                 <LandmarkIcon className="w-4 h-4 text-primary" />
-                }
+             <div key={i} className="absolute w-10 h-10 bg-white border border-gray-200 flex items-center justify-center rounded-full z-10" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
+                <CircleDollarSignIcon className="w-4 h-4 text-primary" />
              </div>
            ))}
         </div>
@@ -81,7 +77,7 @@ export const UtilityViz = () => {
         {/* Inner Orbit Icons */}
         <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center z-10">
            {[...Array(6)].map((_, i) => (
-             <div key={i} className="absolute w-8 h-8 bg-white border border-gray-200 flex items-center justify-center rounded-full" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
+             <div key={i} className="absolute w-8 h-8 bg-white border border-gray-200 flex items-center justify-center rounded-full z-10" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
                 <CircleDollarSignIcon className="w-4 h-4 text-primary" />
              </div>
            ))}
@@ -112,7 +108,7 @@ export const LiquidityTunnelViz = () => {
             if (!logo) return null;
             return(
             <div key={`w1-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10 rounded-full" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '0s' }}>
-               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain rounded-full" />
+               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={40} height={40} className="w-full h-full object-cover rounded-full" />
             </div>
          )})}
 
@@ -121,7 +117,7 @@ export const LiquidityTunnelViz = () => {
             if (!logo) return null;
             return(
             <div key={`w2-${i}`} className="absolute w-10 h-10 bg-white border border-gray-100 animate-tunnel flex items-center justify-center z-10 rounded-full" style={{ '--tx': dir.tx, '--ty': dir.ty, animationDelay: '-2s' }}>
-               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={24} height={24} className="object-contain rounded-full" />
+               <Image src={logo.imageUrl} alt={logo.description} data-ai-hint={logo.imageHint} width={40} height={40} className="w-full h-full object-cover rounded-full" />
             </div>
          )})}
          

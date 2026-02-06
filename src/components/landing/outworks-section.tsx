@@ -3,6 +3,7 @@
 import { AuditViz, UtilityViz, LiquidityTunnelViz, RestakingViz } from './visualizations';
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 export function OutworksSection() {
   const [inView, setInView] = useState(false);
@@ -39,6 +40,11 @@ export function OutworksSection() {
           <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
             Unlock the full potential of your Ethereum. By restaking with Kelp, you maintain liquidity while earning rewards.
           </p>
+          <div className="mt-8">
+            <Button asChild>
+                <a href="#simulator">Restake now</a>
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
