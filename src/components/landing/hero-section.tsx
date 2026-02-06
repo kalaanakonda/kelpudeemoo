@@ -1,26 +1,16 @@
 "use client";
 
 import { Navbar } from './navbar';
-import Image from 'next/image';
-import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 
-const partnerIds = [
-    'partner-aave', 
-    'partner-pendle', 
-    'partner-arbitrum', 
-    'partner-aave', 
-    'partner-pendle', 
-    'partner-arbitrum', 
-    'partner-aave', 
-    'partner-pendle'
+const partnerNames = [
+    'Arbitrum', 'Base', 'Balancer', 'Uniswap', 'Aave', 'Compound', 'Morpho', 'Euler',
+    'Fluid', 'Cian', 'Pendle', 'Optimism', 'Unichain', 'Aerodrome', 'Spark', 'August',
+    'Canopy', 'Linea', 'TAC'
 ];
 
-const partners = partnerIds
-  .map(id => PlaceHolderImages.find(p => p.id === id))
-  .filter((p): p is ImagePlaceholder => Boolean(p));
 
 // Duplicate partners for a seamless scroll
-const scrollingPartners = [...partners, ...partners];
+const scrollingPartners = [...partnerNames, ...partnerNames];
 
 
 export function HeroSection() {
@@ -68,17 +58,10 @@ export function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 py-6 z-20">
         <div className="relative overflow-hidden">
             <div className="flex animate-marquee-slow">
-                {scrollingPartners.map((partner, index) => partner && (
-                    <div key={`${partner.id}-${index}`} className="flex-shrink-0 mx-2">
+                {scrollingPartners.map((name, index) => (
+                    <div key={`${name}-${index}`} className="flex-shrink-0 mx-4">
                         <div className="bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5">
-                            <Image
-                                src={partner.imageUrl}
-                                alt={partner.description}
-                                data-ai-hint={partner.imageHint}
-                                width={80}
-                                height={20}
-                                className="object-contain h-5 w-auto grayscale brightness-0 invert opacity-70 transition-all duration-300"
-                            />
+                            <span className="text-white font-medium text-sm opacity-80 tracking-wide">{name}</span>
                         </div>
                     </div>
                 ))}
