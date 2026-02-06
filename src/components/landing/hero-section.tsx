@@ -19,7 +19,6 @@ export function HeroSection() {
       <video
         src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/short%20vid.webm"
         autoPlay
-        loop
         muted
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
