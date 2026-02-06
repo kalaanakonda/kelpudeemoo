@@ -1,3 +1,4 @@
+import React from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Lock, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
@@ -41,7 +42,7 @@ export const AuditViz = () => (
        <div className="absolute w-20 h-20 bg-primary/10 animate-pulse"></div>
        
        <div className="bg-white border border-gray-200 p-4 relative overflow-hidden">
-          <Lock className="w-10 h-10 text-primary" strokeWidth={1} />
+          <Lock className="w-10 h-10 text-primary" strokeWidth={1.5} />
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary animate-scanner"></div>
        </div>
        
@@ -54,6 +55,13 @@ export const AuditViz = () => (
 
 export const UtilityViz = () => {
   const rsEthLogo = PlaceHolderImages.find(p => p.id === 'rseth-logo');
+  const icons = [
+    <ArrowLeftRightIcon className="w-4 h-4 text-primary" />,
+    <WalletIcon className="w-4 h-4 text-primary" />,
+    <TrendingUpIcon className="w-4 h-4 text-primary" />,
+    <LandmarkIcon className="w-4 h-4 text-primary" />,
+  ];
+
   return (
     <div className="w-full h-full relative overflow-hidden bg-gray-50">
       <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
@@ -66,7 +74,7 @@ export const UtilityViz = () => {
         <div className="absolute inset-0 animate-spin-slow origin-center z-10">
            {[...Array(8)].map((_, i) => (
              <div key={i} className="absolute w-10 h-10 bg-white border border-gray-200 flex items-center justify-center rounded-full z-10" style={{ top: '50%', left: '50%', transform: `rotate(${i * 45}deg) translate(140px) rotate(-${i * 45}deg)` }}>
-                <CircleDollarSignIcon className="w-4 h-4 text-primary" />
+                {React.cloneElement(icons[i % icons.length], { key: i })}
              </div>
            ))}
         </div>
@@ -78,7 +86,7 @@ export const UtilityViz = () => {
         <div className="absolute top-10 left-10 right-10 bottom-10 animate-spin-reverse-slow origin-center z-10">
            {[...Array(6)].map((_, i) => (
              <div key={i} className="absolute w-8 h-8 bg-white border border-gray-200 flex items-center justify-center rounded-full z-10" style={{ top: '50%', left: '50%', transform: `rotate(${i * 60}deg) translate(90px) rotate(-${i * 60}deg)` }}>
-                <CircleDollarSignIcon className="w-4 h-4 text-primary" />
+                {React.cloneElement(icons[(i + 1) % icons.length], { key: i })}
              </div>
            ))}
         </div>
