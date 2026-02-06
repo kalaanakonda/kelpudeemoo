@@ -86,30 +86,31 @@ export function KusdSection() {
                 preload="metadata"
                 className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/30"></div>
-            <div ref={contentRef} className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6 opacity-0">
+            <div ref={contentRef} className="absolute inset-0 flex flex-col items-center justify-between text-center p-6 py-24 opacity-0">
                 <div className="max-w-6xl mx-auto">
-                    <div className="mb-16">
-                        <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4">
+                    <div>
+                        <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
                             KUSD: The Yield-Bearing Stablecoin
                         </h2>
-                        <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed font-light">
+                        <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed font-light">
                             A decentralized, over-collateralized stablecoin designed for the instant economy.
                         </p>
                     </div>
+                </div>
 
+                <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {features.map((feature, index) => {
                             return (
                                 <div
                                     key={index}
                                 >
-                                    <div className="bg-white/10 backdrop-blur-sm p-6 text-center flex flex-col justify-center items-center rounded-md border border-white/20 h-full">
+                                    <div className="bg-white p-6 text-center flex flex-col justify-center items-center rounded-md border h-full">
                                         <div className="p-2 bg-primary/10 mb-3 rounded-md">
                                             {feature.icon}
                                         </div>
-                                        <h3 className="font-heading text-base font-normal mb-1 text-white">{feature.title}</h3>
-                                        <p className="text-xs text-slate-300">{feature.description}</p>
+                                        <h3 className="font-heading text-base font-normal mb-1 text-black">{feature.title}</h3>
+                                        <p className="text-xs text-slate-500">{feature.description}</p>
                                     </div>
                                 </div>
                             )
