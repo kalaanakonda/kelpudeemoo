@@ -1,8 +1,13 @@
 "use client";
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const features = [
   {
@@ -23,80 +28,93 @@ const features = [
 ];
 
 export function KusdSection() {
-    const [inView, setInView] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
-    
+    const contentRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setInView(true);
-              videoRef.current?.play();
-              observer.unobserve(entry.target);
+        const video = videoRef.current;
+        const section = sectionRef.current;
+        const content = contentRef.current;
+
+        if (video && section && content) {
+            // Ensure video is loaded enough to get duration
+            const onLoadedMetadata = () => {
+                video.pause();
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top top",
+                        end: `+=${window.innerHeight * 2}`,
+                        pin: true,
+                        scrub: true,
+                    },
+                    defaults: { ease: "none" }
+                });
+
+                // Video scrubbing
+                tl.to(video, {
+                    currentTime: video.duration,
+                });
+                
+                // Content fade in
+                tl.fromTo(content, { opacity: 0, y: 50 }, { opacity: 1, y: 0 }, 0);
+            };
+
+            video.addEventListener('loadedmetadata', onLoadedMetadata);
+            // If video is already loaded
+            if (video.readyState >= 1) {
+                onLoadedMetadata();
             }
-          },
-          {
-            threshold: 0.2,
-          }
-        );
-    
-        const currentRef = sectionRef.current;
-        if (currentRef) {
-          observer.observe(currentRef);
+
+            return () => {
+                video.removeEventListener('loadedmetadata', onLoadedMetadata);
+                ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            }
         }
-    
-        return () => {
-          if (currentRef) {
-            observer.unobserve(currentRef);
-          }
-        };
-      }, []);
+    }, []);
 
   return (
-    <div ref={sectionRef} className="rounded-lg bg-card text-card-foreground overflow-hidden py-24">
-        <div className="max-w-6xl mx-auto px-6">
-            <div className={cn("text-center mb-16 opacity-0", inView && "animate-slide-in-up")}>
-                <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
-                    KUSD: The Yield-Bearing Stablecoin
-                </h2>
-                <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
-                    A decentralized, over-collateralized stablecoin designed for the instant economy.
-                </p>
-            </div>
+    <div ref={sectionRef} className="rounded-lg bg-card text-card-foreground overflow-hidden h-screen">
+        <div className="relative h-full w-full">
+            <video
+                ref={videoRef}
+                src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
+                playsInline
+                muted
+                preload="metadata"
+                className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30"></div>
+            <div ref={contentRef} className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6 opacity-0">
+                <div className="max-w-6xl mx-auto">
+                    <div className="mb-16">
+                        <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4">
+                            KUSD: The Yield-Bearing Stablecoin
+                        </h2>
+                        <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed font-light">
+                            A decentralized, over-collateralized stablecoin designed for the instant economy.
+                        </p>
+                    </div>
 
-            <div 
-                className={cn("mb-16 rounded-lg overflow-hidden opacity-0", inView && "animate-slide-in-up")}
-                style={{ animationDelay: '0.3s' }}
-            >
-                <video
-                    ref={videoRef}
-                    src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
-                    muted
-                    playsInline
-                    className="w-full h-auto"
-                />
-            </div>
-
-            <div className="flex justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {features.map((feature, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className={cn("opacity-0", inView && "animate-slide-in-up")}
-                                style={{ animationDelay: `${0.5 + index * 0.2}s` }}
-                            >
-                                <div className="bg-gray-50 p-6 text-center flex flex-col justify-center items-center rounded-md border border-gray-100/50 h-full">
-                                    <div className="p-2 bg-primary/10 mb-3 rounded-md">
-                                        {feature.icon}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {features.map((feature, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                >
+                                    <div className="bg-white/10 backdrop-blur-sm p-6 text-center flex flex-col justify-center items-center rounded-md border border-white/20 h-full">
+                                        <div className="p-2 bg-primary/10 mb-3 rounded-md">
+                                            {feature.icon}
+                                        </div>
+                                        <h3 className="font-heading text-base font-normal mb-1 text-white">{feature.title}</h3>
+                                        <p className="text-xs text-slate-300">{feature.description}</p>
                                     </div>
-                                    <h3 className="font-heading text-base font-normal mb-1 text-black">{feature.title}</h3>
-                                    <p className="text-xs text-slate-500">{feature.description}</p>
                                 </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
