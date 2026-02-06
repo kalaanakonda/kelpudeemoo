@@ -21,7 +21,7 @@ export function HeroSection() {
         autoPlay
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover object-[50%_150%]"
+        className="absolute top-0 left-0 w-full h-full object-cover object-[50%_200%]"
       />
       
       <Navbar />
@@ -59,7 +59,7 @@ export function HeroSection() {
             <div className="flex animate-marquee-slow">
                 {scrollingPartners.map((name, index) => (
                     <div key={`${name}-${index}`} className="flex-shrink-0 mx-4">
-                        <div className="bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5">
+                        <div className="bg-black/5 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5">
                             <span className="text-black font-medium text-sm opacity-80 tracking-wide">{name}</span>
                         </div>
                     </div>

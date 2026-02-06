@@ -54,15 +54,8 @@ export function KusdSection() {
       }, []);
 
   return (
-    <div ref={sectionRef} className="relative rounded-lg bg-card text-card-foreground overflow-hidden py-36">
-        <video
-            ref={videoRef}
-            src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
-            muted
-            playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover object-bottom z-0"
-        />
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
+    <div ref={sectionRef} className="rounded-lg bg-card text-card-foreground overflow-hidden py-24">
+        <div className="max-w-6xl mx-auto px-6">
             <div className={cn("text-center mb-16 opacity-0", inView && "animate-slide-in-up")}>
                 <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
                     KUSD: The Yield-Bearing Stablecoin
@@ -70,6 +63,19 @@ export function KusdSection() {
                 <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
                     A decentralized, over-collateralized stablecoin designed for the instant economy.
                 </p>
+            </div>
+
+            <div 
+                className={cn("mb-16 rounded-lg overflow-hidden opacity-0", inView && "animate-slide-in-up")}
+                style={{ animationDelay: '0.3s' }}
+            >
+                <video
+                    ref={videoRef}
+                    src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
+                    muted
+                    playsInline
+                    className="w-full h-auto"
+                />
             </div>
 
             <div className="flex justify-center">
@@ -81,11 +87,11 @@ export function KusdSection() {
                                 className={cn("opacity-0", inView && "animate-slide-in-up")}
                                 style={{ animationDelay: `${0.5 + index * 0.2}s` }}
                             >
-                                <div className="bg-white/90 backdrop-blur-sm p-6 text-center flex flex-col justify-center items-center rounded-md border border-gray-100/50 shadow-xl h-full">
+                                <div className="bg-gray-50 p-6 text-center flex flex-col justify-center items-center rounded-md border border-gray-100/50 h-full">
                                     <div className="p-2 bg-primary/10 mb-3 rounded-md">
                                         {feature.icon}
                                     </div>
-                                    <h3 className="font-heading text-base font-normal mb-1">{feature.title}</h3>
+                                    <h3 className="font-heading text-base font-normal mb-1 text-black">{feature.title}</h3>
                                     <p className="text-xs text-slate-500">{feature.description}</p>
                                 </div>
                             </div>
