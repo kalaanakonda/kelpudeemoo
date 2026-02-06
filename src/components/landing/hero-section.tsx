@@ -16,13 +16,6 @@ const scrollingPartners = [...partnerNames, ...partnerNames];
 export function HeroSection() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-card text-card-foreground">
-      <video
-        src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/short%20vid.webm"
-        autoPlay
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover object-[50%_200%]"
-      />
       
       <Navbar />
 
