@@ -60,15 +60,14 @@ export function KusdSection() {
             src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
             muted
             playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+            className="absolute top-0 left-0 w-full h-full object-cover object-bottom z-0"
         />
-        <div className="absolute inset-0 bg-black/40 z-0" />
         <div className="relative z-10 max-w-6xl mx-auto px-6">
             <div className={cn("text-center mb-16 opacity-0", inView && "animate-slide-in-up")}>
-                <h2 className="text-3xl md:text-5xl font-normal font-heading text-white leading-none tracking-tight mb-4">
+                <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
                     KUSD: The Yield-Bearing Stablecoin
                 </h2>
-                <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed font-light">
+                <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
                     A decentralized, over-collateralized stablecoin designed for the instant economy.
                 </p>
             </div>
