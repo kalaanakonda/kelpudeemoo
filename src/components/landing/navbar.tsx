@@ -13,7 +13,7 @@ export function Navbar() {
     <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
       <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center text-black">
         <Link href="/" className="flex items-center gap-2 text-xl font-normal tracking-tight">
-          <Image src="https://cryptoast.fr/wp-content/uploads/2024/02/kelp-logo.png" alt="Kelp logo" width={61} height={14} />
+          <Image src="https://raw.githubusercontent.com/kalaanakonda/videosyogi/950a3eeee6091494eb4f769e53b83e1425ab84f9/Frame%202147223315.svg" alt="Kelp logo" width={61} height={14} />
         </Link>
 
         <div className="hidden md:flex space-x-6 text-xs font-normal items-center text-gray-700">

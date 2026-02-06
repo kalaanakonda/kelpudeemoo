@@ -1,12 +1,8 @@
 "use client";
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
@@ -27,96 +23,76 @@ const features = [
 ];
 
 export function KusdSection() {
+    const [inView, setInView] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
-    const cardsRef = useRef<HTMLDivElement>(null);
-    const textRef = useRef<HTMLDivElement>(null);
-
+    
     useEffect(() => {
-        const video = videoRef.current;
-        const section = sectionRef.current;
-        const text = textRef.current;
-        const cards = cardsRef.current;
-
-        // Ensure all elements are available before setting up animations
-        const ready = video && section && text && cards;
-        if (!ready) return;
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: section,
-                start: 'top top',
-                end: '+=2500', // Duration of the pinned animation
-                scrub: 1,
-                pin: true,
-                onEnter: () => {
-                  // Ensure video is ready to play
-                  if(video.readyState >= 3) {
-                    video.play();
-                  } else {
-                    video.oncanplay = () => video.play();
-                  }
-                },
-            },
-        });
-        
-        // Fade out text as cards come in
-        tl.to(text, {
-            opacity: 0,
-            ease: "power1.inOut",
-        }, 0.1); // Start fading out text early
-
-        // Animate cards sliding in
-        tl.fromTo(cards, 
-            { y: '100%', opacity: 0 }, 
-            { y: '0%', opacity: 1, ease: "power2.out" },
-            0.2
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setInView(true);
+              videoRef.current?.play();
+              observer.unobserve(entry.target);
+            }
+          },
+          {
+            threshold: 0.2,
+          }
         );
     
+        const currentRef = sectionRef.current;
+        if (currentRef) {
+          observer.observe(currentRef);
+        }
+    
         return () => {
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+          if (currentRef) {
+            observer.unobserve(currentRef);
+          }
         };
       }, []);
 
   return (
-    <div ref={sectionRef} className="h-screen relative rounded-lg bg-card text-card-foreground overflow-hidden">
-        <div ref={textRef} className={cn(
-          "absolute top-24 inset-x-0 z-30 text-center px-6 transition-opacity duration-1000",
-        )}>
-            <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
-                KUSD: The Yield-Bearing Stablecoin
-            </h2>
-            <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
-                A decentralized, over-collateralized stablecoin designed for the instant economy.
-            </p>
-        </div>
-
+    <div ref={sectionRef} className="relative rounded-lg bg-card text-card-foreground overflow-hidden py-24">
         <video
             ref={videoRef}
             src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
             muted
             playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover z-10"
+            className="absolute top-0 left-0 w-full h-full object-cover z-0"
         />
+        <div className="absolute inset-0 bg-black/40 z-0" />
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+            <div className={cn("text-center mb-16 opacity-0", inView && "animate-slide-in-up")}>
+                <h2 className="text-3xl md:text-5xl font-normal font-heading text-white leading-none tracking-tight mb-4">
+                    KUSD: The Yield-Bearing Stablecoin
+                </h2>
+                <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed font-light">
+                    A decentralized, over-collateralized stablecoin designed for the instant economy.
+                </p>
+            </div>
 
-        <div ref={cardsRef} className="absolute inset-x-0 bottom-6 z-20 flex justify-center opacity-0">
-            <div className="flex gap-4 p-6">
-                {features.map((feature, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className="w-56 pointer-events-auto"
-                        >
-                            <div className="bg-white p-4 text-center flex flex-col justify-center items-center rounded-md border border-gray-100 shadow-lg h-full">
-                                <div className="p-2 bg-primary/10 mb-2 rounded-md">
-                                    {feature.icon}
+            <div className="flex justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {features.map((feature, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={cn("opacity-0", inView && "animate-slide-in-up")}
+                                style={{ animationDelay: `${0.5 + index * 0.2}s` }}
+                            >
+                                <div className="bg-white/90 backdrop-blur-sm p-6 text-center flex flex-col justify-center items-center rounded-md border border-gray-100/50 shadow-xl h-full">
+                                    <div className="p-2 bg-primary/10 mb-3 rounded-md">
+                                        {feature.icon}
+                                    </div>
+                                    <h3 className="font-heading text-base font-normal mb-1">{feature.title}</h3>
+                                    <p className="text-xs text-slate-500">{feature.description}</p>
                                 </div>
-                                <h3 className="font-heading text-base font-normal mb-1">{feature.title}</h3>
-                                <p className="text-xs text-slate-500">{feature.description}</p>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
         </div>
     </div>

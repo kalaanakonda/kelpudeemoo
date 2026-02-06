@@ -1,7 +1,6 @@
 import { HeroSection } from "@/components/landing/hero-section";
 import { StatsSection } from "@/components/landing/stats-section";
 import { OutworksSection } from "@/components/landing/outworks-section";
-import { SecuritySection } from "@/components/landing/security-section";
 import { Footer } from "@/components/landing/footer";
 import { NewsletterSection } from "@/components/landing/newsletter-section";
 import { EcosystemSection } from "@/components/landing/ecosystem-section";
@@ -29,9 +28,6 @@ export default function LandingPage() {
           </div>
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <NewsletterSection />
-          </div>
-          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
-            <SecuritySection />
           </div>
         </main>
         <div className="rounded-lg bg-card text-card-foreground overflow-hidden">

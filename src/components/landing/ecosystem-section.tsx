@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 const partnerIds = Array(8).fill('partner-pendle');
 
-const initialPartners = [...partnerIds, ...partnerIds, ...partnerIds, ...partnerIds]
+const initialPartners = partnerIds
   .map(id => PlaceHolderImages.find(p => p.id === id))
   .filter((p): p is ImagePlaceholder => Boolean(p));
 

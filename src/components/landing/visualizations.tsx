@@ -56,10 +56,10 @@ export const AuditViz = () => (
 export const UtilityViz = () => {
   const rsEthLogo = PlaceHolderImages.find(p => p.id === 'rseth-logo');
   const icons = [
-    <ArrowLeftRightIcon className="w-4 h-4 text-primary" />,
-    <WalletIcon className="w-4 h-4 text-primary" />,
-    <TrendingUpIcon className="w-4 h-4 text-primary" />,
     <LandmarkIcon className="w-4 h-4 text-primary" />,
+    <TrendingUpIcon className="w-4 h-4 text-primary" />,
+    <WalletIcon className="w-4 h-4 text-primary" />,
+    <ArrowLeftRightIcon className="w-4 h-4 text-primary" />,
   ];
 
   return (
