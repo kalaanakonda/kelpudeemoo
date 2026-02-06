@@ -75,9 +75,9 @@ export function EcosystemSection() {
                             src={partner.imageUrl}
                             alt={partner.description}
                             data-ai-hint={partner.imageHint}
-                            width={25}
-                            height={12.5}
-                            className="object-contain h-4 w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                            width={40}
+                            height={20}
+                            className="object-contain h-8 w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                         />
                     </div>
                 ))}
