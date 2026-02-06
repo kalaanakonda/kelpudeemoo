@@ -17,7 +17,7 @@ export function HeroSection() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-card text-card-foreground">
       <video
-        src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kelp_Precise_Proteus.webm"
+        src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/short%20vid.webm"
         autoPlay
         loop
         muted
