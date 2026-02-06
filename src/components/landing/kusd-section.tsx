@@ -1,8 +1,12 @@
 "use client";
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
@@ -26,52 +30,58 @@ export function KusdSection() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const cardsRef = useRef<HTMLDivElement>(null);
-    const [inView, setInView] = useState(false);
-    const [videoPlayed, setVideoPlayed] = useState(false);
+    const textRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const sectionObserver = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setInView(true);
-              sectionObserver.unobserve(entry.target);
-            }
-          },
-          { threshold: 0.3 }
-        );
-    
-        const cardsObserver = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting && !videoPlayed) {
-              videoRef.current?.play();
-              setVideoPlayed(true);
-              cardsObserver.unobserve(entry.target);
-            }
-          },
-          { threshold: 1.0 } // When cards are fully in view
-        );
+        const video = videoRef.current;
+        const section = sectionRef.current;
+        const text = textRef.current;
+        const cards = cardsRef.current;
 
-        const currentSectionRef = sectionRef.current;
-        if (currentSectionRef) {
-          sectionObserver.observe(currentSectionRef);
-        }
+        // Ensure all elements are available before setting up animations
+        const ready = video && section && text && cards;
+        if (!ready) return;
 
-        const currentCardsRef = cardsRef.current;
-        if (currentCardsRef) {
-          cardsObserver.observe(currentCardsRef);
-        }
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: '+=2500', // Duration of the pinned animation
+                scrub: 1,
+                pin: true,
+                onEnter: () => {
+                  // Ensure video is ready to play
+                  if(video.readyState >= 3) {
+                    video.play();
+                  } else {
+                    video.oncanplay = () => video.play();
+                  }
+                },
+            },
+        });
+        
+        // Fade out text as cards come in
+        tl.to(text, {
+            opacity: 0,
+            ease: "power1.inOut",
+        }, 0.1); // Start fading out text early
+
+        // Animate cards sliding in
+        tl.fromTo(cards, 
+            { y: '100%', opacity: 0 }, 
+            { y: '0%', opacity: 1, ease: "power2.out" },
+            0.2
+        );
     
         return () => {
-          if (currentSectionRef) sectionObserver.unobserve(currentSectionRef);
-          if (currentCardsRef) cardsObserver.unobserve(currentCardsRef);
+          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
-      }, [videoPlayed]);
+      }, []);
 
   return (
     <div ref={sectionRef} className="h-screen relative rounded-lg bg-card text-card-foreground overflow-hidden">
-        <div className={cn(
+        <div ref={textRef} className={cn(
           "absolute top-24 inset-x-0 z-30 text-center px-6 transition-opacity duration-1000",
-          inView ? "opacity-100" : "opacity-0"
         )}>
             <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
                 KUSD: The Yield-Bearing Stablecoin
@@ -89,24 +99,16 @@ export function KusdSection() {
             className="absolute top-0 left-0 w-full h-full object-cover z-10"
         />
 
-        <div ref={cardsRef} className="absolute inset-x-0 bottom-6 z-20 flex justify-center">
+        <div ref={cardsRef} className="absolute inset-x-0 bottom-6 z-20 flex justify-center opacity-0">
             <div className="flex gap-4 p-6">
                 {features.map((feature, index) => {
                     return (
                         <div
                             key={index}
-                            className={cn(
-                                "w-56 pointer-events-auto opacity-0 translate-y-12 transition-all duration-700 ease-out",
-                                inView && 'opacity-100 translate-y-0'
-                            )}
-                            style={{ transitionDelay: `${500 + index * 200}ms` }}
+                            className="w-56 pointer-events-auto"
                         >
                             <div className="bg-white p-4 text-center flex flex-col justify-center items-center rounded-md border border-gray-100 shadow-lg h-full">
-                                <div className={cn(
-                                    "p-2 bg-primary/10 mb-2 rounded-md opacity-0",
-                                    inView && "animate-scale-in"
-                                )}
-                                style={{ animationDelay: `${700 + index * 200}ms` }}>
+                                <div className="p-2 bg-primary/10 mb-2 rounded-md">
                                     {feature.icon}
                                 </div>
                                 <h3 className="font-heading text-base font-normal mb-1">{feature.title}</h3>
