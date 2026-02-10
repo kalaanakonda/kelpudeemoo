@@ -38,38 +38,21 @@ export function KusdSection() {
         const content = contentRef.current;
 
         if (video && section && content) {
-            // Ensure video is loaded enough to get duration
-            const onLoadedMetadata = () => {
-                video.pause();
-
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top top",
-                        end: `+=${window.innerHeight * 2}`,
-                        pin: true,
-                        scrub: true,
-                    },
-                    defaults: { ease: "none" }
-                });
-
-                // Video scrubbing
-                tl.to(video, {
-                    currentTime: video.duration,
-                });
-                
-                // Content fade in
-                tl.fromTo(content, { opacity: 0, y: 50 }, { opacity: 1, y: 0 }, 0);
-            };
-
-            video.addEventListener('loadedmetadata', onLoadedMetadata);
-            // If video is already loaded
-            if (video.readyState >= 1) {
-                onLoadedMetadata();
-            }
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top top",
+                    end: `+=${window.innerHeight * 2}`,
+                    pin: true,
+                    scrub: true,
+                },
+                defaults: { ease: "none" }
+            });
+            
+            // Content fade in
+            tl.fromTo(content, { opacity: 0, y: 50 }, { opacity: 1, y: 0 }, 0);
 
             return () => {
-                video.removeEventListener('loadedmetadata', onLoadedMetadata);
                 ScrollTrigger.getAll().forEach(trigger => trigger.kill());
             }
         }
@@ -83,22 +66,24 @@ export function KusdSection() {
                 src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
                 playsInline
                 muted
+                autoPlay
+                loop
                 preload="metadata"
                 className="w-full h-full object-cover"
             />
             <div ref={contentRef} className="absolute inset-0 flex flex-col items-center justify-between text-center p-6 py-24 opacity-0">
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-6xl mx-auto pt-12">
                     <div>
                         <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
                             KUSD: The Yield-Bearing Stablecoin
                         </h2>
-                        <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed font-light">
+                        <p className="text-black text-sm max-w-md mx-auto leading-relaxed font-light">
                             A decentralized, over-collateralized stablecoin designed for the instant economy.
                         </p>
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-6xl mx-auto pb-12">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {features.map((feature, index) => {
                             return (
