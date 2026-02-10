@@ -67,7 +67,6 @@ export function KusdSection() {
                 playsInline
                 muted
                 autoPlay
-                loop
                 preload="metadata"
                 className="w-full h-full object-cover"
             />
