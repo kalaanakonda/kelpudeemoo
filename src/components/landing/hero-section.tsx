@@ -17,7 +17,7 @@ export function HeroSection() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-card text-card-foreground">
       <video
-        src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/correctsdd.webm"
+        src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/new%20hero%201.webm"
         autoPlay
         muted
         playsInline
