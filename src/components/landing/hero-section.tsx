@@ -94,11 +94,9 @@ export function HeroSection() {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 py-6 z-20">
-        <div className="relative overflow-x-hidden">
-          <div className="py-2 animate-marquee whitespace-nowrap">
+        <div className="relative flex overflow-x-hidden">
+          <div className="py-2 animate-marquee whitespace-nowrap flex">
             <ScrollingLogos />
-          </div>
-          <div className="absolute top-0 py-2 animate-marquee2 whitespace-nowrap">
             <ScrollingLogos />
           </div>
         </div>
