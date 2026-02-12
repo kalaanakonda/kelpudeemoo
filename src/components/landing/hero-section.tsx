@@ -57,7 +57,6 @@ export function HeroSection() {
         src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/new%20hero%201.webm"
         autoPlay
         muted
-        loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
         style={{ objectPosition: 'center bottom' }}
