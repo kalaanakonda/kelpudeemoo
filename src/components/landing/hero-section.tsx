@@ -93,7 +93,10 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 py-6 z-20">
+      <div 
+        className="absolute bottom-0 left-0 right-0 py-6 z-20 animate-slide-in-up"
+        style={{ animationDelay: '1.5s' }}
+      >
         <div className="relative flex overflow-x-hidden">
           <div className="py-2 animate-marquee whitespace-nowrap flex">
             <ScrollingLogos />
