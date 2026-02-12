@@ -1,13 +1,8 @@
 "use client";
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
 
 const features = [
   {
@@ -28,41 +23,10 @@ const features = [
 ];
 
 export function KusdSection() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        const section = sectionRef.current;
-        const content = contentRef.current;
-
-        if (video && section && content) {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top top",
-                    end: `+=${window.innerHeight * 2}`,
-                    pin: true,
-                    scrub: true,
-                },
-                defaults: { ease: "none" }
-            });
-            
-            // Content fade in
-            tl.fromTo(content, { opacity: 0, y: 50 }, { opacity: 1, y: 0 }, 0);
-
-            return () => {
-                ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-            }
-        }
-    }, []);
-
   return (
-    <div ref={sectionRef} className="rounded-lg bg-card text-card-foreground overflow-hidden h-screen">
+    <div className="rounded-lg bg-card text-card-foreground overflow-hidden h-screen">
         <div className="relative h-full w-full">
             <video
-                ref={videoRef}
                 src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
                 playsInline
                 muted
@@ -70,7 +34,7 @@ export function KusdSection() {
                 preload="metadata"
                 className="w-full h-full object-cover"
             />
-            <div ref={contentRef} className="absolute inset-0 flex flex-col items-center justify-between text-center p-6 py-24 opacity-0">
+            <div className="absolute inset-0 flex flex-col items-center justify-between text-center p-6 py-24">
                 <div className="max-w-6xl mx-auto pt-12">
                     <div>
                         <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
