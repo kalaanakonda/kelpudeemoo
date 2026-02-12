@@ -2,7 +2,6 @@
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
 import React from 'react';
-import { cn } from '@/lib/utils';
 
 const features = [
   {
@@ -31,11 +30,10 @@ export function KusdSection() {
                 playsInline
                 muted
                 autoPlay
-                preload="metadata"
                 className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-between text-center p-6 py-24">
-                <div className="max-w-6xl mx-auto pt-12">
+            <div className="absolute inset-0 flex flex-col items-center justify-between text-center p-6 pt-16">
+                <div className="max-w-6xl mx-auto">
                     <div>
                         <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
                             KUSD: The Yield-Bearing Stablecoin
@@ -46,19 +44,20 @@ export function KusdSection() {
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto pb-12">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="max-w-5xl mx-auto pb-12 w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {features.map((feature, index) => {
                             return (
                                 <div
                                     key={index}
+                                    className="flex items-start text-left gap-4 text-black"
                                 >
-                                    <div className="bg-white p-6 text-center flex flex-col justify-center items-center rounded-md border h-full">
-                                        <div className="p-2 bg-primary/10 mb-3 rounded-md">
-                                            {feature.icon}
-                                        </div>
-                                        <h3 className="font-heading text-base font-normal mb-1 text-black">{feature.title}</h3>
-                                        <p className="text-xs text-slate-500">{feature.description}</p>
+                                    <div className="p-3 bg-white/20 border border-white/30 backdrop-blur-sm rounded-md">
+                                      {feature.icon}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-heading text-base font-normal mb-1">{feature.title}</h3>
+                                        <p className="text-xs text-slate-800">{feature.description}</p>
                                     </div>
                                 </div>
                             )

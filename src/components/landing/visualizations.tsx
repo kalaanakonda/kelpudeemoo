@@ -1,39 +1,7 @@
 import React from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Lock, ShieldCheck } from 'lucide-react';
+import { Lock, ShieldCheck, Landmark, ArrowUp, Coins } from 'lucide-react';
 import Image from 'next/image';
-
-const ArrowLeftRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M14 17.5V20l6-4-6-4v2.5H4v3h10zm-4-10.5V5L4 9l6 4v-2.5h10v-3H10z" />
-    </svg>
-);
-
-const WalletIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M22 7.24a1 1 0 0 0-1-1.24H4.25a1 1 0 0 0-1 1.24l-1.5 8.25A1 1 0 0 0 2.75 18H21.25a1 1 0 0 0 .99-1.51l-1.5-8.25zM12 14.75a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-        <path d="M4 6h16v-1a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v1z" />
-    </svg>
-);
-
-const TrendingUpIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M2.5 17.5 9 11l4 4 8.5-8.5v4h2v-8h-8v2h4.5L13 13l-4-4-8 8L2.5 17.5z" />
-    </svg>
-);
-
-const LandmarkIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M2 22h20v-2H2v2zM12 2l-9 4.5V10h18V6.5L12 2zM5 12v6h3v-6H5zm5 0v6h4v-6h-4zm7 0v6h3v-6h-3z" />
-    </svg>
-);
-
-const CircleDollarSignIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 15a1 1 0 0 1-1-1v-1.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 1 0-1h1.5a1.5 1.5 0 0 0 0-3H10a.5.5 0 0 1 0-1h1a.5.5 0 0 0 .5-.5V8a1 1 0 0 1 2 0v1.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 1 0 1h-1.5a1.5 1.5 0 0 0 0 3H14a.5.5 0 0 1 0 1h-1a.5.5 0 0 0-.5.5V16a1 1 0 0 1-1 1z" />
-    </svg>
-);
-
 
 export const AuditViz = () => (
   <div className="w-full h-full relative flex items-center justify-center overflow-hidden bg-gray-50">
@@ -56,10 +24,10 @@ export const AuditViz = () => (
 export const UtilityViz = () => {
   const rsEthLogo = PlaceHolderImages.find(p => p.id === 'rseth-logo');
   const icons = [
-    <LandmarkIcon className="w-4 h-4 text-primary" />,
-    <TrendingUpIcon className="w-4 h-4 text-primary" />,
-    <WalletIcon className="w-4 h-4 text-primary" />,
-    <ArrowLeftRightIcon className="w-4 h-4 text-primary" />,
+    <Landmark className="w-4 h-4 text-primary" />,
+    <ArrowUp className="w-4 h-4 text-primary" />,
+    <Coins className="w-4 h-4 text-primary" />,
+    <Lock className="w-4 h-4 text-primary" />,
   ];
 
   return (
