@@ -23,34 +23,55 @@ const features = [
 
 export function KusdSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          videoRef.current?.play();
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
+
+    const handleScroll = () => {
+      if (titleRef.current && videoRef.current) {
+        const titleRect = titleRef.current.getBoundingClientRect();
+        if (titleRect.top <= 0) {
+          // If title is at or above the viewport top, play video.
+          if (videoRef.current.paused) {
+            videoRef.current.play();
+          }
         } else {
-          videoRef.current?.pause();
+          // If title is below the viewport top, pause video.
+          if (!videoRef.current.paused) {
+            videoRef.current.pause();
+          }
+        }
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          window.addEventListener('scroll', handleScroll, { passive: true });
+          handleScroll(); // Initial check
+        } else {
+          window.removeEventListener('scroll', handleScroll);
+          videoRef.current?.pause(); // Pause when section is out of view
         }
       },
-      { threshold: 0.5 } // Play when 50% of the cards are visible
+      { threshold: 0 }
     );
 
-    const currentCardsRef = cardsRef.current;
-    if (currentCardsRef) {
-      observer.observe(currentCardsRef);
-    }
+    observer.observe(sectionEl);
 
     return () => {
-      if (currentCardsRef) {
-        observer.unobserve(currentCardsRef);
+      if (sectionEl) {
+        observer.unobserve(sectionEl);
       }
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <div className="rounded-lg bg-card text-card-foreground overflow-hidden h-[150vh]">
+    <div ref={sectionRef} className="rounded-lg bg-card text-card-foreground overflow-hidden h-[150vh]">
         <div className="relative h-full w-full">
             <video
                 ref={videoRef}
@@ -60,9 +81,9 @@ export function KusdSection() {
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center bottom' }}
             />
-            <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-white to-transparent" />
             <div className="absolute inset-0 flex flex-col items-center justify-start text-center p-6 pt-32 gap-16">
-                <div className="max-w-6xl mx-auto">
+                <div ref={titleRef} className="max-w-6xl mx-auto">
                     <div>
                         <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
                             KUSD: The Yield-Bearing Stablecoin
@@ -70,7 +91,7 @@ export function KusdSection() {
                     </div>
                 </div>
 
-                <div ref={cardsRef} className="max-w-5xl mx-auto w-full">
+                <div className="max-w-5xl mx-auto w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {features.map((feature, index) => {
                             return (
