@@ -1,7 +1,7 @@
 "use client";
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 const features = [
   {
@@ -22,14 +22,42 @@ const features = [
 ];
 
 export function KusdSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          videoRef.current?.play();
+        } else {
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.5 } // Play when 50% of the cards are visible
+    );
+
+    const currentCardsRef = cardsRef.current;
+    if (currentCardsRef) {
+      observer.observe(currentCardsRef);
+    }
+
+    return () => {
+      if (currentCardsRef) {
+        observer.unobserve(currentCardsRef);
+      }
+    };
+  }, []);
+
   return (
     <div className="rounded-lg bg-card text-card-foreground overflow-hidden h-[150vh]">
         <div className="relative h-full w-full">
             <video
+                ref={videoRef}
                 src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/coinn.webm"
                 playsInline
-                autoPlay
                 muted
+                loop
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center bottom' }}
             />
@@ -42,7 +70,7 @@ export function KusdSection() {
                     </div>
                 </div>
 
-                <div className="max-w-5xl mx-auto w-full">
+                <div ref={cardsRef} className="max-w-5xl mx-auto w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {features.map((feature, index) => {
                             return (
