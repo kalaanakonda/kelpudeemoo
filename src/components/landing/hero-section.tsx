@@ -87,7 +87,7 @@ export function HeroSection() {
             style={{ animationDelay: '1.2s' }}
           >
             <a href="#simulator" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 font-medium text-sm transition animate-glint rounded-md">
-              Learn more
+              Restake now
             </a>
           </div>
         </div>
