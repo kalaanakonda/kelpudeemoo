@@ -36,13 +36,13 @@ const ScrollingLogos = () => (
     <div className="flex-shrink-0 flex items-center justify-center whitespace-nowrap">
         {partnerLogos.map((logo, index) => (
             <div key={`${logo.name}-${index}`} className="flex-shrink-0 mx-4">
-                <div className="bg-black/5 backdrop-blur-sm rounded-full flex items-center justify-center px-5 py-2.5 h-12">
+                <div className="bg-black/5 backdrop-blur-sm rounded-full flex items-center justify-center px-4 py-2 h-10">
                     <Image
                         src={logo.src}
                         alt={logo.name}
                         width={80}
-                        height={24}
-                        className="object-contain h-6 w-auto"
+                        height={20}
+                        className="object-contain h-5 w-auto"
                     />
                 </div>
             </div>
@@ -94,7 +94,7 @@ export function HeroSection() {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 py-6 z-20">
-        <div className="relative flex overflow-x-hidden">
+        <div className="relative overflow-x-hidden">
           <div className="py-2 animate-marquee whitespace-nowrap">
             <ScrollingLogos />
           </div>
