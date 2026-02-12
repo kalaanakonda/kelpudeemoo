@@ -33,13 +33,14 @@ export function KusdSection() {
     const handleScroll = () => {
       if (titleRef.current && videoRef.current) {
         const titleRect = titleRef.current.getBoundingClientRect();
-        if (titleRect.top <= 0) {
-          // If title is at or above the viewport top, play video.
+        const viewportCenter = window.innerHeight / 2;
+        if (titleRect.top <= viewportCenter) {
+          // If title is at or above the viewport center, play video.
           if (videoRef.current.paused) {
             videoRef.current.play();
           }
         } else {
-          // If title is below the viewport top, pause video.
+          // If title is below the viewport center, pause video.
           if (!videoRef.current.paused) {
             videoRef.current.pause();
           }
