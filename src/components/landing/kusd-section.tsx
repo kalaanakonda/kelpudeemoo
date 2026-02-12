@@ -1,7 +1,7 @@
 "use client";
 
 import { DollarSign, BarChart, Shield } from 'lucide-react';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const features = [
   {
@@ -25,24 +25,21 @@ export function KusdSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
+  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
     if (!sectionEl) return;
 
     const handleScroll = () => {
-      if (titleRef.current && videoRef.current) {
+      if (titleRef.current && videoRef.current && !hasPlayed) {
         const titleRect = titleRef.current.getBoundingClientRect();
         const viewportCenter = window.innerHeight / 2;
         if (titleRect.top <= viewportCenter) {
-          // If title is at or above the viewport center, play video.
+          // If title is at or above the viewport center, play video once.
           if (videoRef.current.paused) {
             videoRef.current.play();
-          }
-        } else {
-          // If title is below the viewport center, pause video.
-          if (!videoRef.current.paused) {
-            videoRef.current.pause();
+            setHasPlayed(true);
           }
         }
       }
@@ -55,7 +52,6 @@ export function KusdSection() {
           handleScroll(); // Initial check
         } else {
           window.removeEventListener('scroll', handleScroll);
-          videoRef.current?.pause(); // Pause when section is out of view
         }
       },
       { threshold: 0 }
@@ -69,7 +65,7 @@ export function KusdSection() {
       }
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [hasPlayed]);
 
   return (
     <div ref={sectionRef} className="rounded-lg bg-card text-card-foreground overflow-hidden h-[150vh]">
