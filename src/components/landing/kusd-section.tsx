@@ -26,7 +26,7 @@ export function KusdSection() {
     <div className="rounded-lg bg-card text-card-foreground overflow-hidden h-[150vh]">
         <div className="relative h-full w-full">
             <video
-                src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/aaaaaaa.webm"
+                src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/kling_20260205_%E4%BD%9C%E5%93%81_the_coin_m_5785_0_Precise_Starlight_Precise_2.webm"
                 playsInline
                 autoPlay
                 muted
