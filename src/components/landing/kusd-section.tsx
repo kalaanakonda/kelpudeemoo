@@ -57,10 +57,10 @@ export function KusdSection() {
                 src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/coinn.webm"
                 playsInline
                 muted
-                loop
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center bottom' }}
             />
+            <div className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-white to-transparent" />
             <div className="absolute inset-0 flex flex-col items-center justify-start text-center p-6 pt-32 gap-16">
                 <div className="max-w-6xl mx-auto">
                     <div>
