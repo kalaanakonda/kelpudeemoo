@@ -55,17 +55,18 @@ export function KusdSection() {
   }, [hasPlayed]);
 
   return (
-    <div ref={sectionRef} className="bg-black text-white overflow-hidden relative min-h-screen">
+    <div ref={sectionRef} className="text-white overflow-hidden relative min-h-screen">
        <video
         ref={videoRef}
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src="https://github.com/kalaanakonda/videosyogi/raw/main/final%20kelp%20(1).webm" type="video/webm" />
       </video>
+      <div className="absolute inset-0 bg-black/60 z-10" />
       
-      <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 z-10">
+      <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 z-20">
         <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white">
               KUSD: The Yield-Bearing Stablecoin
@@ -78,14 +79,14 @@ export function KusdSection() {
                     return (
                         <div
                             key={index}
-                            className="flex items-start text-left gap-4 bg-white text-black p-6 rounded-lg border"
+                            className="flex items-start text-left gap-4 bg-white/10 backdrop-blur-md text-white p-6 rounded-lg border border-white/20"
                         >
                             <div className="p-3 bg-primary/10 rounded-md">
                               {React.cloneElement(feature.icon, {className: "w-4 h-4 text-primary"})}
                             </div>
                             <div>
-                                <h3 className="font-heading text-base text-black font-normal mb-1">{feature.title}</h3>
-                                <p className="text-xs text-slate-500 max-w-[180px]">{feature.description}</p>
+                                <h3 className="font-heading text-base text-white font-normal mb-1">{feature.title}</h3>
+                                <p className="text-xs text-slate-300 max-w-[180px]">{feature.description}</p>
                             </div>
                         </div>
                     )
