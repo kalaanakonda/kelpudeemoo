@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Box, CircleDollarSign, Percent } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { AnimatedCounter } from './animated-counter';
 
 export function KernelTokenSection() {
   const [inView, setInView] = useState(false);
@@ -34,17 +35,17 @@ export function KernelTokenSection() {
     {
       icon: <Box className="w-6 h-6 text-primary" />,
       label: 'Total Supply',
-      value: '1,000,000,000',
+      value: { end: 1000000000, decimals: 0, delay: 400 },
     },
     {
       icon: <CircleDollarSign className="w-6 h-6 text-primary" />,
       label: 'Initial Price',
-      value: '$0.10',
+      value: { end: 0.10, decimals: 2, prefix: '$', delay: 400 },
     },
     {
       icon: <Percent className="w-6 h-6 text-primary" />,
       label: 'Staking APR',
-      value: '15%',
+      value: { end: 15, decimals: 0, suffix: '%', delay: 400 },
     },
   ];
 
@@ -71,7 +72,9 @@ export function KernelTokenSection() {
                 </div>
                 <div>
                   <p className="text-xs text-slate-500">{stat.label}</p>
-                  <p className="text-2xl font-normal font-heading text-black">{stat.value}</p>
+                  <p className="text-2xl font-normal font-heading text-black">
+                    <AnimatedCounter {...stat.value} />
+                  </p>
                 </div>
               </div>
             ))}

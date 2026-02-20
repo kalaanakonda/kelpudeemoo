@@ -70,7 +70,10 @@ export const AnimatedCounter = ({
   return (
     <span ref={elementRef}>
       {prefix}
-      {count.toFixed(decimals)}
+      {count.toLocaleString(undefined, {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      })}
       {suffix}
     </span>
   );
