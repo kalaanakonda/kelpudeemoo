@@ -23,6 +23,7 @@ const features = [
 ];
 
 export function KusdSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
@@ -34,10 +35,12 @@ export function KusdSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.unobserve(entry.target);
+          videoRef.current?.play();
+        } else {
+          videoRef.current?.pause();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.5 }
     );
 
     observer.observe(sectionEl);
@@ -50,10 +53,18 @@ export function KusdSection() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-card text-card-foreground overflow-hidden relative min-h-screen">
+    <div ref={sectionRef} className="bg-black text-white overflow-hidden relative min-h-screen">
+       <video
+        ref={videoRef}
+        src="https://github.com/kalaanakonda/videosyogi/raw/main/final%20kelp%20(1).webm"
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
+      />
+      
       <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 z-10">
         <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
-          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
+          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white">
               KUSD: The Yield-Bearing Stablecoin
           </h2>
         </div>
@@ -64,7 +75,7 @@ export function KusdSection() {
                     return (
                         <div
                             key={index}
-                            className="flex items-start text-left gap-4 bg-white p-6 rounded-lg border"
+                            className="flex items-start text-left gap-4 bg-white text-black p-6 rounded-lg border"
                         >
                             <div className="p-3 bg-primary/10 rounded-md">
                               {React.cloneElement(feature.icon, {className: "w-4 h-4 text-primary"})}
