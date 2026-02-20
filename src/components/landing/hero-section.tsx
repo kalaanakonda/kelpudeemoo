@@ -55,13 +55,15 @@ export function HeroSection() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-card text-card-foreground">
       <video
-        src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/new%20hero%201.webm"
         autoPlay
+        loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
         style={{ objectPosition: 'center bottom' }}
-      />
+      >
+        <source src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/new%20hero%201.webm" type="video/webm" />
+      </video>
       
       <Navbar />
 

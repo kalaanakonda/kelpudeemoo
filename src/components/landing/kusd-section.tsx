@@ -26,6 +26,7 @@ export function KusdSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
@@ -35,9 +36,10 @@ export function KusdSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          videoRef.current?.play();
-        } else {
-          videoRef.current?.pause();
+          if (videoRef.current && !hasPlayed) {
+            videoRef.current.play();
+            setHasPlayed(true);
+          }
         }
       },
       { threshold: 0.5 }
@@ -50,17 +52,18 @@ export function KusdSection() {
         observer.unobserve(sectionEl);
       }
     };
-  }, []);
+  }, [hasPlayed]);
 
   return (
     <div ref={sectionRef} className="bg-black text-white overflow-hidden relative min-h-screen">
        <video
         ref={videoRef}
-        src="https://github.com/kalaanakonda/videosyogi/raw/main/final%20kelp%20(1).webm"
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
-      />
+      >
+        <source src="https://github.com/kalaanakonda/videosyogi/raw/main/final%20kelp%20(1).webm" type="video/webm" />
+      </video>
       
       <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 z-10">
         <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
