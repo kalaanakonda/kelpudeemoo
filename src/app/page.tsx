@@ -24,6 +24,9 @@ export default function LandingPage() {
             <VaultsSection />
           </div>
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
+            <OutworksSection />
+          </div>
+          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <KernelTokenSection />
           </div>
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
@@ -31,9 +34,6 @@ export default function LandingPage() {
           </div>
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <EarlyBackersSection />
-          </div>
-          <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
-            <OutworksSection />
           </div>
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <EcosystemSection />
