@@ -40,11 +40,11 @@ export function KusdSection() {
           const video = videoRef.current;
           if (video && !hasPlayed) {
             video.play();
+            setHasPlayed(true);
           }
-          observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     );
 
     observer.observe(sectionEl);
@@ -56,35 +56,19 @@ export function KusdSection() {
     };
   }, [hasPlayed]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    
-    const handleVideoEnd = () => {
-      setHasPlayed(true);
-    };
-
-    video.addEventListener('ended', handleVideoEnd);
-
-    return () => {
-      if (video) {
-        video.removeEventListener('ended', handleVideoEnd);
-      }
-    };
-  }, []);
-
   return (
     <div ref={sectionRef} className="bg-black text-card-foreground overflow-hidden relative">
       <video
           ref={videoRef}
           playsInline
           muted
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
+          className="absolute inset-0 w-full h-full object-cover z-0"
       >
           <source src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/coinn.webm" type="video/webm" />
       </video>
+      <div className="absolute inset-0 bg-black/70 z-0" />
       
-      <div className="relative h-full w-full flex flex-col items-center justify-center text-center p-6 gap-12 py-24 z-10">
+      <div className="relative h-full w-full flex flex-col items-center justify-center text-center p-6 gap-12 py-32 z-10">
         <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white">
               KUSD: The Yield-Bearing Stablecoin
@@ -97,7 +81,7 @@ export function KusdSection() {
                     return (
                         <div
                             key={index}
-                            className="flex items-start text-left gap-4 bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg text-white"
+                            className="flex items-start text-left gap-4 bg-neutral-900 p-6 rounded-lg text-white"
                         >
                             <div className="p-3 bg-primary/20 text-primary-foreground rounded-md">
                               {React.cloneElement(feature.icon, {className: "w-4 h-4 text-white"})}
