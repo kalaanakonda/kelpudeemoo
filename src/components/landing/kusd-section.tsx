@@ -57,7 +57,7 @@ export function KusdSection() {
   }, [hasPlayed]);
 
   return (
-    <div ref={sectionRef} className="bg-black text-card-foreground overflow-hidden relative">
+    <div ref={sectionRef} className="bg-black text-card-foreground overflow-hidden relative min-h-screen">
       <video
           ref={videoRef}
           playsInline
@@ -68,7 +68,7 @@ export function KusdSection() {
       </video>
       <div className="absolute inset-0 bg-black/70 z-0" />
       
-      <div className="relative h-full w-full flex flex-col items-center justify-center text-center p-6 gap-12 py-32 z-10">
+      <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 z-10">
         <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white">
               KUSD: The Yield-Bearing Stablecoin
