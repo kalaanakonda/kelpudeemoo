@@ -25,10 +25,8 @@ const features = [
 export function KusdSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const [headlineVisible, setHeadlineVisible] = useState(false);
-  const [coinVisible, setCoinVisible] = useState(false);
-  const [featuresVisible, setFeaturesVisible] = useState(false);
+  
+  const [inView, setInView] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
@@ -38,17 +36,11 @@ export function KusdSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setHeadlineVisible(true);
-          setTimeout(() => {
-            setCoinVisible(true);
-            if (videoRef.current && !hasPlayed) {
-              videoRef.current.play();
-              setHasPlayed(true);
-            }
-          }, 500); // delay after headline
-          setTimeout(() => {
-            setFeaturesVisible(true);
-          }, 1000); // delay after coin
+          setInView(true);
+          const video = videoRef.current;
+          if (video && !hasPlayed) {
+            video.play();
+          }
           observer.unobserve(entry.target);
         }
       },
@@ -64,40 +56,55 @@ export function KusdSection() {
     };
   }, [hasPlayed]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    const handleVideoEnd = () => {
+      setHasPlayed(true);
+    };
+
+    video.addEventListener('ended', handleVideoEnd);
+
+    return () => {
+      if (video) {
+        video.removeEventListener('ended', handleVideoEnd);
+      }
+    };
+  }, []);
+
   return (
-    <div ref={sectionRef} className="bg-card text-card-foreground overflow-hidden py-24">
-      <div className="relative h-full w-full flex flex-col items-center justify-center text-center p-6 gap-12">
-        
-        <div className={cn("max-w-6xl mx-auto opacity-0", headlineVisible && "animate-slide-in-up")}>
-          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
+    <div ref={sectionRef} className="bg-black text-card-foreground overflow-hidden relative">
+      <video
+          ref={videoRef}
+          playsInline
+          muted
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
+      >
+          <source src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/coinn.webm" type="video/webm" />
+      </video>
+      
+      <div className="relative h-full w-full flex flex-col items-center justify-center text-center p-6 gap-12 py-24 z-10">
+        <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
+          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white">
               KUSD: The Yield-Bearing Stablecoin
           </h2>
         </div>
         
-        <div className={cn("opacity-0", coinVisible && "animate-scale-in")} style={{animationDelay: '0.2s'}}>
-            <video
-                ref={videoRef}
-                src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/coinn.webm"
-                playsInline
-                muted
-                className="w-full max-w-sm h-auto rounded-full shadow-2xl"
-            />
-        </div>
-        
-        <div className={cn("max-w-5xl mx-auto w-full opacity-0", featuresVisible && "animate-slide-in-up")} style={{animationDelay: '0.4s'}}>
+        <div className={cn("max-w-5xl mx-auto w-full opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.4s'}}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {features.map((feature, index) => {
                     return (
                         <div
                             key={index}
-                            className="flex items-start text-left gap-4 text-black bg-white p-6 rounded-lg shadow-lg"
+                            className="flex items-start text-left gap-4 bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg text-white"
                         >
-                            <div className="p-3 bg-primary/10 rounded-md">
-                              {feature.icon}
+                            <div className="p-3 bg-primary/20 text-primary-foreground rounded-md">
+                              {React.cloneElement(feature.icon, {className: "w-4 h-4 text-white"})}
                             </div>
                             <div>
-                                <h3 className="font-heading text-base text-black font-normal mb-1">{feature.title}</h3>
-                                <p className="text-xs text-slate-600 max-w-[180px]">{feature.description}</p>
+                                <h3 className="font-heading text-base text-white font-normal mb-1">{feature.title}</h3>
+                                <p className="text-xs text-slate-300 max-w-[180px]">{feature.description}</p>
                             </div>
                         </div>
                     )

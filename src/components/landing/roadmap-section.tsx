@@ -6,27 +6,27 @@ import { RoadmapPhase } from './roadmap-phase';
 
 const roadmapPhases = [
   {
-    quarter: 'Q3 2024',
-    title: 'Protocol Launch',
-    items: ['rsETH Launch on Mainnet', 'Integration with 5+ DeFi protocols', 'Initial Security Audits'],
+    quarter: 'Phase 1',
+    title: 'Lorem Ipsum Dolor',
+    items: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'],
     status: 'completed',
   },
   {
-    quarter: 'Q4 2024',
-    title: 'KUSD Stablecoin',
-    items: ['Launch KUSD yield-bearing stablecoin', 'Integrate KUSD into lending markets', 'Expand to 2+ L2s'],
+    quarter: 'Phase 2',
+    title: 'Ut Enim ad Minim',
+    items: ['Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.', 'Nisi ut aliquip ex ea commodo consequat.'],
     status: 'in-progress',
   },
   {
-    quarter: 'Q1 2025',
-    title: 'Governance & Staking',
-    items: ['KELP Token Generation Event (TGE)', 'Launch Governance Portal', 'Enable KELP Staking for Rewards'],
+    quarter: 'Phase 3',
+    title: 'Duis Aute Irure',
+    items: ['Duis aute irure dolor in reprehenderit in voluptate velit esse.', 'Cillum dolore eu fugiat nulla pariatur.'],
     status: 'upcoming',
   },
   {
-    quarter: 'Q2 2025',
-    title: 'Real-World Assets',
-    items: ['Framework for tokenizing RWAs', 'Onboard first RWA partners', 'Launch RWA-backed vaults'],
+    quarter: 'Phase 4',
+    title: 'Excepteur Sint Occaecat',
+    items: ['Excepteur sint occaecat cupidatat non proident.', 'Sunt in culpa qui officia deserunt mollit anim id est laborum.'],
     status: 'upcoming',
   },
 ];
@@ -68,8 +68,8 @@ export function RoadmapSection() {
           </p>
         </div>
 
-        <div className="relative">
-          <div className="absolute left-1/2 -translate-x-1/2 top-4 w-0.5 h-[calc(100%-2rem)] bg-gray-200 hidden md:block"></div>
+        <div className="relative max-w-2xl mx-auto">
+          <div className="absolute left-4 top-4 w-0.5 h-full bg-gray-200"></div>
           
           <div className="space-y-12">
             {roadmapPhases.map((phase, index) => (
