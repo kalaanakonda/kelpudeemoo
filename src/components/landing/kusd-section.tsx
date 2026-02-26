@@ -105,7 +105,7 @@ export function KusdSection() {
                 ref={videoRef}
                 muted
                 playsInline
-                preload="none"
+                preload="auto"
                 className="w-full h-auto"
             >
                 <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
