@@ -56,7 +56,6 @@ export function HeroSection() {
     <div className="relative min-h-screen overflow-hidden bg-card text-card-foreground">
       <video
         autoPlay
-        loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"

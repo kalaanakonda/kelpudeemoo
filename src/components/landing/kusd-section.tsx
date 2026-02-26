@@ -58,24 +58,24 @@ export function KusdSection() {
   }, [hasPlayed]);
 
   return (
-    <div ref={sectionRef} className="relative overflow-hidden min-h-screen bg-card text-card-foreground">
-      <video
+    <div ref={sectionRef} className="relative overflow-hidden bg-white">
+       <video
         ref={videoRef}
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="https://github.com/kalaanakonda/videosyogi/raw/main/final%20kelp%20(1).webm" type="video/webm" />
+        <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
       </video>
       
-      <div className="relative z-10 flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 min-h-screen">
-        <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
+      <div className="relative z-10 flex flex-col items-center justify-between text-center p-6 min-h-screen">
+        <div className={cn("max-w-6xl mx-auto opacity-0 pt-24 md:pt-32", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
               KUSD: The Yield-Bearing Stablecoin
           </h2>
         </div>
         
-        <div className={cn("max-w-5xl mx-auto w-full opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.4s'}}>
+        <div className={cn("max-w-5xl mx-auto w-full opacity-0 pb-16 md:pb-24", inView && "animate-slide-in-up")} style={{animationDelay: '0.4s'}}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {features.map((feature, index) => {
                     return (
