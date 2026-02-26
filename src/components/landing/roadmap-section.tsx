@@ -31,7 +31,7 @@ const roadmapPhases = [
   },
 ];
 
-const PHASE_VIEWPORT_HEIGHT_VH = 75;
+const PHASE_VIEWPORT_HEIGHT_VH = 60;
 
 export function RoadmapSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -49,7 +49,7 @@ export function RoadmapSection() {
         setScrollProgress(0);
         return;
       }
-
+      
       const progress = Math.max(0, Math.min(1, (-top) / scrollableHeight));
       setScrollProgress(progress);
     };
@@ -69,7 +69,7 @@ export function RoadmapSection() {
     <section 
       ref={sectionRef} 
       className="relative bg-gray-50"
-      style={{ height: `${roadmapPhases.length * 80}vh`}}
+      style={{ height: `${roadmapPhases.length * 100}vh`}}
     >
       <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 w-full">
