@@ -63,12 +63,12 @@ export function KusdSection() {
         ref={videoRef}
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0 object-top md:object-center"
       >
         <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
       </video>
       
-      <div className="relative z-10 flex flex-col items-center justify-between text-center p-6 min-h-[160vh] md:min-h-[120vh]">
+      <div className="relative z-10 flex flex-col items-center justify-between text-center p-6 min-h-[200vh] md:min-h-[160vh]">
         <div className={cn("max-w-6xl mx-auto opacity-0 pt-24 md:pt-32", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
               KUSD: The Yield-Bearing Stablecoin
