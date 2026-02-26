@@ -8,6 +8,7 @@ import { KusdSection } from "@/components/landing/kusd-section";
 import { VaultsSection } from "@/components/landing/vaults-section";
 import { KernelTokenSection } from "@/components/landing/kernel-token-section";
 import { EarlyBackersSection } from "@/components/landing/early-backers-section";
+import { RoadmapSection } from "@/components/landing/roadmap-section";
 
 export default function LandingPage() {
   return (
@@ -31,6 +32,7 @@ export default function LandingPage() {
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <EarlyBackersSection />
           </div>
+          <RoadmapSection />
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <EcosystemSection />
           </div>
