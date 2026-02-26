@@ -57,10 +57,10 @@ export function RoadmapSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-16 bg-gray-50 overflow-hidden">
+    <section ref={ref} className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="md:grid md:grid-cols-3 md:gap-12">
-          <div className="md:col-span-1 md:sticky md:top-24 h-full mb-12 md:mb-0">
+          <div className="md:col-span-1 md:sticky md:top-24 h-fit mb-12 md:mb-0">
             <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
               <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
                 Our Roadmap
@@ -72,8 +72,8 @@ export function RoadmapSection() {
           </div>
 
           <div className="md:col-span-2 relative">
-            <div className="absolute left-4 top-4 w-0.5 h-full bg-gray-200"></div>
-            <div className="space-y-16">
+            <div className="absolute left-2 top-0 w-0.5 h-full bg-gray-200"></div>
+            <div className="space-y-0">
               {roadmapPhases.map((phase, index) => (
                 <RoadmapPhase key={index} phase={phase} index={index} />
               ))}
