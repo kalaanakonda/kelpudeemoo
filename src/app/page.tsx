@@ -29,10 +29,10 @@ export default function LandingPage() {
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <KernelTokenSection />
           </div>
+          <RoadmapSection />
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <EarlyBackersSection />
           </div>
-          <RoadmapSection />
           <div className="rounded-lg bg-card text-card-foreground overflow-hidden">
             <EcosystemSection />
           </div>
