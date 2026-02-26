@@ -68,12 +68,11 @@ export function KusdSection() {
         </div>
         
         {/* Video Card */}
-        <div className={cn("relative z-10 w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-gray-200 shadow-xl opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.2s'}}>
+        <div className={cn("relative z-10 w-full max-w-5xl mx-auto rounded-lg overflow-hidden border border-gray-200 shadow-xl opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.2s'}}>
             <video
                 ref={videoRef}
                 muted
                 playsInline
-                loop
                 className="w-full h-auto"
             >
                 <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
