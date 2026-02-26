@@ -55,8 +55,8 @@ export function KusdSection() {
   }, [hasPlayed]);
 
   return (
-    <div ref={sectionRef} className="text-white overflow-hidden relative min-h-screen">
-       <video
+    <div ref={sectionRef} className="relative overflow-hidden min-h-screen bg-black">
+      <video
         ref={videoRef}
         muted
         playsInline
@@ -64,11 +64,10 @@ export function KusdSection() {
       >
         <source src="https://github.com/kalaanakonda/videosyogi/raw/main/final%20kelp%20(1).webm" type="video/webm" />
       </video>
-      <div className="absolute inset-0 bg-black/60 z-10" />
       
-      <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 z-20">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32">
         <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
-          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white">
+          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
               KUSD: The Yield-Bearing Stablecoin
           </h2>
         </div>
@@ -79,7 +78,7 @@ export function KusdSection() {
                     return (
                         <div
                             key={index}
-                            className="flex items-start text-left gap-4 bg-white/10 backdrop-blur-md text-white p-6 rounded-lg border border-white/20"
+                            className="flex items-start text-left gap-4 bg-white/20 backdrop-blur-lg text-white p-6 rounded-lg border border-white/30"
                         >
                             <div className="p-3 bg-primary/10 rounded-md">
                               {React.cloneElement(feature.icon, {className: "w-4 h-4 text-primary"})}
