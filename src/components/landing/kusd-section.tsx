@@ -33,11 +33,14 @@ export function KusdSection() {
     if (!sectionEl) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      (entries) => {
+        const entry = entries[0];
         if (entry.isIntersecting) {
           setInView(true);
           if (videoRef.current && !hasPlayed) {
-            videoRef.current.play();
+            videoRef.current.play().catch(error => {
+              console.error("Video play failed:", error);
+            });
             setHasPlayed(true);
           }
         }
@@ -55,7 +58,7 @@ export function KusdSection() {
   }, [hasPlayed]);
 
   return (
-    <div ref={sectionRef} className="relative overflow-hidden min-h-screen bg-black">
+    <div ref={sectionRef} className="relative overflow-hidden min-h-screen bg-card text-card-foreground">
       <video
         ref={videoRef}
         muted
@@ -65,9 +68,9 @@ export function KusdSection() {
         <source src="https://github.com/kalaanakonda/videosyogi/raw/main/final%20kelp%20(1).webm" type="video/webm" />
       </video>
       
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32">
+      <div className="relative z-10 flex flex-col items-center justify-between text-center p-6 py-24 md:p-12 md:py-32 min-h-screen">
         <div className={cn("max-w-6xl mx-auto opacity-0", inView && "animate-slide-in-up")}>
-          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
               KUSD: The Yield-Bearing Stablecoin
           </h2>
         </div>
@@ -78,14 +81,14 @@ export function KusdSection() {
                     return (
                         <div
                             key={index}
-                            className="flex items-start text-left gap-4 bg-white/20 backdrop-blur-lg text-white p-6 rounded-lg border border-white/30"
+                            className="flex items-start text-left gap-4 bg-white p-6 rounded-lg border border-gray-200 shadow-lg"
                         >
                             <div className="p-3 bg-primary/10 rounded-md">
                               {React.cloneElement(feature.icon, {className: "w-4 h-4 text-primary"})}
                             </div>
                             <div>
-                                <h3 className="font-heading text-base text-white font-normal mb-1">{feature.title}</h3>
-                                <p className="text-xs text-slate-300 max-w-[180px]">{feature.description}</p>
+                                <h3 className="font-heading text-base text-black font-normal mb-1">{feature.title}</h3>
+                                <p className="text-xs text-slate-500 max-w-[180px]">{feature.description}</p>
                             </div>
                         </div>
                     )
