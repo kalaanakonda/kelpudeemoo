@@ -61,7 +61,7 @@ export function KusdSection() {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        // Play video when the heading is centered in the viewport
+        // Play video when the heading is almost at the top of the viewport
         if (entry.isIntersecting) {
           if (!hasPlayed.current) {
             videoEl.play().catch(error => {
@@ -73,7 +73,7 @@ export function KusdSection() {
         }
       },
       { 
-        threshold: 0.5 // Trigger when 50% of the heading is visible
+        threshold: 0.2 // Trigger when 20% of the heading is visible
       }
     );
 
