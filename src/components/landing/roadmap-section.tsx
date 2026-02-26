@@ -31,16 +31,19 @@ const roadmapPhases = [
   },
 ];
 
-const PHASE_ITEM_HEIGHT_VH = 60; // The height of the viewport for a single phase item.
+// The height of the right-side viewport showing one phase.
+const PHASE_VIEWPORT_HEIGHT_VH = 60;
+// How many vh of scrolling for each phase to pass. Higher means slower/more locked scroll.
+const SCROLL_SENSITIVITY_VH = 100; 
 
 export function RoadmapSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   // The total height of the scrollable track section.
-  // It needs to be tall enough to keep the content sticky while we scroll through all phases.
-  // 100vh for the initial sticky view, plus enough height to scroll past the remaining phases.
-  const sectionHeightVh = 100 + (roadmapPhases.length - 1) * PHASE_ITEM_HEIGHT_VH;
+  // This needs to be tall enough for the sticky container to scroll past all phases.
+  // It's the initial screen height, plus the scroll distance needed for the remaining phases.
+  const sectionHeightVh = 100 + (roadmapPhases.length - 1) * SCROLL_SENSITIVITY_VH;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,6 +51,7 @@ export function RoadmapSection() {
       if (!sectionEl) return;
 
       const { top, height } = sectionEl.getBoundingClientRect();
+      // The total scrollable distance within our tall section.
       const scrollableHeight = height - window.innerHeight;
       
       if (scrollableHeight <= 0) {
@@ -55,21 +59,22 @@ export function RoadmapSection() {
         return;
       }
       
+      // The progress (0 to 1) of scrolling through the section.
       const progress = Math.max(0, Math.min(1, (-top) / scrollableHeight));
       setScrollProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    handleScroll(); // Initial call
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [sectionHeightVh]);
+  }, [sectionHeightVh]); // Dependency ensures recalculation if phases change.
 
-  const totalPhasesContainerHeightVh = roadmapPhases.length * PHASE_ITEM_HEIGHT_VH;
+  const totalPhasesContainerHeightVh = roadmapPhases.length * PHASE_VIEWPORT_HEIGHT_VH;
   // We need to translate upwards by the total height minus one phase height (which remains in view).
-  const maxTranslateY = totalPhasesContainerHeightVh - PHASE_ITEM_HEIGHT_VH;
+  const maxTranslateY = totalPhasesContainerHeightVh - PHASE_VIEWPORT_HEIGHT_VH;
   const translateY = -scrollProgress * maxTranslateY;
 
   return (
@@ -92,12 +97,13 @@ export function RoadmapSection() {
 
             <div 
               className="md:col-span-2 relative"
-              style={{ height: `${PHASE_ITEM_HEIGHT_VH}vh`, overflow: 'hidden'}}
+              style={{ height: `${PHASE_VIEWPORT_HEIGHT_VH}vh`, overflow: 'hidden'}}
             >
               <div 
                 className="absolute top-0 left-0 w-full"
                 style={{ transform: `translateY(${translateY}vh)` }}
               >
+                 {/* The vertical timeline bar */}
                  <div className="absolute left-2 top-0 w-0.5 bg-gray-200" style={{ height: `${totalPhasesContainerHeightVh}vh` }}></div>
                  {roadmapPhases.map((phase, index) => (
                     <RoadmapPhase key={index} phase={phase} />

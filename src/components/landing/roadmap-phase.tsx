@@ -12,9 +12,11 @@ type RoadmapPhaseProps = {
   };
 };
 
+const PHASE_VIEWPORT_HEIGHT_VH = 60;
+
 export function RoadmapPhase({ phase }: RoadmapPhaseProps) {
   return (
-    <div className="relative pl-8 flex flex-col justify-center" style={{ height: '60vh' }}>
+    <div className="relative pl-8 flex flex-col justify-center" style={{ height: `${PHASE_VIEWPORT_HEIGHT_VH}vh` }}>
       <div className="absolute left-2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-4 border-gray-50 z-10"></div>
       
       <div>
