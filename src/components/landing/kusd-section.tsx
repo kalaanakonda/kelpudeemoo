@@ -26,7 +26,6 @@ export function KusdSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
-  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
@@ -37,15 +36,15 @@ export function KusdSection() {
         const entry = entries[0];
         if (entry.isIntersecting) {
           setInView(true);
-          if (videoRef.current && !hasPlayed) {
+          if (videoRef.current && videoRef.current.paused) {
             videoRef.current.play().catch(error => {
               console.error("Video play failed:", error);
             });
-            setHasPlayed(true);
           }
+          observer.unobserve(sectionEl); // Only animate once
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 } // Trigger when 20% of the section is visible
     );
 
     observer.observe(sectionEl);
@@ -55,27 +54,34 @@ export function KusdSection() {
         observer.unobserve(sectionEl);
       }
     };
-  }, [hasPlayed]);
+  }, []);
 
   return (
-    <div ref={sectionRef} className="relative overflow-hidden bg-white">
-       <video
-        ref={videoRef}
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 object-top md:object-center"
-      >
-        <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
-      </video>
-      
-      <div className="relative z-10 flex flex-col items-center justify-between text-center p-6 min-h-[200vh] md:min-h-[160vh]">
-        <div className={cn("max-w-6xl mx-auto opacity-0 pt-24 md:pt-32", inView && "animate-slide-in-up")}>
+    <div ref={sectionRef} className="overflow-hidden bg-white py-24">
+      <div className="max-w-6xl mx-auto px-6 space-y-16">
+
+        {/* Headline */}
+        <div className={cn("max-w-3xl mx-auto text-center opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
-              KUSD: The Yield-Bearing Stablecoin
+            KUSD: The Yield-Bearing Stablecoin
           </h2>
         </div>
         
-        <div className={cn("max-w-5xl mx-auto w-full opacity-0 pb-16 md:pb-24", inView && "animate-slide-in-up")} style={{animationDelay: '0.4s'}}>
+        {/* Video Card */}
+        <div className={cn("relative z-10 w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-gray-200 shadow-xl opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.2s'}}>
+            <video
+                ref={videoRef}
+                muted
+                playsInline
+                loop
+                className="w-full h-auto"
+            >
+                <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
+            </video>
+        </div>
+
+        {/* Feature Cards */}
+        <div className={cn("max-w-5xl mx-auto w-full opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.4s'}}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {features.map((feature, index) => {
                     return (
