@@ -31,11 +31,16 @@ const roadmapPhases = [
   },
 ];
 
-const PHASE_VIEWPORT_HEIGHT_VH = 60;
+const PHASE_ITEM_HEIGHT_VH = 60; // The height of the viewport for a single phase item.
 
 export function RoadmapSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  // The total height of the scrollable track section.
+  // It needs to be tall enough to keep the content sticky while we scroll through all phases.
+  // 100vh for the initial sticky view, plus enough height to scroll past the remaining phases.
+  const sectionHeightVh = 100 + (roadmapPhases.length - 1) * PHASE_ITEM_HEIGHT_VH;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,16 +65,18 @@ export function RoadmapSection() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [sectionHeightVh]);
 
-  const totalPhasesHeightVh = roadmapPhases.length * PHASE_VIEWPORT_HEIGHT_VH;
-  const translateY = -scrollProgress * (totalPhasesHeightVh - PHASE_VIEWPORT_HEIGHT_VH);
+  const totalPhasesContainerHeightVh = roadmapPhases.length * PHASE_ITEM_HEIGHT_VH;
+  // We need to translate upwards by the total height minus one phase height (which remains in view).
+  const maxTranslateY = totalPhasesContainerHeightVh - PHASE_ITEM_HEIGHT_VH;
+  const translateY = -scrollProgress * maxTranslateY;
 
   return (
     <section 
       ref={sectionRef} 
       className="relative bg-gray-50"
-      style={{ height: `${roadmapPhases.length * 100}vh`}}
+      style={{ height: `${sectionHeightVh}vh`}}
     >
       <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 w-full">
@@ -85,13 +92,13 @@ export function RoadmapSection() {
 
             <div 
               className="md:col-span-2 relative"
-              style={{ height: `${PHASE_VIEWPORT_HEIGHT_VH}vh`, overflow: 'hidden'}}
+              style={{ height: `${PHASE_ITEM_HEIGHT_VH}vh`, overflow: 'hidden'}}
             >
               <div 
-                className="absolute top-0 left-0 w-full transition-transform duration-100 ease-linear"
+                className="absolute top-0 left-0 w-full"
                 style={{ transform: `translateY(${translateY}vh)` }}
               >
-                 <div className="absolute left-2 top-0 w-0.5 bg-gray-200" style={{ height: `${totalPhasesHeightVh}vh` }}></div>
+                 <div className="absolute left-2 top-0 w-0.5 bg-gray-200" style={{ height: `${totalPhasesContainerHeightVh}vh` }}></div>
                  {roadmapPhases.map((phase, index) => (
                     <RoadmapPhase key={index} phase={phase} />
                   ))}
