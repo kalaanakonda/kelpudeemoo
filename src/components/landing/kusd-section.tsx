@@ -61,7 +61,7 @@ export function KusdSection() {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        // Play video when the heading is almost at the top of the viewport
+        // Play video only when the heading is fully visible.
         if (entry.isIntersecting) {
           if (!hasPlayed.current) {
             videoEl.play().catch(error => {
@@ -73,7 +73,7 @@ export function KusdSection() {
         }
       },
       { 
-        threshold: 0.2 // Trigger when 20% of the heading is visible
+        threshold: 1.0 // Trigger when 100% of the heading is visible
       }
     );
 
@@ -104,6 +104,7 @@ export function KusdSection() {
                 ref={videoRef}
                 muted
                 playsInline
+                preload="none"
                 className="w-full h-auto"
             >
                 <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
