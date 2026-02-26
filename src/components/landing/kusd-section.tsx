@@ -25,7 +25,9 @@ const features = [
 export function KusdSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const hasPlayed = useRef(false);
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
@@ -36,11 +38,6 @@ export function KusdSection() {
         const entry = entries[0];
         if (entry.isIntersecting) {
           setInView(true);
-          if (videoRef.current && videoRef.current.paused) {
-            videoRef.current.play().catch(error => {
-              console.error("Video play failed:", error);
-            });
-          }
           observer.unobserve(sectionEl); // Only animate once
         }
       },
@@ -56,12 +53,44 @@ export function KusdSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const headingEl = headingRef.current;
+    const videoEl = videoRef.current;
+    if (!headingEl || !videoEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        // Play video when the heading scrolls past the top of the viewport
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          if (!hasPlayed.current) {
+            videoEl.play().catch(error => {
+              console.error("Video play failed:", error);
+            });
+            hasPlayed.current = true;
+            observer.unobserve(headingEl);
+          }
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(headingEl);
+
+    return () => {
+      if (headingEl) {
+        observer.unobserve(headingEl);
+      }
+    };
+  }, []);
+
+
   return (
     <div ref={sectionRef} className="overflow-hidden bg-white py-24">
       <div className="max-w-6xl mx-auto px-6 space-y-16">
 
         {/* Headline */}
-        <div className={cn("max-w-3xl mx-auto text-center opacity-0", inView && "animate-slide-in-up")}>
+        <div ref={headingRef} className={cn("max-w-5xl mx-auto text-center opacity-0", inView && "animate-slide-in-up")}>
           <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
             KUSD: The Yield-Bearing Stablecoin
           </h2>
