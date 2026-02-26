@@ -34,7 +34,7 @@ const roadmapPhases = [
 // The height of the right-side viewport showing one phase.
 const PHASE_VIEWPORT_HEIGHT_VH = 60;
 // How many vh of scrolling for each phase to pass. Higher means slower/more locked scroll.
-const SCROLL_SENSITIVITY_VH = 100; 
+const SCROLL_SENSITIVITY_VH = 50; 
 
 export function RoadmapSection() {
   const sectionRef = useRef<HTMLElement>(null);
