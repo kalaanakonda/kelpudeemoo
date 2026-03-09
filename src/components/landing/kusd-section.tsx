@@ -69,7 +69,7 @@ export function KusdSection() {
   return (
     <section ref={ref} className="bg-black text-white py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
             <h2 className="text-4xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4">
               KUSD: The Stablecoin for the Instant Economy
