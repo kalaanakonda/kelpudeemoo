@@ -85,7 +85,7 @@ export function KusdSection() {
                 key={item.name}
                 className={cn(
                   "bg-gray-50 p-4 flex items-center gap-4 border border-gray-200 rounded-md",
-                  { "border-primary/50 bg-primary/5 animate-glint": item.isPrimary }
+                  { "border-primary/50 bg-primary/5 animate-glint-primary": item.isPrimary }
                 )}
               >
                 <div className="flex items-center gap-4 w-2/5 flex-shrink-0">
