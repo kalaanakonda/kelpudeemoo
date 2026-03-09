@@ -15,7 +15,7 @@ export function StatsSection() {
               <div className="text-5xl font-normal font-heading tracking-tighter text-black">
                 <AnimatedCounter end={1.46} delay={600} prefix="$" suffix="B" decimals={2} />
               </div>
-              <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Total Value Locked</p>
+              <p className="text-slate-500 text-sm leading-relaxed font-light mt-1">Total Value Locked</p>
             </div>
           </div>
 
@@ -25,7 +25,7 @@ export function StatsSection() {
               <div className="text-5xl font-normal font-heading tracking-tighter text-black">
                 <AnimatedCounter end={300} delay={800} suffix="K+" decimals={0} />
               </div>
-              <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Total Restakers</p>
+              <p className="text-slate-500 text-sm leading-relaxed font-light mt-1">Total Restakers</p>
             </div>
           </div>
 
@@ -35,7 +35,7 @@ export function StatsSection() {
               <div className="text-5xl font-normal font-heading tracking-tighter text-black">
                 <AnimatedCounter end={2.5} delay={1000} suffix="%" decimals={1} />
               </div>
-              <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Current APR</p>
+              <p className="text-slate-500 text-sm leading-relaxed font-light mt-1">Current APR</p>
             </div>
           </div>
 
