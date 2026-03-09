@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
+import { Separator } from "@/components/ui/separator";
 
 const navHierarchy = [
   {
@@ -109,12 +110,13 @@ const NavMenu = ({ isMobile = false }: { isMobile?: boolean }) => {
         )}
       >
         {activeContent && (
-          <div key={activeContent.title} className="p-8 w-[480px] animate-fade-in duration-300">
-            <h3 className="text-sm font-medium text-gray-500 mb-4">{activeContent.title}</h3>
+          <div key={activeContent.title} className="p-6 w-[480px] animate-fade-in duration-300">
+            <h3 className="text-sm font-medium text-gray-500 mb-3">{activeContent.title}</h3>
+            <Separator className="mb-4" />
             <ul className="grid grid-cols-2 gap-x-8 gap-y-3">
               {activeContent.items.map((item, itemIndex) => (
                 <li key={itemIndex}>
-                  <a href={item.href} className="flex items-center justify-between py-1 text-gray-700 hover:text-black group">
+                  <a href={item.href} className="flex items-center justify-between py-1 text-sm text-gray-700 hover:text-black group">
                     <span>{item.name}</span>
                     <ArrowRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </a>
