@@ -85,7 +85,7 @@ export function KusdSection() {
                 key={item.name}
                 className={cn(
                   "bg-gray-50 p-4 flex items-center gap-4 border border-gray-200 rounded-md",
-                  { "border-primary/50 bg-primary/5": item.isPrimary }
+                  { "border-primary/50 bg-primary/5 animate-glint": item.isPrimary }
                 )}
               >
                 <div className="flex items-center gap-4 w-2/5 flex-shrink-0">
@@ -119,7 +119,7 @@ export function KusdSection() {
                 </div>
               </div>
             ))}
-             <div className="text-xs text-slate-500 pt-4 space-y-1">
+             <div className="text-xs text-slate-500 pt-4 space-y-1 font-light">
                 <p><span className="font-semibold text-slate-600">USDe:</span> Based on funding rates.</p>
                 <p><span className="font-semibold text-slate-600">USDY:</span> Based on US Treasury Bills.</p>
                 <p><span className="font-semibold text-slate-600">Fintech:</span> Based on money markets.</p>
