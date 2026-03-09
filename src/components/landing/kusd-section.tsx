@@ -67,14 +67,14 @@ export function KusdSection() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-black text-white py-24 md:py-32">
+    <section ref={ref} className="bg-white py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
-            <h2 className="text-4xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4">
+            <h2 className="text-4xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
               KUSD: The Stablecoin for the Instant Economy
             </h2>
-            <p className="text-slate-400 text-base md:text-lg">
+            <p className="text-slate-500 text-base md:text-lg">
               Earn from short term receivables across trade and cross border payments.
             </p>
           </div>
@@ -84,34 +84,34 @@ export function KusdSection() {
               <div
                 key={item.name}
                 className={cn(
-                  "bg-[#111111] p-4 flex items-center gap-4 border border-[#222]",
-                  { "border-primary/50": item.isPrimary }
+                  "bg-gray-50 p-4 flex items-center gap-4 border border-gray-200 rounded-md",
+                  { "border-primary/50 bg-primary/5": item.isPrimary }
                 )}
               >
                 <div className="flex items-center gap-4 w-2/5 flex-shrink-0">
-                  <div className="w-8 h-8 flex items-center justify-center text-sm font-medium text-slate-300 bg-white/5 flex-shrink-0">
+                  <div className="w-8 h-8 flex items-center justify-center text-sm font-medium text-slate-800 bg-white border border-gray-200 rounded-sm flex-shrink-0">
                     {item.isPrimary ? (
-                      <Image src="https://raw.githubusercontent.com/kalaanakonda/videosyogi/950a3eeee6091494eb4f769e53b83e1425ab84f9/Frame%202147223315.svg" alt="KUSD logo" width={20} height={20} className="filter invert" />
+                      <Image src="https://raw.githubusercontent.com/kalaanakonda/videosyogi/950a3eeee6091494eb4f769e53b83e1425ab84f9/Frame%202147223315.svg" alt="KUSD logo" width={20} height={20} />
                     ) : (
-                      <span>{item.icon}</span>
+                      <span className="font-heading font-normal">{item.icon}</span>
                     )}
                   </div>
                   <div className="flex-1">
-                    <p className="font-medium text-base text-white">{item.name}</p>
+                    <p className="font-medium text-base text-black">{item.name}</p>
                   </div>
                 </div>
                 <div className="w-2/5">
                   <Progress
                     value={(item.apy / MAX_APY) * 100}
                     className={cn(
-                      "h-1.5 bg-white/10",
-                      item.isPrimary ? "[&>div]:bg-primary" : "[&>div]:bg-white/30"
+                      "h-1.5 bg-gray-200",
+                      item.isPrimary ? "[&>div]:bg-primary" : "[&>div]:bg-gray-400"
                     )} />
                 </div>
                 <div className="w-1/5 text-right">
                   <p className={cn(
                       "text-lg font-normal font-heading whitespace-nowrap",
-                      item.isPrimary ? "text-primary" : "text-white"
+                      item.isPrimary ? "text-primary" : "text-black"
                     )}
                   >
                     {item.apy.toFixed(1)}% APY
@@ -120,10 +120,10 @@ export function KusdSection() {
               </div>
             ))}
              <div className="text-xs text-slate-500 pt-4 space-y-1">
-                <p><span className="font-semibold text-slate-400">USDe:</span> Based on funding rates.</p>
-                <p><span className="font-semibold text-slate-400">USDY:</span> Based on US Treasury Bills.</p>
-                <p><span className="font-semibold text-slate-400">Fintech:</span> Based on money markets.</p>
-                <p><span className="font-semibold text-slate-400">Banks:</span> Based on savings accounts.</p>
+                <p><span className="font-semibold text-slate-600">USDe:</span> Based on funding rates.</p>
+                <p><span className="font-semibold text-slate-600">USDY:</span> Based on US Treasury Bills.</p>
+                <p><span className="font-semibold text-slate-600">Fintech:</span> Based on money markets.</p>
+                <p><span className="font-semibold text-slate-600">Banks:</span> Based on savings accounts.</p>
              </div>
           </div>
         </div>
