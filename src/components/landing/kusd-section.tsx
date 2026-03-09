@@ -74,7 +74,7 @@ export function KusdSection() {
             <h2 className="text-4xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
               KUSD: The Stablecoin for the Instant Economy
             </h2>
-            <p className="text-slate-500 text-base md:text-lg">
+            <p className="text-slate-500 text-sm leading-relaxed font-light">
               Earn from short term receivables across trade and cross border payments.
             </p>
           </div>
