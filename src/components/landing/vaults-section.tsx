@@ -9,29 +9,29 @@ import { Label } from '@/components/ui/label';
 
 const vaults = [
   {
-    id: 'stable-gain',
-    name: 'Stable Gain Vault',
-    description: 'Put idle stables to work - deposit USDT / USDC, mint sbUSD, earn up to ~20% rewards',
-    tvl: '$7.7M',
-    apr: '11.30%',
-    iconUrl: 'https://kerneldao.com/_next/static/media/sbUsd.3fc46369.svg',
+    id: 'airdrop-gain',
+    name: 'Always Gain',
+    description: 'agETH - Steady, on-chain rewards through curated DeFi strategies.',
+    tvl: '$28.7M',
+    apr: '8.33%',
+    iconUrl: 'https://kerneldao.com/_next/static/media/agEthImg.97c66245.png',
   },
   {
     id: 'high-gain',
-    name: 'High Gain Vault',
-    description: 'Highest rewards on ETH - deposit rsETH / ETH / LSTs, mint hgETH, earn rewards via blue-chip strategies',
+    name: 'High Gain',
+    description: 'hgETH - Maximum rewards through actively managed strategies.',
     tvl: '$38.3M',
     apr: '8.51%',
     iconUrl: 'https://kerneldao.com/_next/static/media/hgEthImg.9d0d033c.png',
   },
   {
-    id: 'airdrop-gain',
-    name: 'Airdrop Gain Vault',
-    description: 'Institutional strategies - deposit rsETH / ETH / LSTs, mint agETH, access exclusive rewards',
-    tvl: '$28.7M',
-    apr: '8.33%',
-    iconUrl: 'https://kerneldao.com/_next/static/media/agEthImg.97c66245.png',
-  }
+    id: 'stable-gain',
+    name: 'Stable Gain',
+    description: 'sbUSD - Earn rewards on idle stablecoins through curated DeFi strategies.',
+    tvl: '$7.7M',
+    apr: '11.30%',
+    iconUrl: 'https://kerneldao.com/_next/static/media/sbUsd.3fc46369.svg',
+  },
 ];
 
 export function VaultsSection() {
