@@ -78,7 +78,11 @@ export function VaultsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {vaults.map((vault, index) => (
+          {vaults.map((vault, index) => {
+              const [ticker, ...descriptionParts] = vault.description.split(' - ');
+              const description = descriptionParts.join(' - ');
+
+              return (
               <div
                 key={vault.id}
                 className={cn("bg-gray-50 p-10 flex flex-col justify-between opacity-0 rounded-md", inView && "animate-slide-in-up")}
@@ -86,7 +90,7 @@ export function VaultsSection() {
               >
                 <div>
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="font-heading text-2xl font-normal">{vault.name}</h3>
+                    <h3 className="font-heading text-xl font-normal">{vault.name} <span className="text-slate-400">{ticker}</span></h3>
                     <Image 
                       src={vault.iconUrl} 
                       alt={vault.name} 
@@ -100,7 +104,7 @@ export function VaultsSection() {
                     />
                   </div>
                   <p className="text-sm text-slate-500 mb-6">
-                    {vault.description}
+                    {description}
                   </p>
                   <div className="flex justify-between items-center border-t border-b border-gray-100 py-4 text-center">
                       <div>
@@ -122,7 +126,7 @@ export function VaultsSection() {
                 </Button>
               </div>
             )
-          )}
+          })}
         </div>
       </div>
     </section>
