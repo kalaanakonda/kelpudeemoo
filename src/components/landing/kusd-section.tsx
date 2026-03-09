@@ -1,138 +1,133 @@
 "use client";
 
-import { DollarSign, BarChart, Shield } from 'lucide-react';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { Progress } from "@/components/ui/progress";
+import Image from 'next/image';
 
-const features = [
+const savingsData = [
   {
-    icon: <DollarSign className="w-4 h-4 text-primary" />,
-    title: 'Pegged to USD',
-    description: 'KUSD maintains a 1:1 peg with the US Dollar.',
+    name: 'KUSD',
+    apy: 12.0,
+    isPrimary: true,
   },
   {
-    icon: <Shield className="w-4 h-4 text-primary" />,
-    title: 'Over-collateralized',
-    description: 'Backed by a diversified basket of crypto assets.',
+    name: 'USDe',
+    apy: 11.1,
+    icon: 'S',
+    isPrimary: false,
   },
   {
-    icon: <BarChart className="w-4 h-4 text-primary" />,
-    title: 'Yield Bearing',
-    description: 'Earn native yield just by holding KUSD.',
+    name: 'USDY',
+    apy: 3.5,
+    icon: 'Y',
+    isPrimary: false,
+  },
+  {
+    name: 'Fintech',
+    apy: 3.6,
+    icon: 'F',
+    isPrimary: false,
+  },
+  {
+    name: 'Banks',
+    apy: 0.5,
+    icon: 'B',
+    isPrimary: false,
   },
 ];
 
+const MAX_APY = 12.0;
+
 export function KusdSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
-  const hasPlayed = useRef(false);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const sectionEl = sectionRef.current;
-    if (!sectionEl) return;
-
     const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
+      ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.unobserve(sectionEl); // Only animate once
+          observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.2 } // Trigger when 20% of the section is visible
+      { threshold: 0.2 }
     );
 
-    observer.observe(sectionEl);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
 
     return () => {
-      if (sectionEl) {
-        observer.unobserve(sectionEl);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
-
-  useEffect(() => {
-    const headingEl = headingRef.current;
-    const videoEl = videoRef.current;
-    if (!headingEl || !videoEl) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        // Play the video only after the heading has scrolled completely out of the viewport from the top.
-        if (!entry.isIntersecting && entry.boundingClientRect.bottom < 0) {
-          if (!hasPlayed.current) {
-            videoEl.play().catch(error => {
-              console.error("Video play failed:", error);
-            });
-            hasPlayed.current = true;
-            observer.unobserve(headingEl);
-          }
-        }
-      },
-      {
-        threshold: [0, 1.0], // Trigger when element enters and leaves completely
-      }
-    );
-
-    observer.observe(headingEl);
-
-    return () => {
-      if (headingEl) {
-        observer.unobserve(headingEl);
-      }
-    };
-  }, []);
-
 
   return (
-    <div ref={sectionRef} className="overflow-hidden bg-white py-24">
-      <div className="max-w-6xl mx-auto px-6 space-y-16">
+    <section ref={ref} className="bg-black text-white py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
+            <h2 className="text-4xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4">
+              KUSD: The Stablecoin for the Instant Economy
+            </h2>
+            <p className="text-slate-400 text-base md:text-lg">
+              Earn from short term receivables across trade and cross border payments.
+            </p>
+          </div>
 
-        {/* Headline */}
-        <div ref={headingRef} className={cn("max-w-5xl mx-auto text-center opacity-0", inView && "animate-slide-in-up")}>
-          <h2 className="text-3xl md:text-5xl font-normal font-heading leading-none tracking-tight text-black">
-            KUSD: The Yield-Bearing Stablecoin
-          </h2>
-        </div>
-        
-        {/* Video Card */}
-        <div className={cn("relative z-10 w-full max-w-5xl mx-auto rounded-lg overflow-hidden border border-gray-200 shadow-xl opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.2s'}}>
-            <video
-                ref={videoRef}
-                muted
-                playsInline
-                preload="auto"
-                className="w-full h-auto"
-            >
-                <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/kusd.mp4" type="video/mp4" />
-            </video>
-        </div>
-
-        {/* Feature Cards */}
-        <div className={cn("max-w-5xl mx-auto w-full opacity-0", inView && "animate-slide-in-up")} style={{animationDelay: '0.4s'}}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {features.map((feature, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className="flex items-start text-left gap-4 bg-white p-6 rounded-lg border border-gray-200 shadow-lg"
-                        >
-                            <div className="p-3 bg-primary/10 rounded-md">
-                              {React.cloneElement(feature.icon, {className: "w-4 h-4 text-primary"})}
-                            </div>
-                            <div>
-                                <h3 className="font-heading text-base text-black font-normal mb-1">{feature.title}</h3>
-                                <p className="text-xs text-slate-500 max-w-[180px]">{feature.description}</p>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
+          <div className={cn("space-y-3 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.4s' }}>
+            {savingsData.map((item) => (
+              <div
+                key={item.name}
+                className={cn(
+                  "bg-[#111111] p-4 flex items-center gap-4 border border-[#222]",
+                  { "border-primary/50": item.isPrimary }
+                )}
+              >
+                <div className="flex items-center gap-4 w-2/5 flex-shrink-0">
+                  <div className="w-8 h-8 flex items-center justify-center text-sm font-medium text-slate-300 bg-white/5 flex-shrink-0">
+                    {item.isPrimary ? (
+                      <Image src="https://raw.githubusercontent.com/kalaanakonda/videosyogi/950a3eeee6091494eb4f769e53b83e1425ab84f9/Frame%202147223315.svg" alt="KUSD logo" width={20} height={20} className="filter invert" />
+                    ) : (
+                      <span>{item.icon}</span>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-medium text-base text-white">{item.name}</p>
+                  </div>
+                </div>
+                <div className="w-2/5">
+                  <Progress
+                    value={(item.apy / MAX_APY) * 100}
+                    className={cn(
+                      "h-1.5 bg-white/10",
+                      item.isPrimary ? "[&>div]:bg-primary" : "[&>div]:bg-white/30"
+                    )} />
+                </div>
+                <div className="w-1/5 text-right">
+                  <p className={cn(
+                      "text-lg font-normal font-heading whitespace-nowrap",
+                      item.isPrimary ? "text-primary" : "text-white"
+                    )}
+                  >
+                    {item.apy.toFixed(1)}% APY
+                  </p>
+                </div>
+              </div>
+            ))}
+             <div className="text-xs text-slate-500 pt-4 space-y-1">
+                <p><span className="font-semibold text-slate-400">USDe:</span> Based on funding rates.</p>
+                <p><span className="font-semibold text-slate-400">USDY:</span> Based on US Treasury Bills.</p>
+                <p><span className="font-semibold text-slate-400">Fintech:</span> Based on money markets.</p>
+                <p><span className="font-semibold text-slate-400">Banks:</span> Based on savings accounts.</p>
+             </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
