@@ -90,7 +90,10 @@ export function VaultsSection() {
               >
                 <div>
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="font-heading text-xl font-normal">{vault.name} <span className="text-slate-400">{ticker}</span></h3>
+                    <div>
+                      <h3 className="font-heading text-xl font-normal">{vault.name}</h3>
+                      <p className="text-sm text-slate-500">{ticker}</p>
+                    </div>
                     <Image 
                       src={vault.iconUrl} 
                       alt={vault.name} 
