@@ -51,7 +51,7 @@ export function OutworksSection() {
           <div className={cn("bg-gray-50 p-10 h-[420px] flex flex-col justify-between transition-colors duration-300 relative overflow-hidden group opacity-0 rounded-md", inView && "animate-slide-in-up")} style={{ animationDelay: '1.0s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Audited & Secure</h3>
-               <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
+               <p className="text-slate-500 text-sm leading-relaxed max-w-sm font-light">
                  Multiple audits to thoroughly evaluate the protocol's security & functionality.
                </p>
              </div>
@@ -63,7 +63,7 @@ export function OutworksSection() {
           <div className={cn("bg-gray-50 p-10 h-[420px] flex flex-col justify-between transition-colors duration-300 relative overflow-hidden group opacity-0 rounded-md", inView && "animate-slide-in-up")} style={{ animationDelay: '1.4s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Maximum Utility</h3>
-               <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
+               <p className="text-slate-500 text-sm leading-relaxed max-w-sm font-light">
                  rsETH is available on multiple DeFi protocols, DEXs, CEXs, & wallets.
                </p>
              </div>
@@ -75,7 +75,7 @@ export function OutworksSection() {
           <div className={cn("bg-gray-50 p-10 h-[420px] flex flex-col justify-between transition-colors duration-300 relative overflow-hidden group opacity-0 rounded-md", inView && "animate-slide-in-up")} style={{ animationDelay: '1.8s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">Deep Liquidity</h3>
-               <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
+               <p className="text-slate-500 text-sm leading-relaxed max-w-sm font-light">
                  $300M+ across lending protocols, optimisers, and on-chain liquidity pools.
                </p>
              </div>
@@ -87,7 +87,7 @@ export function OutworksSection() {
           <div className={cn("bg-gray-50 p-10 h-[420px] flex flex-col justify-between transition-colors duration-300 relative overflow-hidden group opacity-0 rounded-md", inView && "animate-slide-in-up")} style={{ animationDelay: '2.2s' }}>
              <div className="relative z-10">
                <h3 className="text-2xl font-normal font-heading text-black mb-2">One-click Restaking</h3>
-               <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
+               <p className="text-slate-500 text-sm leading-relaxed max-w-sm font-light">
                  Kelp accepts deposits from major LSTs & ETH in a single transaction.
                </p>
              </div>

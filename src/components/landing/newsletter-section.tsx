@@ -39,7 +39,7 @@ export function NewsletterSection() {
           <h2 className="text-3xl font-normal font-heading text-black leading-tight tracking-tight mb-2">
             Stay updated with Kelp
           </h2>
-          <p className="text-slate-500 text-sm mb-8 max-w-sm mx-auto">
+          <p className="text-slate-500 text-sm mb-8 max-w-sm mx-auto leading-relaxed font-light">
             Join 300K+ users & unlock exclusive rewards!
           </p>
           <form className="flex max-w-md mx-auto">

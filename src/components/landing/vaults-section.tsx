@@ -106,7 +106,7 @@ export function VaultsSection() {
                       })}
                     />
                   </div>
-                  <p className="text-sm text-slate-500 mb-6">
+                  <p className="text-sm text-slate-500 mb-6 leading-relaxed font-light">
                     {description}
                   </p>
                   <div className="flex justify-between items-center border-t border-b border-gray-100 py-4 text-center">

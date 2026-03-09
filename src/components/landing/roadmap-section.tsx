@@ -88,7 +88,7 @@ export function RoadmapSection() {
           --bg: hsl(var(--background));
           --teal: hsl(var(--primary));
           --text: hsl(var(--foreground));
-          --muted: hsl(var(--muted-foreground));
+          --muted-fg: hsl(var(--muted-foreground));
           --line: hsl(var(--border));
 
           display: flex;
@@ -119,9 +119,9 @@ export function RoadmapSection() {
         }
 
         .roadmap-left-inner p {
-          font-size: 1rem;
-          color: var(--muted);
-          line-height: 1.6;
+          font-size: 0.875rem;
+          color: var(--muted-fg);
+          line-height: 1.625;
           max-width: 240px;
         }
 
@@ -210,9 +210,10 @@ export function RoadmapSection() {
           display: flex;
           align-items: flex-start;
           gap: 0.75rem;
-          font-size: 0.95rem;
-          line-height: 1.55;
-          color: #444;
+          font-size: 0.875rem;
+          line-height: 1.625;
+          color: var(--muted-fg);
+          font-weight: 300;
         }
 
         .phase-items li svg {
@@ -240,7 +241,7 @@ export function RoadmapSection() {
         <div className="roadmap-left">
           <div className="roadmap-left-inner">
             <h2 className="font-headline">Our<br/>Roadmap</h2>
-            <p className="font-body">Building the future of finance, one milestone at a time.</p>
+            <p className="font-body font-light">Building the future of finance, one milestone at a time.</p>
           </div>
         </div>
 
