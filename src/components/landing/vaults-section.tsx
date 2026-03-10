@@ -180,12 +180,12 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
             </div>
             {extraBadge}
             
-            <div> {/* Top Content */}
-                <div className="flex gap-3 items-start mt-10">
+            <div className="mt-10"> {/* Top Content */}
+                <div className="flex gap-3 items-start">
                     {logo}
-                    <div className="flex flex-col gap-1 items-start justify-center flex-shrink-0">
-                        <span className="font-medium text-base text-neutral-800 whitespace-nowrap">{name}</span>
-                        <span className="text-xs text-slate-500">{description}</span>
+                    <div className="flex flex-col gap-1">
+                        <span className="font-medium text-base text-neutral-800">{name}</span>
+                        <p className="text-xs text-slate-500 leading-relaxed">{description}</p>
                     </div>
                 </div>
                 <div className="flex gap-1 items-center flex-wrap mt-3">
@@ -240,7 +240,7 @@ export function VaultsSection() {
                         Step into our curated vaults, each designed to optimize your earnings through distinct, actively managed strategies. Whether you seek stable returns or higher gains, find the vault that fits your risk appetite.
                     </p>
                 </div>
-                <div className="flex flex-wrap gap-6 justify-center">
+                <div className="flex gap-6 justify-center overflow-x-auto pb-4">
                     <VaultCard
                         logo={<StableVaultLogo />}
                         name="Stable Gain"
