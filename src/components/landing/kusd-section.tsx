@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 import { Progress } from "@/components/ui/progress";
 import Image from 'next/image';
-import Spline from '@splinetool/react-spline';
+
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+});
 
 const savingsData = [
   {
