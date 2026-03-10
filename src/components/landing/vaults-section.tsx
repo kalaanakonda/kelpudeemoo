@@ -170,7 +170,7 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             className={cn(
-                "group flex flex-col gap-[18px] items-start pt-[50px] pb-6 px-6 rounded-md flex-shrink-0 w-[340px] relative transition-colors duration-150 ease-in cursor-pointer",
+                "group relative flex flex-col justify-between p-6 rounded-md flex-shrink-0 w-[340px] h-[360px] transition-colors duration-150 ease-in cursor-pointer",
                 hovered ? "bg-gray-200" : "bg-gray-100"
             )}
         >
@@ -179,47 +179,49 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
                 <span className="font-semibold text-xs text-neutral-800 tracking-wide whitespace-nowrap">{badgeLabel}</span>
             </div>
             {extraBadge}
-            <div className="flex gap-2 items-start">
-                {logo}
-                <div className="flex flex-col gap-10 items-start justify-center flex-shrink-0">
-                    <div className="flex flex-col gap-1 w-full">
+            
+            <div> {/* Top Content */}
+                <div className="flex gap-3 items-start mt-10">
+                    {logo}
+                    <div className="flex flex-col gap-1 items-start justify-center flex-shrink-0">
                         <span className="font-medium text-base text-neutral-800 whitespace-nowrap">{name}</span>
-                        <span className="text-xs text-slate-500 w-full">{description}</span>
-                        <div className="flex gap-1 items-center flex-wrap mt-2">
-                            {tags.map((t: string) => (
-                                <div key={t} className="bg-blue-100/70 px-2 py-1 rounded-[4px]">
-                                    <span className="text-[10px] text-neutral-800 tracking-wide whitespace-nowrap">{t}</span>
-                                </div>
-                            ))}
-                        </div>
+                        <span className="text-xs text-slate-500">{description}</span>
                     </div>
-                    <div className="flex flex-col gap-3 w-full">
-                        <div className="flex items-center justify-between w-full">
-                            <div className="flex flex-col">
-                                <span className="text-sm text-neutral-800">{tvl}</span>
-                                <span className="text-xs text-slate-500 tracking-tighter">TVL</span>
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="text-sm text-neutral-800">{apy}</span>
-                                <span className="text-xs text-slate-500 tracking-tighter">APY</span>
-                            </div>
-                            <div className="flex flex-col gap-1 justify-center flex-shrink-0">
-                                <div className="flex items-center -space-x-1 h-4">
-                                    {assetIcons}
-                                </div>
-                                <span className="text-xs text-slate-500 tracking-tighter whitespace-nowrap">Assets accepted</span>
-                            </div>
+                </div>
+                <div className="flex gap-1 items-center flex-wrap mt-3">
+                    {tags.map((t: string) => (
+                        <div key={t} className="bg-blue-100/70 px-2 py-1 rounded-[4px]">
+                            <span className="text-[10px] text-neutral-800 tracking-wide whitespace-nowrap">{t}</span>
                         </div>
-                        <div className="w-full h-px bg-teal-200/50" />
-                        <div className="flex items-center gap-2">
-                            <div className="flex items-center gap-1">
-                                <span className="text-xs text-slate-400 whitespace-nowrap">Managed by </span>
-                                {footerLogo}
-                            </div>
-                            <div className="w-px h-4 bg-teal-200/50" />
-                            <span className="text-xs text-slate-400 whitespace-nowrap">Live for 6 months</span>
-                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div> {/* Bottom Content */}
+                <div className="flex items-end justify-between w-full mb-4">
+                    <div className="flex flex-col">
+                        <span className="text-sm text-neutral-800">{tvl}</span>
+                        <span className="text-xs text-slate-500 tracking-tighter">TVL</span>
                     </div>
+                    <div className="flex flex-col">
+                        <span className="text-sm text-neutral-800">{apy}</span>
+                        <span className="text-xs text-slate-500 tracking-tighter">APY</span>
+                    </div>
+                    <div className="flex flex-col gap-1 justify-center flex-shrink-0">
+                        <div className="flex items-center -space-x-1 h-4">
+                            {assetIcons}
+                        </div>
+                        <span className="text-xs text-slate-500 tracking-tighter whitespace-nowrap">Assets accepted</span>
+                    </div>
+                </div>
+                <div className="w-full h-px bg-teal-200/50" />
+                <div className="flex items-center gap-2 mt-3">
+                    <div className="flex items-center gap-1">
+                        <span className="text-xs text-slate-400 whitespace-nowrap">Managed by </span>
+                        {footerLogo}
+                    </div>
+                    <div className="w-px h-4 bg-teal-200/50" />
+                    <span className="text-xs text-slate-400 whitespace-nowrap">Live for 6 months</span>
                 </div>
             </div>
         </div>
@@ -238,7 +240,7 @@ export function VaultsSection() {
                         Step into our curated vaults, each designed to optimize your earnings through distinct, actively managed strategies. Whether you seek stable returns or higher gains, find the vault that fits your risk appetite.
                     </p>
                 </div>
-                <div className="flex gap-6 justify-center">
+                <div className="flex flex-wrap gap-6 justify-center">
                     <VaultCard
                         logo={<StableVaultLogo />}
                         name="Stable Gain"
