@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Progress } from "@/components/ui/progress";
 import Image from 'next/image';
 import Script from 'next/script';
+import { ShieldCheck, UserCheck, DollarSign } from 'lucide-react';
 
 const savingsData = [
   {
@@ -68,15 +69,24 @@ export function KusdSection() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-white py-24 md:py-32">
+    <section id="kusd" ref={ref} className="bg-white py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
+        <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
+            <h2 className="text-4xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
+                KUSD: The Stablecoin for the Instant Economy
+            </h2>
+            <p className="text-slate-500 text-sm max-w-2xl mx-auto leading-relaxed font-light">
+                Earn from short term receivables across trade and cross border payments.
+            </p>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-16 items-start">
           <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
-            <h2 className="text-4xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
-              KUSD: The Stablecoin for the Instant Economy
-            </h2>
+            <h3 className="text-2xl font-normal font-heading leading-none tracking-tight mb-2 text-black">
+              Rewards that survive market cycles.
+            </h3>
             <p className="text-slate-500 text-sm leading-relaxed font-light mb-8">
-              Earn from short term receivables across trade and cross border payments.
+              Earn from payments, invoices, and settlements.
             </p>
             <div className="relative h-[400px] w-full">
               <Script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.68/build/spline-viewer.js"></Script>
@@ -129,12 +139,25 @@ export function KusdSection() {
                 </div>
               </div>
             ))}
-             <div className="text-xs text-slate-500 pt-4 space-y-1 font-light">
-                <p><span className="font-semibold text-slate-600">USDe:</span> Based on funding rates.</p>
-                <p><span className="font-semibold text-slate-600">USDY:</span> Based on US Treasury Bills.</p>
-                <p><span className="font-semibold text-slate-600">Fintech:</span> Based on money markets.</p>
-                <p><span className="font-semibold text-slate-600">Banks:</span> Based on savings accounts.</p>
+             <div className="text-xs text-slate-500 pt-4 font-light">
+                <p>
+                    <span className="font-semibold text-slate-600">USDe:</span> Based on funding rates. <span className="font-semibold text-slate-600">USDY:</span> Based on US Treasury Bills. <span className="font-semibold text-slate-600">Fintech:</span> Based on money markets. <span className="font-semibold text-slate-600">Banks:</span> Based on savings accounts.
+                </p>
              </div>
+              <div className="pt-8 mt-4 border-t border-gray-100 grid grid-cols-3 gap-4 text-center">
+                <div className="flex flex-col items-center gap-2">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                    <h4 className="font-normal text-xs text-slate-600">Secured by Chainlink and Token Logic</h4>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                    <UserCheck className="w-5 h-5 text-primary" />
+                    <h4 className="font-normal text-xs text-slate-600">KYB Verified Borrowers</h4>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                    <DollarSign className="w-5 h-5 text-primary" />
+                    <h4 className="font-normal text-xs text-slate-600">Pegged to USD</h4>
+                </div>
+              </div>
           </div>
         </div>
       </div>

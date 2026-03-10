@@ -42,7 +42,7 @@ export function OutworksSection() {
           </p>
           <div className="mt-8">
             <Button asChild>
-                <a href="#simulator">Restake now</a>
+                <a href="#simulator">Mint rsETH</a>
             </Button>
           </div>
         </div>

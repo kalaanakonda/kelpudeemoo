@@ -72,23 +72,22 @@ export function HeroSection() {
             className="text-4xl md:text-5xl font-normal text-black tracking-tight leading-tight mb-4 font-heading animate-slide-in-up" 
             style={{ animationDelay: '0.4s' }}
           >
-            Finance for the Instant Economy
+            The Instant Economy Starts Here
           </h1>
           
           <p 
             className="text-slate-600 max-w-lg text-sm mb-6 leading-relaxed font-light animate-slide-in-up" 
             style={{ animationDelay: '0.8s' }}
           >
-            At Kelp, we’re the gateway to on-demand earning mechanisms across crypto and
-            real-world markets for a $250T+ economy.
+            Kelp is building the tokenized financial layer. Where capital moves, earns, and settles instantly.
           </p>
 
           <div 
             className="flex items-center gap-4 animate-slide-in-up" 
             style={{ animationDelay: '1.2s' }}
           >
-            <a href="#simulator" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 font-medium text-sm transition animate-glint rounded-md">
-              Restake now
+            <a href="#kusd" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 font-medium text-sm transition animate-glint rounded-md">
+              Earn with KUSD
             </a>
           </div>
         </div>
