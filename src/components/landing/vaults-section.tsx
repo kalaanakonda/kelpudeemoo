@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 // SVG paths from original Figma export (svg-42igu9h15y.ts)
 const svgPaths = {
@@ -86,6 +87,22 @@ function ETHXIcon() {
             </svg>
         </div>
     );
+}
+
+function RSEthIcon() {
+    return (
+        <div className="w-4 h-4 relative -mr-1 flex-shrink-0">
+            <Image src="https://s2.coinmarketcap.com/static/img/coins/200x200/29242.png" alt="rsETH logo" layout="fill" className="rounded-full" />
+        </div>
+    );
+}
+
+function StETHIcon() {
+    return (
+        <div className="w-4 h-4 relative -mr-1 flex-shrink-0 bg-gray-700 rounded-full flex items-center justify-center border-2 border-white/50">
+            <span className="text-white text-[7px] font-bold">stETH</span>
+        </div>
+    )
 }
 
 function StableVaultLogo() {
@@ -191,10 +208,10 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
                             </p>
                         </div>
                     </div>
-                     <div className="flex gap-1 items-center flex-wrap mt-3">
+                     <div className="flex gap-1.5 items-center flex-wrap mt-3">
                          {tags.map((t: string) => (
-                             <div key={t} className="bg-blue-100/50 px-2 py-0.5 rounded-[4px]">
-                                 <span className="text-[10px] text-slate-700 tracking-wide whitespace-nowrap">{t}</span>
+                             <div key={t} className="bg-blue-100/30 px-1.5 py-0 rounded-[4px]">
+                                 <span className="text-[10px] text-slate-600 tracking-wide whitespace-nowrap font-medium">{t}</span>
                              </div>
                          ))}
                      </div>
@@ -266,7 +283,7 @@ export function VaultsSection() {
                         tags={["Lending", "Restaking", "Basis trading"]}
                         tvl="$31.6 Mn"
                         apy="8.22%"
-                        assetIcons={<><ETHCircleIcon /><USDCIcon /><ETHXIcon /></>}
+                        assetIcons={<><ETHCircleIcon /><RSEthIcon /><ETHXIcon /><StETHIcon /></>}
                         badgeColor="bg-blue-300/40"
                         badgeIcon={
                             <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center">
@@ -293,7 +310,7 @@ export function VaultsSection() {
                         tags={["Lending", "Restaking", "Liquidity Provisioning"]}
                         tvl="$24.6 Mn"
                         apy="6.45%"
-                        assetIcons={<><ETHCircleIcon /><USDCIcon /><ETHXIcon /></>}
+                        assetIcons={<><USDCIcon /><USDTIcon /></>}
                         badgeColor="bg-blue-300/40"
                         badgeIcon={
                             <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center">

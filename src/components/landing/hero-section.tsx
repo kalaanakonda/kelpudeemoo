@@ -35,16 +35,14 @@ const partnerLogos = [
 const ScrollingLogos = () => (
     <div className="flex-shrink-0 flex items-center justify-center whitespace-nowrap">
         {partnerLogos.map((logo, index) => (
-            <div key={`${logo.name}-${index}`} className="flex-shrink-0 mx-4">
-                <div className="bg-black/5 backdrop-blur-sm rounded-md flex items-center justify-center px-4 py-2 h-10">
-                    <Image
-                        src={logo.src}
-                        alt={logo.name}
-                        width={80}
-                        height={20}
-                        className="object-contain h-5 w-auto"
-                    />
-                </div>
+            <div key={`${logo.name}-${index}`} className="flex-shrink-0 mx-4 h-10 flex items-center justify-center">
+                <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    width={80}
+                    height={20}
+                    className="object-contain h-5 w-auto"
+                />
             </div>
         ))}
     </div>
@@ -69,7 +67,7 @@ export function HeroSection() {
       <div className="absolute inset-0 p-6 flex justify-center text-center">
         <div className="max-w-xl relative z-10 flex flex-col items-center pt-24">
           <h1 
-            className="text-4xl md:text-5xl font-normal text-black tracking-tight leading-tight mb-4 font-heading animate-slide-in-up" 
+            className="text-4xl md:text-5xl font-normal text-black tracking-tight leading-tight mb-4 font-heading animate-slide-in-up max-w-md" 
             style={{ animationDelay: '0.4s' }}
           >
             The Instant Economy Starts Here

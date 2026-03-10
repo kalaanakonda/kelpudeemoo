@@ -72,7 +72,7 @@ export function KusdSection() {
     <section id="kusd" ref={ref} className="bg-white py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
-            <h2 className="text-4xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
+            <h2 className="text-4xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4 max-w-2xl mx-auto">
                 KUSD: The Stablecoin for the Instant Economy
             </h2>
             <p className="text-slate-500 text-sm max-w-2xl mx-auto leading-relaxed font-light">
