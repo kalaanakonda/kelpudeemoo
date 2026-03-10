@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Progress } from "@/components/ui/progress";
 import Image from 'next/image';
+import Spline from '@splinetool/react-spline';
 
 const savingsData = [
   {
@@ -74,9 +75,12 @@ export function KusdSection() {
             <h2 className="text-4xl md:text-5xl font-normal font-heading leading-none tracking-tight mb-4 text-black">
               KUSD: The Stablecoin for the Instant Economy
             </h2>
-            <p className="text-slate-500 text-sm leading-relaxed font-light">
+            <p className="text-slate-500 text-sm leading-relaxed font-light mb-8">
               Earn from short term receivables across trade and cross border payments.
             </p>
+            <div className="relative h-[400px] w-full">
+              <Spline scene="https://prod.spline.design/vCXQMKAfR9eHElUx/scene.splinecode" />
+            </div>
           </div>
 
           <div className={cn("space-y-3 opacity-0", inView && "animate-slide-in-up")} style={{ animationDelay: '0.4s' }}>
