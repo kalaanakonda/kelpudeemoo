@@ -61,7 +61,7 @@ export function HeroSection() {
         className="absolute inset-0 w-full h-full object-cover z-0"
         style={{ objectPosition: 'center bottom' }}
       >
-        <source src="https://github.com/kalaanakonda/videosyogi/raw/refs/heads/main/new%20hero%201.webm" type="video/webm" />
+        <source src="https://github.com/kalaanakonda/kelp-vids-new/raw/refs/heads/main/new%20hero%201%20Updated.webm" type="video/webm" />
       </video>
       
       <Navbar />
