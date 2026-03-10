@@ -105,50 +105,6 @@ function StETHIcon() {
     )
 }
 
-function StableVaultLogo() {
-    return (
-        <div className="w-10 h-10 relative flex-shrink-0">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="absolute inset-0">
-                <circle cx="20" cy="20" r="20" fill="#1C1C1C" />
-                <path d="M20 8C13.373 8 8 13.373 8 20C8 26.627 13.373 32 20 32" stroke="#87E2A5" strokeWidth="2" strokeLinecap="round" />
-                <circle cx="20" cy="20" r="5" fill="#87E2A5" opacity="0.6" />
-                <path d="M16 17L20 13L24 17" stroke="#87E2A5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M16 23L20 27L24 23" stroke="#87E2A5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        </div>
-    );
-}
-
-function HighGainLogo() {
-    return (
-        <div className="w-10 h-10 relative flex-shrink-0">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="absolute inset-0">
-                <circle cx="20" cy="20" r="19.8" fill="#1C1C1C" stroke="#B4F3DD" strokeWidth="0.37" />
-                <line x1="20" y1="1" x2="20" y2="39" stroke="#B4F3DD" strokeWidth="0.33" opacity="0.6" />
-                <line x1="1" y1="20" x2="39" y2="20" stroke="#B4F3DD" strokeWidth="0.33" opacity="0.6" />
-                <path d="M20 6L34 20L20 34L6 20Z" stroke="#B4F3DD" strokeWidth="0.8" fill="none" />
-                <circle cx="20" cy="20" r="4" fill="#B4F3DD" opacity="0.5" />
-                <circle cx="20" cy="6" r="1.5" fill="#B4F3DD" />
-                <circle cx="20" cy="34" r="1.5" fill="#B4F3DD" />
-                <circle cx="6" cy="20" r="1.5" fill="#B4F3DD" />
-                <circle cx="34" cy="20" r="1.5" fill="#B4F3DD" />
-            </svg>
-        </div>
-    );
-}
-
-function AlwaysGainLogo() {
-    return (
-        <div className="w-10 h-10 relative rounded-full bg-black flex-shrink-0 overflow-hidden">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="absolute inset-0">
-                <circle cx="20" cy="20" r="20" fill="#1A1A1A" />
-                <path d="M14 12V28M14 20L22 12M14 20L22 28" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M24 14H27C28.1 14 29 14.9 29 16C29 17.1 28.1 18 27 18H24M24 18H27.5C28.9 18 30 19.1 30 20.5C30 21.9 28.9 23 27.5 23H24" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-        </div>
-    );
-}
-
 function CredoraLogo() {
     return <span className="font-semibold text-xs text-neutral-800 tracking-wider">CREDORA</span>
 }
@@ -210,8 +166,8 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
                     </div>
                      <div className="flex gap-1.5 items-center flex-wrap mt-3">
                          {tags.map((t: string) => (
-                             <div key={t} className="bg-blue-100/30 px-1.5 py-0 rounded-[4px]">
-                                 <span className="text-[10px] text-slate-600 tracking-wide whitespace-nowrap font-medium">{t}</span>
+                             <div key={t} className="bg-blue-100/30 px-1.5 py-0 rounded-[4px] bg-opacity-30">
+                                 <span className="text-[10px] text-slate-600/70 tracking-wide whitespace-nowrap font-medium">{t}</span>
                              </div>
                          ))}
                      </div>
@@ -263,7 +219,7 @@ export function VaultsSection() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <VaultCard
-                        logo={<StableVaultLogo />}
+                        logo={<Image src="https://raw.githubusercontent.com/kalaanakonda/Kelp-ui-logos/main/sbUSD.svg" alt="Stable Gain Logo" width={40} height={40} />}
                         name="Stable Gain"
                         description="Earn rewards on idle stablecoins through curated DeFi strategies."
                         tags={["Lending", "Basis trading", "Liquidity Provisioning"]}
@@ -277,7 +233,7 @@ export function VaultsSection() {
                         footerLogo={<CredoraLogo />}
                     />
                     <VaultCard
-                        logo={<HighGainLogo />}
+                        logo={<Image src="https://raw.githubusercontent.com/kalaanakonda/Kelp-ui-logos/main/hgETH.svg" alt="High Gain Logo" width={40} height={40} />}
                         name="High Gain"
                         description="Maximum rewards through actively managed strategies."
                         tags={["Lending", "Restaking", "Basis trading"]}
@@ -304,7 +260,7 @@ export function VaultsSection() {
                         footerLogo={<CredoraLogo />}
                     />
                     <VaultCard
-                        logo={<AlwaysGainLogo />}
+                        logo={<Image src="https://raw.githubusercontent.com/kalaanakonda/Kelp-ui-logos/main/agETH.svg" alt="Always Gain Logo" width={40} height={40} />}
                         name="Always Gain"
                         description="Steady, on-chain rewards through curated DeFi strategies."
                         tags={["Lending", "Restaking", "Liquidity Provisioning"]}

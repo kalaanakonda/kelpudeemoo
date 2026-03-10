@@ -5,6 +5,7 @@ import { ArrowRight, Box, CircleDollarSign, Percent } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { AnimatedCounter } from './animated-counter';
+import Image from 'next/image';
 
 export function KernelTokenSection() {
   const [inView, setInView] = useState(false);
@@ -54,7 +55,10 @@ export function KernelTokenSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
-            <p className="text-primary font-semibold text-lg mb-2">$KELP</p>
+            <div className="flex items-center gap-3 mb-2">
+              <Image src="https://raw.githubusercontent.com/kalaanakonda/Kelp-ui-logos/main/KELP%20TOKEN.svg" alt="KELP Token Logo" width={28} height={28} />
+              <p className="text-primary font-semibold text-lg">$KELP</p>
+            </div>
             <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
               The KELP Token
             </h2>
