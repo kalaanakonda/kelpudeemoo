@@ -81,7 +81,11 @@ export function KusdSection() {
             <div className="relative h-[400px] w-full">
               <Script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.68/build/spline-viewer.js"></Script>
               {/* @ts-ignore - spline-viewer is a custom element defined in the script above */}
-              <spline-viewer url="https://prod.spline.design/vCXQMKAfR9eHElUx/scene.splinecode" className="w-full h-full"></spline-viewer>
+              <spline-viewer 
+                url="https://prod.spline.design/vCXQMKAfR9eHElUx/scene.splinecode" 
+                className="w-full h-full"
+                events-target="global"
+              ></spline-viewer>
             </div>
           </div>
 
