@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
+// SVG paths from original Figma export (svg-42igu9h15y.ts)
 const svgPaths = {
     p12cfb900: "M10.2 9.26664C10.2 8.1 9.5 7.7 8.1 7.53336C7.1 7.4 6.9 7.13136 6.9 6.66664C6.9 6.19992 7.23336 5.9 7.9 5.9C8.5 5.9 8.83336 6.1 9 6.6C9.03336 6.7 9.13336 6.76664 9.23336 6.76664H9.76664C9.9 6.76664 10 6.66664 10 6.53336V6.5C9.86664 5.76664 9.26664 5.2 8.5 5.13336V4.33336C8.5 4.2 8.4 4.1 8.23336 4.06664H7.73336C7.6 4.06664 7.5 4.16664 7.46664 4.33336V5.1C6.46664 5.23336 5.83336 5.9 5.83336 6.73336C5.83336 7.83336 6.5 8.26664 7.9 8.43336C8.83336 8.6 9.13336 8.8 9.13336 9.33336C9.13336 9.86672 8.66664 10.2334 8.03336 10.2334C7.16664 10.2334 6.86664 9.86664 6.76664 9.36664C6.73336 9.23336 6.63336 9.16664 6.53336 9.16664H5.96664C5.83336 9.16664 5.73336 9.26664 5.73336 9.4V9.43336C5.86664 10.2666 6.4 10.8666 7.5 11.0334V11.8334C7.5 11.9666 7.6 12.0666 7.76664 12.1H8.26664C8.4 12.1 8.5 12 8.53336 11.8334V11.0334C9.53336 10.8666 10.2 10.1666 10.2 9.26664Z",
     p214d5900: "M8.98405 8.42923C8.92723 8.43349 8.63365 8.45101 7.97879 8.45101C7.45794 8.45101 7.08813 8.43538 6.95839 8.42923C4.94551 8.34068 3.44307 7.99029 3.44307 7.57076C3.44307 7.15123 4.94551 6.80131 6.95839 6.71134V8.08025C7.09002 8.08972 7.46693 8.11198 7.98779 8.11198C8.61282 8.11198 8.92581 8.08594 8.98216 8.08073V6.71229C10.9908 6.80178 12.4899 7.15218 12.4899 7.57076C12.4899 7.98934 10.9912 8.33973 8.98216 8.42875L8.98405 8.42923ZM8.98405 6.57071V5.34575H11.7872V3.47776H4.15522V5.34575H6.95791V6.57024C4.67987 6.67488 2.96672 7.12614 2.96672 7.66688C2.96672 8.20763 4.67987 8.65841 6.95791 8.76352V12.6889H8.98358V8.7621C11.2564 8.65746 12.9667 8.20668 12.9667 7.66641C12.9667 7.12614 11.2578 6.67536 8.98358 6.57024L8.98405 6.57071Z",
@@ -162,8 +163,17 @@ function DollarIcon() {
 }
 
 const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeColor, badgeIcon, badgeLabel, extraBadge, footerLogo }: any) => {
+    const [hovered, setHovered] = useState(false);
+
     return (
-        <div className="group flex flex-col gap-[18px] items-start pt-[50px] pb-6 px-6 rounded-md flex-shrink-0 w-[357px] relative transition-colors duration-150 ease-in cursor-pointer bg-gray-100 hover:bg-gray-200">
+        <div
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className={cn(
+                "group flex flex-col gap-[18px] items-start pt-[50px] pb-6 px-6 rounded-md flex-shrink-0 w-[340px] relative transition-colors duration-150 ease-in cursor-pointer",
+                hovered ? "bg-gray-200" : "bg-gray-100"
+            )}
+        >
             <div className={cn("absolute top-0 left-0 flex items-center gap-1 py-2 px-3 rounded-br-2xl", badgeColor)}>
                 {badgeIcon}
                 <span className="font-semibold text-xs text-neutral-800 tracking-wide whitespace-nowrap">{badgeLabel}</span>
@@ -183,7 +193,7 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
                             ))}
                         </div>
                     </div>
-                    <div className="flex flex-col gap-3 w-[265px]">
+                    <div className="flex flex-col gap-3 w-full">
                         <div className="flex items-center justify-between w-full">
                             <div className="flex flex-col">
                                 <span className="text-sm text-neutral-800">{tvl}</span>
@@ -218,12 +228,17 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
 
 export function VaultsSection() {
     return (
-        <section className="py-16 bg-white">
-            <div className="max-w-7xl mx-auto px-6 flex flex-col gap-4 items-start">
-                <h2 className="text-base font-medium text-neutral-800">
-                    Core vaults
-                </h2>
-                <div className="flex flex-wrap gap-6 justify-center">
+        <section className="py-24 bg-white">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="mb-16 text-center">
+                    <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
+                        Our Core Vaults
+                    </h2>
+                    <p className="text-slate-500 text-sm max-w-2xl mx-auto leading-relaxed font-light">
+                        Step into our curated vaults, each designed to optimize your earnings through distinct, actively managed strategies. Whether you seek stable returns or higher gains, find the vault that fits your risk appetite.
+                    </p>
+                </div>
+                <div className="flex gap-6 justify-center">
                     <VaultCard
                         logo={<StableVaultLogo />}
                         name="Stable Gain"
