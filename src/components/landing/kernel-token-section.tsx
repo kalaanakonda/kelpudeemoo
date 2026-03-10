@@ -54,6 +54,7 @@ export function KernelTokenSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className={cn("opacity-0", inView && "animate-slide-in-up")}>
+            <p className="text-primary font-semibold text-lg mb-2">$KELP</p>
             <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
               The KELP Token
             </h2>

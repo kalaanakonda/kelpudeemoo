@@ -4,10 +4,13 @@ import { AuditViz, UtilityViz, LiquidityTunnelViz, RestakingViz } from './visual
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function OutworksSection() {
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const rsEthLogo = PlaceHolderImages.find(p => p.id === 'rseth-logo');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,11 +36,15 @@ export function OutworksSection() {
   return (
     <section ref={ref} className="py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className={cn("mb-16 text-center opacity-0", inView && "animate-slide-in-up")}>
+        <div className={cn("mb-16 text-left opacity-0", inView && "animate-slide-in-up")}>
+          <div className="flex items-center gap-2 mb-4">
+              {rsEthLogo && <Image src={rsEthLogo.imageUrl} alt={rsEthLogo.description} data-ai-hint={rsEthLogo.imageHint} width={24} height={24} />}
+              <p className="text-primary font-medium text-sm uppercase tracking-widest">mint rsETH</p>
+          </div>
           <h2 className="text-3xl md:text-5xl font-normal font-heading text-black leading-none tracking-tight mb-4">
             ETH works, rsETH outworks.
           </h2>
-          <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed font-light">
+          <p className="text-slate-500 text-sm max-w-md leading-relaxed font-light">
             Unlock the full potential of your Ethereum. By restaking with Kelp, you maintain liquidity while earning rewards.
           </p>
           <div className="mt-8">

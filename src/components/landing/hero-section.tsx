@@ -36,7 +36,7 @@ const ScrollingLogos = () => (
     <div className="flex-shrink-0 flex items-center justify-center whitespace-nowrap">
         {partnerLogos.map((logo, index) => (
             <div key={`${logo.name}-${index}`} className="flex-shrink-0 mx-4">
-                <div className="bg-black/5 backdrop-blur-sm rounded-full flex items-center justify-center px-4 py-2 h-10">
+                <div className="bg-black/5 backdrop-blur-sm rounded-md flex items-center justify-center px-4 py-2 h-10">
                     <Image
                         src={logo.src}
                         alt={logo.name}

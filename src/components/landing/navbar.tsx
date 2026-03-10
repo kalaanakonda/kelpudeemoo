@@ -36,10 +36,34 @@ const navHierarchy = [
       { name: "Borrow instant credit", href: "#" }
     ]
   },
-  {
+    {
     title: "Tools",
     items: [
       { name: "DeFi Alerts", href: "#" }
+    ]
+  },
+  {
+    title: "Governance",
+    items: [
+      { name: "Stake KERNEL", href: "#" },
+      { name: "Vote", href: "#" },
+      { name: "Forum", href: "#" }
+    ]
+  },
+  {
+    title: "Ecosystem",
+    href: "#"
+  },
+  {
+    title: "Resources",
+    items: [
+      { name: "Blog", href: "#" },
+      { name: "Brand Kit", href: "#" },
+      { name: "FAQs", href: "#" },
+      { name: "Help and Support", href: "#" },
+      { name: "Docs", href: "#" },
+      { name: "Github", href: "#" },
+      { name: "Litepaper", href: "#" }
     ]
   }
 ];
@@ -47,24 +71,33 @@ const navHierarchy = [
 const NavMenu = ({ isMobile = false }: { isMobile?: boolean }) => {
   if (isMobile) {
     return (
-      <Accordion type="multiple" className="w-full">
-        {navHierarchy.map((navItem, index) => (
-          <AccordionItem key={index} value={`item-${index}`} className={index === navHierarchy.length - 1 ? 'border-b-0' : ''}>
-            <AccordionTrigger className="font-medium hover:no-underline py-3">
-              {navItem.title}
-            </AccordionTrigger>
-            <AccordionContent className="pl-4 pb-0">
-              <ul className="flex flex-col gap-1">
-                {navItem.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>
-                    <a href={item.href} className="block py-2 text-gray-600 hover:text-black">{item.name}</a>
-                  </li>
-                ))}
-              </ul>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <div className="w-full">
+        {navHierarchy.map((navItem, index) => {
+          if (navItem.items) {
+            return (
+              <Accordion key={index} type="single" collapsible className="w-full">
+                <AccordionItem value={`item-${index}`} className="border-b">
+                  <AccordionTrigger className="font-medium hover:no-underline py-3">
+                    {navItem.title}
+                  </AccordionTrigger>
+                  <AccordionContent className="pl-4 pb-0">
+                    <ul className="flex flex-col gap-1">
+                      {navItem.items.map((item, itemIndex) => (
+                        <li key={itemIndex}>
+                          <a href={item.href} className="block py-2 text-gray-600 hover:text-black">{item.name}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            );
+          }
+          return (
+             <a key={index} href={navItem.href} className="block py-4 font-medium text-gray-700 hover:text-black border-b">{navItem.title}</a>
+          );
+        })}
+      </div>
     );
   }
 
@@ -92,24 +125,40 @@ const NavMenu = ({ isMobile = false }: { isMobile?: boolean }) => {
   return (
     <div onMouseLeave={handleMouseLeave} className="hidden md:flex space-x-1 items-center">
       {navHierarchy.map((navItem) => (
-        <Button
-          key={navItem.title}
-          variant="ghost"
-          className="text-gray-600 text-xs font-normal cursor-pointer hover:text-black transition px-3 py-2 outline-none h-auto hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
-          onMouseEnter={() => handleMouseEnter(navItem.title)}
-        >
-          {navItem.title}
-        </Button>
+        navItem.items ? (
+          <Button
+            key={navItem.title}
+            variant="ghost"
+            className="text-gray-600 text-xs font-normal cursor-pointer hover:text-black transition px-3 py-2 outline-none h-auto hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+            onMouseEnter={() => handleMouseEnter(navItem.title)}
+          >
+            {navItem.title}
+          </Button>
+        ) : (
+          <Button
+            key={navItem.title}
+            asChild
+            variant="ghost"
+            className="text-gray-600 text-xs font-normal cursor-pointer hover:text-black transition px-3 py-2 outline-none h-auto hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+            onMouseEnter={() => {
+                if (timerRef.current) clearTimeout(timerRef.current);
+                setMenuOpen(false);
+                setActiveTitle(null);
+            }}
+          >
+            <Link href={navItem.href || '#'}>{navItem.title}</Link>
+          </Button>
+        )
       ))}
       
       <div
         onMouseEnter={() => { if (timerRef.current) clearTimeout(timerRef.current) }}
         className={cn(
           "absolute top-full left-1/2 -translate-x-1/2 mt-4 w-auto bg-white text-black rounded-lg shadow-lg border border-gray-100 transition-all duration-200 ease-in-out",
-          isMenuOpen && activeTitle ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+          isMenuOpen && activeTitle && activeContent?.items ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
         )}
       >
-        {activeContent && (
+        {activeContent?.items && (
           <div key={activeContent.title} className="p-6 w-[480px] animate-fade-in duration-300">
             <h3 className="text-sm font-medium text-gray-500 mb-3">{activeContent.title}</h3>
             <Separator className="mb-4" />
