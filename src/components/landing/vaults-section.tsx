@@ -193,8 +193,8 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
                     </div>
                      <div className="flex gap-1 items-center flex-wrap mt-3">
                          {tags.map((t: string) => (
-                             <div key={t} className="bg-blue-100/70 px-2 py-1 rounded-[4px]">
-                                 <span className="text-[10px] text-neutral-800 tracking-wide whitespace-nowrap">{t}</span>
+                             <div key={t} className="bg-blue-100/50 px-2 py-0.5 rounded-[4px]">
+                                 <span className="text-[10px] text-slate-700 tracking-wide whitespace-nowrap">{t}</span>
                              </div>
                          ))}
                      </div>
