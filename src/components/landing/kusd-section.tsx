@@ -1,14 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 import { Progress } from "@/components/ui/progress";
 import Image from 'next/image';
-
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
-});
+import Script from 'next/script';
 
 const savingsData = [
   {
@@ -83,7 +79,9 @@ export function KusdSection() {
               Earn from short term receivables across trade and cross border payments.
             </p>
             <div className="relative h-[400px] w-full">
-              <Spline scene="https://prod.spline.design/vCXQMKAfR9eHElUx/scene.splinecode" />
+              <Script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.68/build/spline-viewer.js"></Script>
+              {/* @ts-ignore - spline-viewer is a custom element defined in the script above */}
+              <spline-viewer url="https://prod.spline.design/vCXQMKAfR9eHElUx/scene.splinecode" className="w-full h-full"></spline-viewer>
             </div>
           </div>
 
