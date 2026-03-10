@@ -170,60 +170,64 @@ const VaultCard = ({ logo, name, description, tags, tvl, apy, assetIcons, badgeC
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             className={cn(
-                "group relative flex flex-col justify-between p-6 rounded-md flex-shrink-0 w-[340px] h-[360px] transition-colors duration-150 ease-in cursor-pointer",
+                "group relative flex flex-col justify-between p-6 rounded-md w-full h-[360px] transition-colors duration-150 ease-in cursor-pointer",
                 hovered ? "bg-gray-200" : "bg-gray-100"
             )}
         >
-            <div className={cn("absolute top-0 left-0 flex items-center gap-1 py-2 px-3 rounded-br-2xl", badgeColor)}>
+            <div className={cn("absolute top-0 left-0 flex items-center gap-1 py-2 px-3 rounded-br-md rounded-tl-md", badgeColor)}>
                 {badgeIcon}
                 <span className="font-semibold text-xs text-neutral-800 tracking-wide whitespace-nowrap">{badgeLabel}</span>
             </div>
             {extraBadge}
             
-            <div className="mt-10"> {/* Top Content */}
-                <div className="flex gap-3 items-start">
-                    {logo}
-                    <div className="flex flex-col gap-1">
-                        <span className="font-medium text-base text-neutral-800">{name}</span>
-                        <p className="text-xs text-slate-500 leading-relaxed">{description}</p>
-                    </div>
-                </div>
-                <div className="flex gap-1 items-center flex-wrap mt-3">
-                    {tags.map((t: string) => (
-                        <div key={t} className="bg-blue-100/70 px-2 py-1 rounded-[4px]">
-                            <span className="text-[10px] text-neutral-800 tracking-wide whitespace-nowrap">{t}</span>
+            <div className="flex-1 flex flex-col justify-between mt-6">
+                <div>
+                    <div className="flex items-start gap-4">
+                        {logo}
+                        <div className="flex-1 min-w-0">
+                            <h3 className="font-medium text-base text-neutral-800">{name}</h3>
+                            <p className="text-xs text-slate-500 leading-relaxed mt-1 whitespace-normal">
+                                {description}
+                            </p>
                         </div>
-                    ))}
+                    </div>
+                     <div className="flex gap-1 items-center flex-wrap mt-3">
+                         {tags.map((t: string) => (
+                             <div key={t} className="bg-blue-100/70 px-2 py-1 rounded-[4px]">
+                                 <span className="text-[10px] text-neutral-800 tracking-wide whitespace-nowrap">{t}</span>
+                             </div>
+                         ))}
+                     </div>
                 </div>
-            </div>
 
-            <div> {/* Bottom Content */}
-                <div className="flex items-end justify-between w-full mb-4">
-                    <div className="flex flex-col">
-                        <span className="text-sm text-neutral-800">{tvl}</span>
-                        <span className="text-xs text-slate-500 tracking-tighter">TVL</span>
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-sm text-neutral-800">{apy}</span>
-                        <span className="text-xs text-slate-500 tracking-tighter">APY</span>
-                    </div>
-                    <div className="flex flex-col gap-1 justify-center flex-shrink-0">
-                        <div className="flex items-center -space-x-1 h-4">
-                            {assetIcons}
+                 <div>
+                     <div className="flex items-end justify-between w-full mb-4">
+                        <div className="flex flex-col">
+                            <span className="text-sm text-neutral-800">{tvl}</span>
+                            <span className="text-xs text-slate-500 tracking-tighter">TVL</span>
                         </div>
-                        <span className="text-xs text-slate-500 tracking-tighter whitespace-nowrap">Assets accepted</span>
-                    </div>
-                </div>
-                <div className="w-full h-px bg-teal-200/50" />
-                <div className="flex items-center gap-2 mt-3">
-                    <div className="flex items-center gap-1">
-                        <span className="text-xs text-slate-400 whitespace-nowrap">Managed by </span>
-                        {footerLogo}
-                    </div>
-                    <div className="w-px h-4 bg-teal-200/50" />
-                    <span className="text-xs text-slate-400 whitespace-nowrap">Live for 6 months</span>
-                </div>
-            </div>
+                        <div className="flex flex-col">
+                            <span className="text-sm text-neutral-800">{apy}</span>
+                            <span className="text-xs text-slate-500 tracking-tighter">APY</span>
+                        </div>
+                        <div className="flex flex-col gap-1 justify-center flex-shrink-0">
+                            <div className="flex items-center -space-x-1 h-4">
+                                {assetIcons}
+                            </div>
+                            <span className="text-xs text-slate-500 tracking-tighter whitespace-nowrap">Assets accepted</span>
+                        </div>
+                     </div>
+                     <div className="w-full h-px bg-teal-200/50" />
+                     <div className="flex items-center gap-2 mt-3">
+                         <div className="flex items-center gap-1">
+                             <span className="text-xs text-slate-400 whitespace-nowrap">Managed by </span>
+                             {footerLogo}
+                         </div>
+                         <div className="w-px h-4 bg-teal-200/50" />
+                         <span className="text-xs text-slate-400 whitespace-nowrap">Live for 6 months</span>
+                     </div>
+                 </div>
+             </div>
         </div>
     );
 };
@@ -240,7 +244,7 @@ export function VaultsSection() {
                         Step into our curated vaults, each designed to optimize your earnings through distinct, actively managed strategies. Whether you seek stable returns or higher gains, find the vault that fits your risk appetite.
                     </p>
                 </div>
-                <div className="flex gap-6 justify-center overflow-x-auto pb-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <VaultCard
                         logo={<StableVaultLogo />}
                         name="Stable Gain"
@@ -275,7 +279,7 @@ export function VaultsSection() {
                         }
                         badgeLabel="Crypto"
                         extraBadge={
-                            <div className="absolute top-0 right-0 bg-teal-100/80 flex items-center gap-1 h-8 py-2 px-2 rounded-bl-2xl rounded-tr-md">
+                            <div className="absolute top-0 right-0 bg-teal-100/80 flex items-center gap-1 h-8 py-2 px-2 rounded-bl-md rounded-tr-md">
                                 <span className="text-[10px] text-neutral-800 tracking-wide whitespace-nowrap">Insured by</span>
                                 <NexusMutualLogo />
                             </div>
